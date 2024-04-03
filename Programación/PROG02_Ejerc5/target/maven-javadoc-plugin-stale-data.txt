@@ -1,0 +1,43 @@
+@options
+@packages
+-encoding
+'UTF-8'
+-protected
+-source
+'17'
+-sourcepath
+'C:/NetBeansProjects/PROG02_Ejerc5/src/main/java'
+-author
+-bottom
+'Copyright &#169; 2023. All rights reserved.'
+-charset
+'UTF-8'
+-d
+'C:/NetBeansProjects/PROG02_Ejerc5/target/site/apidocs'
+-docencoding
+'UTF-8'
+-doctitle
+'PROG02_Ejerc5 1.0-SNAPSHOT API'
+-use
+-version
+-windowtitle
+'PROG02_Ejerc5 1.0-SNAPSHOT API'
+com.mycompany.prog02_ejerc5
+C:\NetBeansProjects\PROG02_Ejerc5\src\main\java = 1697728457962
+C:\NetBeansProjects\PROG02_Ejerc5\target\site\apidocs\allclasses-index.html = 1697812153084
+C:\NetBeansProjects\PROG02_Ejerc5\target\site\apidocs\allpackages-index.html = 1697812153090
+C:\NetBeansProjects\PROG02_Ejerc5\target\site\apidocs\element-list = 1697812152970
+C:\NetBeansProjects\PROG02_Ejerc5\target\site\apidocs\help-doc.html = 1697812153138
+C:\NetBeansProjects\PROG02_Ejerc5\target\site\apidocs\index-all.html = 1697812153115
+C:\NetBeansProjects\PROG02_Ejerc5\target\site\apidocs\index.html = 1697812153119
+C:\NetBeansProjects\PROG02_Ejerc5\target\site\apidocs\javadoc.bat = 1697812086269
+C:\NetBeansProjects\PROG02_Ejerc5\target\site\apidocs\jquery-ui.overrides.css = 1697812153170
+C:\NetBeansProjects\PROG02_Ejerc5\target\site\apidocs\member-search-index.js = 1697812153095
+C:\NetBeansProjects\PROG02_Ejerc5\target\site\apidocs\module-search-index.js = 1697812153092
+C:\NetBeansProjects\PROG02_Ejerc5\target\site\apidocs\overview-tree.html = 1697812153058
+C:\NetBeansProjects\PROG02_Ejerc5\target\site\apidocs\package-search-index.js = 1697812153093
+C:\NetBeansProjects\PROG02_Ejerc5\target\site\apidocs\script.js = 1697812153153
+C:\NetBeansProjects\PROG02_Ejerc5\target\site\apidocs\search.js = 1697812153157
+C:\NetBeansProjects\PROG02_Ejerc5\target\site\apidocs\stylesheet.css = 1697812153150
+C:\NetBeansProjects\PROG02_Ejerc5\target\site\apidocs\tag-search-index.js = 1697812153095
+C:\NetBeansProjects\PROG02_Ejerc5\target\site\apidocs\type-search-index.js = 1697812153094
