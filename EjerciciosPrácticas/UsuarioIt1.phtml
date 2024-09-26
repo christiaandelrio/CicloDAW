@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    {% block head %}
+    <title>{% block title %}{% endblock %}UsuarioIT1</title>
+    <meta charset="utf-8">
+    {% endblock %}
+</head>
+<body>
+
+<div id="content">{% block content %}{{ contenido }}<!--Contenido por defecto-->{% endblock %}</div>
+<div id="content">{% block footer %}<!--Pie de página por defecto-->{% endblock %}</div>
+
+<h1>Hola {{nombre}}!</h1>
+
+</body>
+</html>
