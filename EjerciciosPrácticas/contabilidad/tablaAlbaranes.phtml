@@ -1,0 +1,79 @@
+<style>
+
+    .card {
+        background-color: #e6f1f6; /* Color de fondo gris azulado clarito */
+        padding: 15px; /* Espaciado interno del contenedor de la tarjeta */
+        border-radius: 8px; /* Bordes redondeados de la tarjeta */
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave para la tarjeta */
+    }
+
+    table {
+        width: 100%; /* Ancho completo de la tabla */
+        margin-top: 10px; /* Espacio entre la tabla y el contenido anterior */
+        border-collapse: collapse; /* Colapsar bordes */
+        border-radius: 8px; /* Bordes redondeados */
+        overflow: hidden; /* Asegurar que los bordes redondeados se apliquen */
+        margin-bottom: 20px; /* Espacio inferior para separar de otros elementos */
+    }
+
+    th, td {
+        border: 1px solid #ddd; /* Bordes de la tabla */
+        padding: 8px; /* Espaciado interno de celdas */
+        text-align: center; /* Centrar texto en las celdas */
+    }
+
+    th {
+        background-color: #5e8ad6; /* Color de fondo de las cabeceras */
+        color: white; /* Color del texto de las cabeceras */
+    }
+
+    tbody tr:nth-child(even) {
+        background-color: #f2f2f2; /* Color de fondo para filas pares */
+    }
+
+    tbody tr:nth-child(odd) {
+        background-color: #ffffff; /* Color de fondo para filas impares */
+    }
+
+
+</style>
+
+<div class="card">
+    <div class="container">
+        <table id="tablaAlbaranes">
+            <thead>
+            <tr>
+                <th>Código Artículo</th>
+                <th>Descripción Artículo</th>
+                <th>Unidades Compradas</th>
+                <th>Unidades Vendidas Albarán</th>
+                <th>Unidades Vendidas Ticket</th>
+                <th>Código Proveedor</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% if contabilidad %}
+            {% for albaran in contabilidad %}
+            <tr>
+                <td>{{ albaran.CodigoArticulo }}</td>
+                <td>{{ albaran.DescripcionArticulos }}</td>
+                <td>{{ albaran.UnidadesCompradas }}</td>
+                <td>{{ albaran.UnidadesVendidasAlbaran }}</td>
+                <td>{{ albaran.UnidadesVendidasTicket }}</td>
+                <td>{{ albaran.CodigoProveedor }}</td>
+            </tr>
+            {% endfor %}
+            {% else %}
+            <tr>
+                <td colspan="6">No hay albaranes para mostrar.</td>
+            </tr>
+            {% endif %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+
+

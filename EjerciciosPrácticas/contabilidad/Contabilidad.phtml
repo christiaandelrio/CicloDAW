@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    {% block head %}
+    <title>{% block title %}{% endblock %} Contabilidad</title>
+    <meta charset="utf-8">
+    <style>
+        /* Estilos generales para el formulario */
+        .form-section {
+            margin-top: 20px;
+        }
+
+    </style>
+    {% endblock %}
+</head>
+<body>
+
+<main>
+    <section>
+        <h1 class="page-header">Contabilidad</h1>
+    </section>
+
+    <section>
+        <p>Formulario de Contabilidad en Don Disfraz.</p>
+        <p>Genera un Excel manualmente presionando un botón.
+            Se especifica pesos de artículos (Accesorio, Disfraz) y se muestra el resultado final.
+            Lo almacena en BBDD, permite consultar un histórico y mostrar gráficos.
+        </p>
+    </section>
+
+    <section class="form-section">
+        <form action="" method="POST" class="needs-validation" novalidate id="formAlbaranes">
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="fechaInicioCompra">Fecha Inicio Compra</label>
+                    <input type="date" class="form-control" id="fechaInicioCompra" name="fechaInicioCompra" required>
+                    <div class="invalid-feedback">
+                        Por favor, ingresa una fecha válida.
+                    </div>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="fechaFinCompra">Fecha Fin Compra</label>
+                    <input type="date" class="form-control" id="fechaFinCompra" name="fechaFinCompra" required>
+                    <div class="invalid-feedback">
+                        Por favor, ingresa una fecha válida.
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="fechaInicioVenta">Fecha Inicio Venta</label>
+                    <input type="date" class="form-control" id="fechaInicioVenta" name="fechaInicioVenta" required>
+                    <div class="invalid-feedback">
+                        Por favor, ingresa una fecha válida.
+                    </div>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="fechaFinVenta">Fecha Fin Venta</label>
+                    <input type="date" class="form-control" id="fechaFinVenta" name="fechaFinVenta" required>
+                    <div class="invalid-feedback">
+                        Por favor, ingresa una fecha válida.
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <input type="hidden" name="action" value="generarExcel">
+            <button type="button" class="btn btn-primary" id="btnObtenerAlbaranes">Generar Informe</button>
+        </form>
+        <br>
+    </section>
+    <div id="resultadoAlbaranes"></div>
+
+    <div id="footer">
+        {% block footer %}
+        <!-- Pie de página por defecto -->
+        {% endblock %}
+    </div>
+</main>
+
+</body>
+</html><script src="http://localhost/dist/js/contabilidad.js"></script>
+
