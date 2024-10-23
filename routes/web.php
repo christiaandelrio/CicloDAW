@@ -1,31 +1,28 @@
-<?php
+<?php 
 
-use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\GastoController;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
-
+// Ruta principal (homepage)
 Route::get('/', function () {
-    return view('welcome');
+    return view('gastos.index'); // Mostrar la vista de la homepage
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Rutas de autenticación
+Route::view('/login', 'auth.login')->name('login');
+Route::post('/login', [AuthController::class, 'login']);
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
+Route::view('/register', 'auth.register')->name('register');
+Route::post('/register', [AuthController::class, 'register']);
 
-require __DIR__.'/auth.php';
+// Ruta para el dashboard (donde se mostrarán los gastos)una vez autenticado
+Route::get('/dashboard', [GastoController::class, 'index'])->middleware('auth')->name('dashboard');
+Route::post('/gastos', [GastoController::class, 'store'])->name('gastos.store'); // Ruta para almacenar el gasto
+Route::get('/gastos/create', [GastoController::class, 'create'])->middleware('auth')->name('gastos.create');
+Route::get('/gastos/create', [GastoController::class, 'create'])->middleware('auth')->name('gastos.create');
+Route::post('/gastos', [GastoController::class, 'store'])->middleware('auth')->name('gastos.store');
+Route::get('/gastos/dashboard', [GastoController::class, 'index'])->middleware('auth')->name('gastos.dashboard');
+
+
