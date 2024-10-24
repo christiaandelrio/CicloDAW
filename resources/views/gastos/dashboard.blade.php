@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="py-4">
-    <div class="container card-container">
+    <div class="container card-container" style="display: flex; justify-content: center; flex-direction: column; align-items: center;">
         @if($gastos->isEmpty())
             <div class="card">
                 <div class="description">
@@ -13,60 +13,46 @@
                 </div>
             </div>
         @else
-            <div class="table-wrapper">
-                <div class="table-container">
-                    <div class="table-responsive">
-                        <table class="table table-striped table-bordered table-hover" id="tablaGastos">
-                            <thead class="table-dark">
-                                <tr>
-                                    <th>Nombre del Gasto</th>
-                                    <th>Tipo</th>
-                                    <th>Valor</th>
-                                    <th>Fecha</th>
-                                    <th>Descripción</th>
-                                    <th>Categoría</th>
+            <div class="table-wrapper" style="overflow-x: auto; width: 100%; max-width: 1000px;">
+                <div class="table-container" style="display: flex; justify-content: center;">
+                    <table class="table table-striped table-hover" id="tabla-gastos" style="width: 100%; border-collapse: collapse; background-color: #FFFFFF; color: #3B4013; border-radius: 10px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);">
+                        <thead style="background-color: #4CAF50; color: #FFFFFF;">
+                            <tr>
+                                <th>Nombre del Gasto</th>
+                                <th>Tipo</th>
+                                <th>Valor</th>
+                                <th>Fecha</th>
+                                <th>Descripción</th>
+                                <th>Categoría</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($gastos as $gasto)
+                                <tr style="text-align: center; border-bottom: 1px solid #BFD1C9;">
+                                    <td>{{ $gasto->nombre_gasto }}</td>
+                                    <td>{{ $gasto->tipo }}</td>
+                                    <td>{{ $gasto->valor }}</td>
+                                    <td>{{ $gasto->fecha }}</td>
+                                    <td>{{ $gasto->descripcion }}</td>
+                                    <td>
+                                        @php
+                                            // Obtiene el icono de la categoría o usa un icono por defecto
+                                            $icono = $categorias[$gasto->categoria] ?? 'fas fa-question-circle';
+                                        @endphp
+                                        <i class="{{ $icono }}" aria-hidden="true"></i>
+                                    </td>
                                 </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($gastos as $gasto)
-                                    <tr>
-                                        <td>{{ $gasto->nombre_gasto }}</td>
-                                        <td>{{ $gasto->tipo }}</td>
-                                        <td>{{ number_format($gasto->valor, 2, ',', '.') }} €</td>
-                                        <td>{{ \Carbon\Carbon::parse($gasto->fecha)->format('d/m/Y') }}</td>
-                                        <td>{{ $gasto->descripcion ?? 'N/A' }}</td>
-                                        <td>
-                                            @switch($gasto->categoria)
-                                                @case('comida')
-                                                    <i class="fas fa-utensils" title="Comida"></i>
-                                                    @break
-                                                @case('mascota')
-                                                    <i class="fas fa-paw" title="Mascota"></i>
-                                                    @break
-                                                @case('transporte')
-                                                    <i class="fas fa-bus" title="Transporte"></i>
-                                                    @break
-                                                @case('ropa')
-                                                    <i class="fas fa-shirt" title="Ropa"></i>
-                                                    @break
-                                                @case('decoracion')
-                                                    <i class="fas fa-couch" title="Decoración"></i>
-                                                    @break
-                                                @default
-                                                    <span>No definido</span>
-                                            @endswitch
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
+                            @endforeach
+                        </tbody>
+                    </table>
                 </div>
             </div>
         @endif
     </div>
 </div>
 @endsection
+
+
 
 
 

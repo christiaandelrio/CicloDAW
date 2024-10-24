@@ -3,35 +3,55 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #D0D4D6; /* Fondo claro */
-    color: #111111; /* Texto oscuro */
-    padding-bottom: 60px; /* Espacio para la barra de navegación */
+    background-color: #F2F4F5; /* Fondo gris super claro */
+    color: #0D0D0D; /* Texto oscuro */
+    padding-bottom: 60px; /* Espacio para la barra de navegación inferior */
 }
 
+/* Encabezado */
 header {
     text-align: center;
     padding: 20px;
+    background-color: transparent;
 }
 
-/* Estilos de la tarjeta y contenedor */
+/* Contenedor principal */
+.home-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 50px;
+    height: 100vh;
+}
+
+/* Estilos del contenedor de la tarjeta */
 .card-container {
     display: flex;
-    flex-direction: column; /* Cambiado a columna para centrar mejor */
-    align-items: center; /* Centrado horizontal */
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     padding: 20px;
+    background-color: #FFFFFF; /* Fondo blanco */
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    margin: 20px 0;
 }
 
+/* Estilos de la tarjeta */
 .card {
     display: flex;
     flex-direction: column;
-    background-color: #3F5061; /* Fondo del contenedor de las tarjetas */
+    background-color: #FFFFFF;
     border-radius: 10px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     margin: 20px;
     overflow: hidden;
-    width: 300px;
+    width: 600px; /* Aumentar el ancho de la tarjeta */
+    max-width: 90%; /* Para mantener responsividad en pantallas pequeñas */
     transition: transform 0.2s ease;
 }
+
 
 .card img {
     width: 100%;
@@ -42,7 +62,7 @@ header {
 .description {
     padding: 20px;
     text-align: center;
-    color: #D0D4D6; /* Texto claro en las tarjetas */
+    color: #4CAF50; /* Verde oscuro */
 }
 
 .description h2 {
@@ -53,93 +73,100 @@ header {
     margin: 0;
 }
 
-/* Contenedor de tabla */
-.table-wrapper {
+/* Contenedor de gráficas y tablas */
+.chart-container {
     display: flex;
-    justify-content: center; /* Centra el contenedor de la tabla */
+    justify-content: space-around;
+    width: 100%;
+    margin: 20px 0;
 }
 
-.table-container {
-    background-color: #D0D4D6; /* Fondo claro para la tabla */
-    border-radius: 10px; /* Bordes redondeados */
+.chart {
+    flex: 1;
+    margin: 10px;
+}
+
+.description-article {
+    flex: 1;
+    background-color: #E0E0E0; /* Fondo gris claro */
+    border-radius: 10px;
     padding: 20px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Sombra para el contenedor */
-    max-width: 800px; /* Ancho máximo */
-    width: 100%; /* Para que sea responsivo */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
-.table {
-    margin: 0; /* Elimina el margen predeterminado de la tabla */
+/* Estilos de la gráfica */
+canvas {
+    width: 100% !important;
+    height: auto !important;
 }
 
-.table-responsive {
-    margin-top: 20px; /* Espacio superior para mejor apariencia */
-}
-
-/* Estilos de inicio de sesión */
+/* Contenedor del formulario de inicio de sesión */
 .login-container {
     display: flex;
-    justify-content: center; /* Centra el contenedor */
-    align-items: center; /* Centra verticalmente */
-    height: calc(100vh - 60px); /* Altura total menos el espacio para la barra de navegación */
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 60px); /* Altura total menos la barra de navegación */
 }
 
 .login-card {
-    background-color: #FFFFFF; /* Fondo claro del formulario */
-    border-radius: 10px; /* Bordes redondeados */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Sombra del contenedor */
-    width: 100%; /* Para hacerlo responsivo */
-    max-width: 400px; /* Ancho máximo del formulario */
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 400px;
     padding: 20px;
 }
 
 .login-card-header {
-    text-align: center; /* Centrar el texto del encabezado */
-    font-size: 24px; /* Tamaño de fuente del encabezado */
-    margin-bottom: 20px; /* Espacio debajo del encabezado */
-    color: #3F5061; /* Color del encabezado */
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #4CAF50; /* Verde oscuro */
 }
 
 .login-card-body {
     display: flex;
-    flex-direction: column; /* Alinear elementos en columna */
+    flex-direction: column;
 }
 
 .form-group {
-    margin-bottom: 15px; /* Espacio entre los grupos de formulario */
+    margin-bottom: 15px;
 }
 
 label {
-    margin-bottom: 5px; /* Espacio debajo de la etiqueta */
-    color: #111111; /* Color de las etiquetas */
+    margin-bottom: 5px;
+    color: #0D0D0D;
 }
 
+/* Estilos de los inputs del formulario */
 .form-input {
-    width: 100%; /* Ocupa todo el ancho disponible */
-    padding: 10px; /* Espaciado interno */
-    border: 1px solid #A4A69C; /* Color del borde */
-    border-radius: 5px; /* Bordes redondeados para los inputs */
-    background-color: #D0D4D6; /* Fondo del input */
-    color: #111111; /* Color del texto del input */
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #A5D6A7;
+    border-radius: 5px;
+    background-color: #F2EFDF; /* Fondo de los inputs */
+    color: #4CAF50; /* Texto de los inputs */
 }
 
 .form-input:focus {
-    outline: none; /* Elimina el borde azul predeterminado */
-    border-color: #111111; /* Cambia el color del borde en foco */
+    outline: none;
+    border-color: #388E3C;
 }
 
+/* Botón de enviar */
 .btn-submit {
-    background-color: #CD3554; /* Color de fondo del botón */
-    color: #FFFFFF; /* Color del texto del botón */
-    padding: 10px; /* Espaciado interno del botón */
-    border: none; /* Sin borde */
-    border-radius: 5px; /* Bordes redondeados para el botón */
-    cursor: pointer; /* Cambia el cursor al pasar por encima */
-    transition: background-color 0.3s; /* Transición para el color de fondo */
+    background-color: #4CAF50; /* Verde oscuro */
+    color: #FFFFFF;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%;
 }
 
 .btn-submit:hover {
-    background-color: #203652; /* Color de fondo del botón al pasar el mouse */
+    background-color: #388E3C;
 }
 
 /* Contenedor del logo */
@@ -147,16 +174,17 @@ label {
     position: absolute;
     top: 10px;
     left: 10px;
-    z-index: 1000; /* Asegúrate de que esté por encima de otros elementos */
-    padding: 5px; /* Añade un pequeño margen alrededor del logo */
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-/* Estilos del logo */
 .logo {
-    width: 300px; /* Ajusta el ancho */
-    height: auto; /* Mantén la proporción de la imagen */
-    max-width: 100%; /* Se asegura de que no se exceda el ancho del contenedor */
-    object-fit: contain; /* Asegura que el logo se ajuste bien al contenedor */
+    width: 150px; /* Tamaño del logo ajustado */
+    height: auto;
+    max-width: 100%;
+    object-fit: contain;
 }
 
 /* Barra de navegación inferior */
@@ -168,7 +196,6 @@ nav.navbar-bottom {
     justify-content: space-around;
     align-items: center;
     padding: 10px 0;
-    background-color: transparent; /* Fondo transparente */
     z-index: 1000;
 }
 
@@ -179,19 +206,20 @@ nav.navbar-bottom {
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    background-color: #CD3554; /* Color de fondo de los iconos */
-    color: #FFFFFF; /* Color del icono */
+    background-color: #FFFFFF;
+    color: #4CAF50; /* Verde oscuro */
     font-size: 24px;
-    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+    transition: background-color 0.3s, color 0.3s, transform 0.3s;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .menu-icon:hover {
-    background-color: #D0D4D6;
+    background-color: #388E3C;
+    color: #FFFFFF;
     transform: scale(1.1);
 }
 
-/* Estilos del menú de búsqueda */
+/* Menú de búsqueda */
 .search-menu {
     display: none;
     position: fixed;
@@ -222,51 +250,32 @@ nav.navbar-bottom {
 
 .search-menu .categories ul li a {
     text-decoration: none;
-    color: #333;
+    color: #4CAF50;
     font-size: 18px;
-    transition: color 0.3s ease;
+    transition: color 0.3s;
 }
 
 .search-menu .categories ul li a:hover {
-    color: #CD3554;
+    color: #F20519;
 }
+
 
 /* Responsividad */
 @media (max-width: 768px) {
-    .navbar-nav {
+    .chart-container {
         flex-direction: column;
-        align-items: center;
     }
 
-    .nav-item {
-        margin-left: 0;
-        margin-top: 10px;
-    }
-
-    .card-container {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .card {
-        width: 90%;
-    }
-
-    .login-card {
-        width: 90%; /* Ancho del formulario en pantallas pequeñas */
+    .chart, .description-article {
+        width: 100%;
+        margin: 0;
     }
 }
 
-@media (max-width: 480px) {
-    #navbar {
-        flex-direction: column;
-        align-items: flex-start;
-    }
 
-    .nav-item {
-        margin: 10px 0;
-    }
-}
+
+
+
 
 
 

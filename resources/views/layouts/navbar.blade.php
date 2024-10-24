@@ -31,31 +31,37 @@
 
         <!-- Menú de usuario -->
         <div class="search-menu" id="user-menu">
-        <div class="categories">
+            <div class="categories">
                 <ul>
                     <li><a href="{{ route('dashboard') }}">Mi perfil</a></li>
-        <!-- Cuando el usuario está autenticado, se muestra el enlace de logout -->
-        <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-            </i> Cerrar sesión
-        </a>
-        <!-- Formulario oculto para cerrar sesión -->
-        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-            @csrf
-        </form>                    
-        <li><a href="#">Configuración</a></li>
+                    
+                    <!-- Enlace de cerrar sesión -->
+                    <li>
+                        <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            Cerrar sesión
+                        </a>
+                    </li>
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+
+                    <li><a href="#">Configuración</a></li>
                 </ul>
             </div>
+        </div>
+
     @endauth
 
     @guest
 
         <!-- Opciones de usuario no autenticado -->
         <div class="menu-icon" id="login-icon">
-            <a href="{{ route('login') }}"><i class="fas fa-user"></i> Iniciar Sesión</a>
+            <a href="{{ route('login') }}"><i class="fas fa-user"></i> </a>
         </div>
         
         <div class="menu-icon" id="register-icon">
-            <a href="{{ route('register') }}"><i class="fas fa-user-plus"></i> Registrarse</a>
+            <a href="{{ route('register') }}"><i class="fas fa-user-plus"></i></a>
         </div>
 
     @endguest

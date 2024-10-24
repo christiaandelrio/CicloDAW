@@ -1,57 +1,74 @@
 @extends('layouts.app')
 
+@section('title', 'Dashboard')
+
 @section('content')
-<div class="home-container" style="text-align: center; padding: 50px;">
-    <h1>Bienvenido a la Aplicación de Control de Gastos</h1>
-    <p>Gestiona tus gastos de forma sencilla y eficiente.</p>
-
-
-    <div class="card-container">
-        <!-- Tarjeta para el gráfico -->
-        <div class="card">
-            <div class="header">Gastos Mensuales</div>
-            <canvas id="monthlyExpensesChart"></canvas> <!-- Contenedor para la gráfica -->
+<div class="container" style="padding-top: 50px; text-align: center;">
+    <!-- Contenedor de gráficas y artículos -->
+    <div class="chart-container" style="display: flex; justify-content: space-around; align-items: center; flex-wrap: wrap; gap: 20px;">
+        
+        <!-- Gráfico de barras -->
+        <div class="chart" style="flex: 1; background-color: #FFFFFF; padding: 20px; border-radius: 10px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);">
+            <h3 style="color: #3B4013;">Gráfico de Barras</h3>
+            <canvas id="barChart" style="width: 100%; height: 400px;"></canvas>
         </div>
-        <!-- Agrega más tarjetas con gráficos según sea necesario -->
+
+        <!-- Artículo de texto centrado -->
+        <div class="description-article" style="flex: 1; background-color: #F2F4F5; padding: 20px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);">
+            <h3 style="color: #3B4013;">Artículo Informativo</h3>
+            <p style="color: #0D0D0D;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </div>
     </div>
-    <div class="card-container">
-        <!-- Tarjeta para el gráfico -->
-        <div class="card">
-            <div class="header">Gastos Mensuales</div>
-            <canvas id="monthlyExpensesChart"></canvas> <!-- Contenedor para la gráfica -->
+
+    <div class="chart-container" style="display: flex; justify-content: space-around; align-items: center; flex-wrap: wrap; gap: 20px; margin-top: 50px;">
+        
+        <!-- Gráfico de quesitos -->
+        <div class="chart" style="flex: 1; background-color: #FFFFFF; padding: 20px; border-radius: 10px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);">
+            <h3 style="color: #3B4013;">Gráfico de Quesitos</h3>
+            <canvas id="pieChart" style="width: 100%; height: 400px;"></canvas>
         </div>
-        <!-- Agrega más tarjetas con gráficos según sea necesario -->
+
+        <!-- Otro artículo de texto -->
+        <div class="description-article" style="flex: 1; background-color: #F2F4F5; padding: 20px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);">
+            <h3 style="color: #3B4013;">Otro Artículo Informativo</h3>
+            <p style="color: #0D0D0D;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </div>
     </div>
 </div>
 
+<!-- Scripts para las gráficas -->
 <script>
-    // Espera a que el DOM esté completamente cargado
-    document.addEventListener('DOMContentLoaded', function () {
-        const ctx = document.getElementById('monthlyExpensesChart').getContext('2d');
-        const monthlyExpensesChart = new Chart(ctx, {
-            type: 'bar', // Tipo de gráfico (puede ser 'line', 'bar', 'pie', etc.)
-            data: {
-                labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio'], // Etiquetas para el eje X
-                datasets: [{
-                    label: 'Gastos',
-                    data: [1200, 1900, 3000, 2500, 2200, 4000, 3200], // Datos para el gráfico
-                    backgroundColor: 'rgba(54, 162, 235, 0.5)', // Color de las barras
-                    borderColor: 'rgba(54, 162, 235, 1)', // Color del borde de las barras
-                    borderWidth: 1 // Ancho del borde
-                }]
-            },
-            options: {
-                responsive: true, // Hacer que el gráfico sea responsivo
-                scales: {
-                    y: {
-                        beginAtZero: true // Iniciar el eje Y en cero
-                    }
-                }
-            }
-        });
+    var barChartContext = document.getElementById('barChart').getContext('2d');
+    var pieChartContext = document.getElementById('pieChart').getContext('2d');
+
+    // Ejemplo de gráfico de barras
+    var barChart = new Chart(barChartContext, {
+        type: 'bar',
+        data: {
+            labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo'],
+            datasets: [{
+                label: 'Gastos',
+                data: [1200, 1500, 800, 1100, 1300],
+                backgroundColor: '#4CAF50'
+            }]
+        }
+    });
+
+    // Ejemplo de gráfico de quesitos
+    var pieChart = new Chart(pieChartContext, {
+        type: 'pie',
+        data: {
+            labels: ['Comida', 'Transporte', 'Entretenimiento', 'Salud', 'Otros'],
+            datasets: [{
+                data: [300, 150, 100, 250, 200],
+                backgroundColor: ['#4CAF50', '#8BC34A', '#C5E1A5', '#388E3C', '#66BB6A']
+            }]
+        }
     });
 </script>
 @endsection
+
+
 
 
 

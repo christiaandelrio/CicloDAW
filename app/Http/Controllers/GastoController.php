@@ -10,10 +10,23 @@ class GastoController extends Controller
 {
     public function index()
     {
+        // Definir las categorías y sus iconos
+        $categorias = [
+            'comida' => 'fas fa-utensils',
+            'mascota' => 'fas fa-paw',
+            'transporte' => 'fas fa-bus',
+            'ropa' => 'fa-solid fa-shirt',
+            'decoracion' => 'fas fa-couch',
+            // Agrega más categorías según sea necesario
+        ];
+    
         // Obtener los gastos del usuario autenticado
         $gastos = Gasto::where('user_id', Auth::id())->get();
-        return view('gastos.dashboard', compact('gastos'));
+    
+        // Pasar tanto los gastos como las categorías a la vista
+        return view('gastos.dashboard', compact('gastos', 'categorias'));
     }
+    
 
     public function create()
     {

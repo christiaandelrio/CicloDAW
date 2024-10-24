@@ -4,51 +4,38 @@
 
 @section('content')
 <div class="py-4">
-    <div class="container card-container">
-        <div class="card shadow-sm">
-            <div class="card-body">
-                <h2 class="card-title">Crear Nuevo Gasto</h2>
-                <form action="{{ route('gastos.store') }}" method="POST">
-                    @csrf
-                    <div class="mb-3">
-                        <label for="nombre_gasto" class="form-label">Nombre del Gasto</label>
-                        <input type="text" class="form-control" id="nombre_gasto" name="nombre_gasto" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="tipo" class="form-label">Tipo de Gasto</label>
-                        <input type="text" class="form-control" id="tipo" name="tipo" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="valor" class="form-label">Valor (€)</label>
-                        <input type="number" step="0.01" class="form-control" id="valor" name="valor" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="fecha" class="form-label">Fecha</label>
-                        <input type="date" class="form-control" id="fecha" name="fecha" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="descripcion" class="form-label">Descripción (Opcional)</label>
-                        <textarea class="form-control" id="descripcion" name="descripcion"></textarea>
-                    </div>
-                    <div class="mb-3">
-                        <label for="categoria" class="form-label">Categoría</label>
-                        <select class="form-select" id="categoria" name="categoria" required>
-                            <option value="">Selecciona una categoría</option>
-                            <option value="comida">Comida</option>
-                            <option value="mascota">Mascota</option>
-                            <option value="transporte">Transporte</option>
-                            <option value="ropa">Ropa</option>
-                            <option value="decoracion">Decoración</option>
-                            <!-- Agrega más opciones según sea necesario -->
-                        </select>
-                    </div>
-
-                    <button type="submit" class="btn btn-primary">Crear Gasto</button>
-                </form>
-            </div>
+    <div class="card shadow-sm" style="background-color: #FFFFFF; padding: 20px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); margin: 0 auto; max-width: 600px;">
+        <div class="card-body">
+            <h2 class="card-title" style="color: #3B4013; text-align: center;">Crear Nuevo Gasto</h2>
+            <form action="{{ route('gastos.store') }}" method="POST" style="display: flex; flex-direction: column;">
+                @csrf
+                <div class="form-group" style="margin-bottom: 15px;">
+                    <label for="nombre_gasto" style="color: #0D0D0D;">Nombre del Gasto</label>
+                    <input type="text" id="nombre_gasto" name="nombre_gasto" required class="form-input" style="width: 100%; padding: 10px; border: 1px solid #BFD1C9; border-radius: 5px; background-color: #F2EFDF;">
+                </div>
+                <div class="form-group" style="margin-bottom: 15px;">
+                    <label for="tipo" style="color: #0D0D0D;">Tipo de Gasto</label>
+                    <input type="text" id="tipo" name="tipo" required class="form-input" style="width: 100%; padding: 10px; border: 1px solid #BFD1C9; border-radius: 5px; background-color: #F2EFDF;">
+                </div>
+                <div class="form-group" style="margin-bottom: 15px;">
+                    <label for="valor" style="color: #0D0D0D;">Valor (€)</label>
+                    <input type="number" step="0.01" id="valor" name="valor" required class="form-input" style="width: 100%; padding: 10px; border: 1px solid #BFD1C9; border-radius: 5px; background-color: #F2EFDF;">
+                </div>
+                <div class="form-group" style="margin-bottom: 15px;">
+                    <label for="fecha" style="color: #0D0D0D;">Fecha</label>
+                    <input type="date" id="fecha" name="fecha" required class="form-input" style="width: 100%; padding: 10px; border: 1px solid #BFD1C9; border-radius: 5px; background-color: #F2EFDF;">
+                </div>
+                <div class="form-group" style="margin-bottom: 15px;">
+                    <label for="descripcion" style="color: #0D0D0D;">Descripción</label>
+                    <textarea id="descripcion" name="descripcion" rows="4" class="form-input" style="width: 100%; padding: 10px; border: 1px solid #BFD1C9; border-radius: 5px; background-color: #F2EFDF;"></textarea>
+                </div>
+                <button type="submit" class="btn-submit" style="background-color: #4CAF50; color: #FFFFFF; padding: 10px; border: none; border-radius: 5px; cursor: pointer; width: 100%; transition: background-color 0.3s;">Guardar Gasto</button>
+            </form>
         </div>
     </div>
 </div>
 @endsection
+
+
 
 
