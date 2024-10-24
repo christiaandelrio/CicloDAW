@@ -29,12 +29,22 @@
                     <label for="descripcion" style="color: #0D0D0D;">Descripción</label>
                     <textarea id="descripcion" name="descripcion" rows="4" class="form-input" style="width: 100%; padding: 10px; border: 1px solid #BFD1C9; border-radius: 5px; background-color: #F2EFDF;"></textarea>
                 </div>
+                <div class="form-group" style="margin-bottom: 15px;">
+                    <label for="categoria" style="color: #0D0D0D;">Categoría</label>
+                    <select id="categoria" name="categoria" required class="form-input" style="width: 100%; padding: 10px; border: 1px solid #BFD1C9; border-radius: 5px; background-color: #F2EFDF;">
+                        <option value="">Selecciona una categoría</option>
+                        @foreach ($categorias as $categoria => $icono)
+                            <option value="{{ $categoria }}">{{ ucfirst($categoria) }}</option>
+                        @endforeach
+                    </select>
+                </div>
                 <button type="submit" class="btn-submit" style="background-color: #4CAF50; color: #FFFFFF; padding: 10px; border: none; border-radius: 5px; cursor: pointer; width: 100%; transition: background-color 0.3s;">Guardar Gasto</button>
             </form>
         </div>
     </div>
 </div>
 @endsection
+
 
 
 

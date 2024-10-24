@@ -70,7 +70,60 @@ class GastoController extends Controller
         return redirect()->route('gastos.dashboard')->with('success', 'Gasto creado con éxito.');
     }
 
-    // Otros métodos show, edit, update, destroy según necesidad
+    
+    public function edit($id)
+    {
+        // Buscar el gasto por su ID
+        $gasto = Gasto::findOrFail($id);
+    
+        // Definir las categorías y sus iconos
+        $categorias = [
+            'comida' => 'fas fa-utensils',
+            'mascota' => 'fas fa-paw',
+            'transporte' => 'fas fa-bus',
+            'ropa' => 'fa-solid fa-shirt',
+            'decoracion' => 'fas fa-couch',
+        ];
+    
+        // Retornar la vista de edición con los datos del gasto
+        return view('gastos.edit', compact('gasto', 'categorias'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        // Validar los datos que llegan del formulario
+        $validatedData = $request->validate([
+            'nombre_gasto' => 'required|string|max:255',
+            'tipo' => 'required|string|max:255',
+            'valor' => 'required|numeric',
+            'fecha' => 'required|date',
+            'descripcion' => 'nullable|string',
+            'categoria' => 'required|string|max:255',
+        ]);
+
+        // Encontrar el gasto por su ID
+        $gasto = Gasto::findOrFail($id);
+
+        // Actualizar el gasto con los nuevos valores
+        $gasto->update($validatedData);
+
+        // Redirigir al dashboard con un mensaje de éxito
+        return redirect()->route('gastos.dashboard')->with('success', 'Gasto actualizado con éxito.');
+    }
+
+    
+    public function destroy($id)
+    {
+        // Buscar el gasto por su ID
+        $gasto = Gasto::findOrFail($id);
+
+        // Eliminar el gasto
+        $gasto->delete();
+
+        // Redirigir al usuario de vuelta a la lista de gastos con un mensaje de éxito
+        return redirect()->route('gastos.dashboard')->with('success', 'Gasto eliminado con éxito.');
+    }
+
 }
 
 

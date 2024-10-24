@@ -15,7 +15,7 @@
         @else
             <div class="table-wrapper" style="overflow-x: auto; width: 100%; max-width: 1000px;">
                 <div class="table-container" style="display: flex; justify-content: center;">
-                    <table class="table table-striped table-hover" id="tabla-gastos" style="width: 100%; border-collapse: collapse; background-color: #FFFFFF; color: #3B4013; border-radius: 10px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);">
+                    <table class="table table-striped table-hover" id="tablaGastos" style="width: 100%; border-collapse: collapse; background-color: #FFFFFF; color: #3B4013; border-radius: 10px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);">
                         <thead style="background-color: #4CAF50; color: #FFFFFF;">
                             <tr>
                                 <th>Nombre del Gasto</th>
@@ -24,6 +24,7 @@
                                 <th>Fecha</th>
                                 <th>Descripción</th>
                                 <th>Categoría</th>
+                                <th>Acciones</th> <!-- Nueva columna de Acciones -->
                             </tr>
                         </thead>
                         <tbody>
@@ -41,6 +42,21 @@
                                         @endphp
                                         <i class="{{ $icono }}" aria-hidden="true"></i>
                                     </td>
+                                    <td> <!-- Botones de acción para cada gasto -->
+                                        <!-- Botón de Editar -->
+                                        <a href="{{ route('gastos.edit', $gasto->id) }}" class="btn btn-sm btn-primary">
+                                            <i class="fa fa-edit"></i> Editar
+                                        </a>
+
+                                        <!-- Botón de Eliminar -->
+                                        <form action="{{ route('gastos.destroy', $gasto->id) }}" method="POST" style="display:inline-block;">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('¿Estás seguro de que quieres eliminar este gasto?');">
+                                                <i class="fa fa-trash"></i> Eliminar
+                                            </button>
+                                        </form>
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>
@@ -51,6 +67,7 @@
     </div>
 </div>
 @endsection
+
 
 
 

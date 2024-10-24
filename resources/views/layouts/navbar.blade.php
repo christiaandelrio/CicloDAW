@@ -21,8 +21,6 @@
                 <ul>
                     <li><a href="{{ route('dashboard') }}">Mis Gastos</a></li>
                     <li><a href="{{ route('gastos.create') }}">Crear</a></li>
-                    <li><a href="#">Eliminar</a></li>
-                    <li><a href="#">Editar</a></li>
 
                 </ul>
             </div>
@@ -33,7 +31,7 @@
         <div class="search-menu" id="user-menu">
             <div class="categories">
                 <ul>
-                    <li><a href="{{ route('dashboard') }}">Mi perfil</a></li>
+                    <li><a href="{{ route('perfil') }}">Mi perfil</a></li>
                     
                     <!-- Enlace de cerrar sesión -->
                     <li>
