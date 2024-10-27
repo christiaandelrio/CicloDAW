@@ -21,7 +21,8 @@
                 <ul>
                     <li><a href="{{ route('dashboard') }}">Mis Gastos</a></li>
                     <li><a href="{{ route('gastos.create') }}">Crear</a></li>
-
+                    <!-- Opción de gráfica -->
+                    <li><a href="{{ route('gastos.generargrafica') }}"><i class="fas fa-chart-bar"></i> Generar Gráfica</a></li>
                 </ul>
             </div>
         </div>

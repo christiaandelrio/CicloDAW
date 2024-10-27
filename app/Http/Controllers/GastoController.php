@@ -70,7 +70,7 @@ class GastoController extends Controller
         return redirect()->route('gastos.dashboard')->with('success', 'Gasto creado con éxito.');
     }
 
-    
+
     public function edit($id)
     {
         // Buscar el gasto por su ID
@@ -123,6 +123,39 @@ class GastoController extends Controller
         // Redirigir al usuario de vuelta a la lista de gastos con un mensaje de éxito
         return redirect()->route('gastos.dashboard')->with('success', 'Gasto eliminado con éxito.');
     }
+
+    public function generarGrafica()
+    {
+        return view('gastos.generargrafica');
+    }
+
+    public function getReportData(Request $request)
+    {
+        $request->validate([
+            'fecha_inicio' => 'required|date',
+            'fecha_fin' => 'required|date|after_or_equal:fecha_inicio',
+        ]);
+    
+        $fechaInicio = $request->input('fecha_inicio');
+        $fechaFin = $request->input('fecha_fin');
+    
+        $gastos = Gasto::where('user_id', Auth::id())
+                        ->whereBetween('fecha', [$fechaInicio, $fechaFin])
+                        ->get();
+    
+        if ($gastos->isEmpty()) {
+            return response()->json(['message' => 'No se encontraron gastos para el rango de fechas especificado.'], 404);
+        }
+    
+        $datos = $gastos->groupBy('categoria')->map(function ($grupo) {
+            return $grupo->sum('valor');
+        });
+    
+        return response()->json($datos);
+    }
+    
+    
+
 
 }
 

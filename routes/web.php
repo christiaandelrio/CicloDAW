@@ -32,3 +32,7 @@ Route::delete('gastos/{gasto}', [GastoController::class, 'destroy'])->name('gast
 // Ruta para el perfil de usuario
 Route::get('/perfil', [PerfilUsuarioController::class, 'show'])->name('perfil');
 
+
+Route::get('/gastos/generargrafica', [GastoController::class, 'generarGrafica'])->middleware('auth')->name('gastos.generargrafica');
+Route::post('/gastos/generargrafica/data', [GastoController::class, 'getReportData'])->middleware('auth')->name('gastos.generargrafica.data');
+

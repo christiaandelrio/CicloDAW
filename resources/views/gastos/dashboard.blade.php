@@ -32,7 +32,7 @@
                                 <tr style="text-align: center; border-bottom: 1px solid #BFD1C9;">
                                     <td>{{ $gasto->nombre_gasto }}</td>
                                     <td>{{ $gasto->tipo }}</td>
-                                    <td>{{ $gasto->valor }}</td>
+                                    <td>{{ $gasto->valor }} €</td>
                                     <td>{{ $gasto->fecha }}</td>
                                     <td>{{ $gasto->descripcion }}</td>
                                     <td>
