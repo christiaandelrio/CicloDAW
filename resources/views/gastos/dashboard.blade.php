@@ -42,13 +42,12 @@
                                         @endphp
                                         <i class="{{ $icono }}" aria-hidden="true"></i>
                                     </td>
-                                    <td> <!-- Botones de acción para cada gasto -->
-                                        <!-- Botón de Editar -->
+                                    <td>
+                                    <!-- agregados a un contenedor para alinearlos horizontalmente -->
+                                    <div class="btn-container">
                                         <a href="{{ route('gastos.edit', $gasto->id) }}" class="btn btn-sm btn-primary">
                                             <i class="fa fa-edit"></i> Editar
                                         </a>
-
-                                        <!-- Botón de Eliminar -->
                                         <form action="{{ route('gastos.destroy', $gasto->id) }}" method="POST" style="display:inline-block;">
                                             @csrf
                                             @method('DELETE')
@@ -56,7 +55,9 @@
                                                 <i class="fa fa-trash"></i> Eliminar
                                             </button>
                                         </form>
-                                    </td>
+                                    </div>
+                                </td>
+
                                 </tr>
                             @endforeach
                         </tbody>
