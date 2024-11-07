@@ -11,6 +11,8 @@ use thiagoalessio\TesseractOCR\TesseractOCR;
 use App\Models\GastoCompartido;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+use Illuminate\Support\Facades\Log;
+
 
 class GastoController extends Controller
 {
@@ -229,7 +231,7 @@ class GastoController extends Controller
                 'message' => 'Gasto creado con éxito a partir del ticket',
             ]);
         } catch (\Exception $e) {
-            \Log::error('Error en el procesamiento del ticket: ' . $e->getMessage());
+            Log::error('Error en el procesamiento del ticket: ' . $e->getMessage());
             return response()->json([
                 'success' => false,
                 'error' => 'Error en el procesamiento del ticket',
