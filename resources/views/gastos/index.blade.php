@@ -5,7 +5,7 @@
 
 @section('content')
 <div class="home-container" style="padding-top: 50px; text-align: center;">
-    <h1>Eslogan de la web</h1>
+    <h1>Aprende a gastar con sentidiño</h1>
     <!-- Contenedor de gráficas y artículos -->
     <div class="chart-container" style="display: flex; justify-content: space-around; align-items: center; flex-wrap: wrap; gap: 20px;">
         <div class="chart" style="flex: 1; background-color: #FFFFFF; padding: 20px; border-radius: 10px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);">

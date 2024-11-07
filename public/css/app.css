@@ -40,6 +40,14 @@ header {
     color: var(--primary-color);
 }
 
+h1 {
+    font-size: 3rem; /* Tamaño grande para el texto */
+    color: white; /* Letra blanca */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Sombra de texto */
+    font-weight: bold; /* Opcional: para hacerlo más pesado */
+}
+
+
 /* Contenedor principal */
 .home-container {
     display: flex;

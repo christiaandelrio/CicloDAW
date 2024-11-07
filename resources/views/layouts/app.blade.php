@@ -28,11 +28,11 @@
 
 </head>
 <body class="@yield('body-class')">
-   <!-- <div class="logo-container">
+   <div class="logo-container">
         <a href="{{ url('/') }}">
-            <img src="{{ asset('images/logo.png') }}" alt="Logo" class="logo">
+            <img src="{{ asset('images/Logo_Proyecto.png') }}" alt="Logo" class="logo">
         </a>
-    </div>-->
+   </div>
     <!-- Inclusión de la plantilla de la barra de navegación-->
     @include('layouts.navbar')
 
