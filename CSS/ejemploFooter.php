@@ -11,7 +11,7 @@
     <style>
         /* Estilos generales para el footer */
         footer {
-            background-color: #000;
+            background-color: #363535; //Cambio a gris más oscuro para que destaque la sombra de la línea <hr>
             color: #fff;
             font-size: 0.9em;
             padding: 20px;
