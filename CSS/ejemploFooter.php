@@ -7,11 +7,12 @@
     <!-- Importar la tipografía Roboto desde Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <!-- Importar FontAwesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
     <style>
         /* Estilos generales para el footer */
         footer {
-            background-color: #363535; //Cambio a gris más oscuro para que destaque la sombra de la línea <hr>
+            background-color: #363535;
             color: #fff;
             font-size: 0.9em;
             padding: 20px;
@@ -54,6 +55,10 @@
             display: block;
             height: 24px;
             line-height: 24px;
+        }
+        
+        .social-icons a:hover {
+            color: #bfbcbb;
         }
 
         /* Línea divisoria */
@@ -100,7 +105,7 @@
         }
 
         .footer-content ul li a:hover {
-            text-decoration: underline;
+            color: #bfbcbb;
         }
 
         /* Sección de copyright */
@@ -127,11 +132,11 @@
 
             <!-- Redes sociales a la derecha -->
             <div class="social-icons">
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                <a href="#"><i class="fab fa-tiktok"></i></a> <!-- Icono de TikTok añadido -->
+                <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" title="X"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" title="TikTok"><i class="fab fa-tiktok"></i></a>
             </div>
         </div>
 
@@ -181,3 +186,4 @@
 
 </body>
 </html>
+
