@@ -57,6 +57,8 @@ class AuthController extends Controller
         auth()->logout();
         return redirect('/')->with('success', 'Has cerrado sesión correctamente.'); // Redirigir a la página principal
     }
+
+    
 }
 
 

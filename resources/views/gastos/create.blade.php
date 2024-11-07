@@ -38,12 +38,39 @@
                         @endforeach
                     </select>
                 </div>
+
+                <!-- Checkbox para gasto compartido -->
+                <div class="form-group" style="margin-bottom: 15px;">
+                    <label>
+                        <input type="checkbox" id="es_compartido" name="es_compartido"> Este gasto es compartido
+                    </label>
+                </div>
+
+                <!-- Selección de usuarios con los que se comparte el gasto -->
+                <div id="usuarios_compartidos" style="display:none;">
+                    <label for="shared_with" style="color: #0D0D0D;">Compartido con:</label>
+                    <select id="shared_with" name="shared_with[]" multiple class="form-input" style="width: 100%; padding: 10px; border: 1px solid #BFD1C9; border-radius: 5px; background-color: #F2EFDF;">
+                        <!-- Aquí puedes cargar los usuarios desde la base de datos -->
+                        @foreach ($usuarios as $usuario)
+                            <option value="{{ $usuario->id }}">{{ $usuario->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+
                 <button type="submit" class="btn-submit" style="background-color: #4CAF50; color: #FFFFFF; padding: 10px; border: none; border-radius: 5px; cursor: pointer; width: 100%; transition: background-color 0.3s;">Guardar Gasto</button>
             </form>
         </div>
     </div>
 </div>
+
+<script>
+    // Muestra/oculta el selector de usuarios compartidos según el estado del checkbox
+    document.getElementById('es_compartido').addEventListener('change', function() {
+        document.getElementById('usuarios_compartidos').style.display = this.checked ? 'block' : 'none';
+    });
+</script>
 @endsection
+
 
 
 

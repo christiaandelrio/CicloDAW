@@ -19,6 +19,11 @@ class Gasto extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function sharedUser()
+    {
+        return $this->belongsTo(User::class, 'shared_with_user_id');
+    }
+
     /**
      * Método para obtener todos los gastos de un usuario
      */
@@ -56,4 +61,9 @@ class Gasto extends Model
         $gasto = self::findOrFail($id);
         return $gasto->delete();
     }
+
+    public function sharedWithUser()
+{
+    return $this->belongsTo(User::class, 'shared_with_user_id');
+}
 }

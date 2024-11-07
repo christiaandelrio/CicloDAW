@@ -2,7 +2,8 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\GastoController;
-use App\Http\Controllers\PerfilUsuarioController; // Asegúrate de importar el controlador
+use App\Http\Controllers\InvitacionController;
+use App\Http\Controllers\PerfilUsuarioController; 
 use Illuminate\Support\Facades\Route;
 
 // Ruta principal (homepage)
@@ -36,3 +37,21 @@ Route::get('/perfil', [PerfilUsuarioController::class, 'show'])->name('perfil');
 Route::get('/gastos/generargrafica', [GastoController::class, 'generarGrafica'])->middleware('auth')->name('gastos.generargrafica');
 Route::post('/gastos/generargrafica/data', [GastoController::class, 'getReportData'])->middleware('auth')->name('gastos.generargrafica.data');
 
+Route::get('/gastos/escanear-recibo', [GastoController::class, 'showEscanearRecibo'])->name('gastos.escanearRecibo');
+Route::post('/gastos/process-receipt', [GastoController::class, 'processReceipt'])->name('gastos.processReceipt');
+Route::post('/gastos/process-receipt', [GastoController::class, 'processReceipt'])->middleware('auth');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/gastos/compartidos', [GastoController::class, 'mostrarGastosCompartidos'])->name('gastos.compartidos');
+});
+
+Route::middleware(['auth'])->group(function () {
+    Route::post('/invitaciones/{id}/responder', [InvitacionController::class, 'responder'])->name('invitaciones.responder');
+    Route::get('/perfil', [PerfilUsuarioController::class, 'show'])->name('perfil');
+    Route::post('/invitaciones/enviar', [InvitacionController::class, 'enviar'])->name('invitaciones.enviar');
+    Route::get('/gastoscompartidos', [InvitacionController::class, 'mostrarGastosCompartidos'])->name('gastoscompartidos');
+    Route::get('/gastos/compartidos', [GastoController::class, 'mostrarGastosCompartidos'])->name('gastos.compartidos');
+
+});
+
+Route::get('/export-expenses', [GastoController::class, 'exportarGastos'])->name('gasto.exportarGastos');

@@ -19,15 +19,20 @@
 
     <!-- Tu archivo JavaScript -->
     <script src="{{ asset('js/datatable.js') }}"></script>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+
+    <!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Muli:wght@300;400;600&family=Habibi&display=swap" rel="stylesheet">
+
 </head>
-<body>
-    <div class="logo-container">
+<body class="@yield('body-class')">
+   <!-- <div class="logo-container">
         <a href="{{ url('/') }}">
             <img src="{{ asset('images/logo.png') }}" alt="Logo" class="logo">
         </a>
-    </div>
+    </div>-->
     <!-- Inclusión de la plantilla de la barra de navegación-->
     @include('layouts.navbar')
 
@@ -36,8 +41,7 @@
         @yield('content')
     </div>
 
-    <!--@include('layouts.footer')-->
-
 </body>
+
 </html>
 
