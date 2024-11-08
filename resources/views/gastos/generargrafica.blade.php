@@ -3,33 +3,29 @@
 @section('title', 'Generar Gráfica de Gastos')
 
 @section('content')
-<div class="container py-4">
-    <div class="card">
-        <div class="card-header">
-            <h2>Generar Gráfica de Gastos</h2>
-        </div>
+<div class="py-4">
+    <div class="formulario">
         <div class="card-body">
+            <h2 class="card-title">Generar Gráfica de Gastos</h2>
             <form id="fecha-form">
-                <div class="form-group">
-                    <label for="fecha_inicio">Fecha de Inicio</label>
-                    <input type="date" name="fecha_inicio" id="fecha_inicio" class="form-control" required>
+                <div class="formulario-grupo">
+                    <label for="fecha_inicio" class="formulario-label">Fecha de Inicio</label>
+                    <input type="date" name="fecha_inicio" id="fecha_inicio" class="formulario-input" required>
                 </div>
 
-                <div class="form-group">
-                    <label for="fecha_fin">Fecha de Fin</label>
-                    <input type="date" name="fecha_fin" id="fecha_fin" class="form-control" required>
+                <div class="formulario-grupo">
+                    <label for="fecha_fin" class="formulario-label">Fecha de Fin</label>
+                    <input type="date" name="fecha_fin" id="fecha_fin" class="formulario-input" required>
                 </div>
 
-                <button type="submit" class="btn btn-primary">Generar Gráfica</button>
+                <button type="submit" class="boton-enviar">Generar Gráfica</button>
             </form>
         </div>
     </div>
 
     <!-- Canvas para la gráfica -->
-    <div class="card mt-4">
-        <div class="card-header">
-            <h2>Gráfica de Gastos</h2>
-        </div>
+    <div class="formulario">
+        <h2 class="card-title">Gráfica de Gastos</h2>
         <div class="card-body">
             <canvas id="gastosChart"></canvas>
         </div>

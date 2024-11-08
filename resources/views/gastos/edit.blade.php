@@ -4,12 +4,10 @@
 
 @section('content')
 <div class="container py-4">
-    <div class="card">
-        <div class="card-header">
-            <h2>Editar Gasto</h2>
-        </div>
-        <div class="card-body">
-            <form action="{{ route('gastos.update', $gasto->id) }}" method="POST">
+    <div class="shadow-sm" style="background-color: #FFFFFF; padding: 20px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); margin: 0 auto; max-width: 600px;">
+    <div class="card-body">
+    <h2 class="card-title" style="color: #3B4013; text-align: center;">Editar Gasto</h2>
+            <form action="{{ route('gastos.update', $gasto->id) }}" method="POST" style="display: flex; flex-direction: column;">
                 @csrf
                 @method('PUT')
 
@@ -55,4 +53,5 @@
     </div>
 </div>
 @endsection
+
 

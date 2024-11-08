@@ -324,6 +324,8 @@ class GastoController extends Controller
         $writer->save('php://output');
         exit;
     }
+
+    
 }
 
 

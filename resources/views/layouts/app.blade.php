@@ -22,13 +22,17 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/footer.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/navbar.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/index.css') }}">
+    
 
     <!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Muli:wght@300;400;600&family=Habibi&display=swap" rel="stylesheet">
 
 </head>
 <body class="@yield('body-class')">
-   <div class="logo-container">
+    <div class="logo-container">
         <a href="{{ url('/') }}">
             <img src="{{ asset('images/Logo_Proyecto.png') }}" alt="Logo" class="logo">
         </a>

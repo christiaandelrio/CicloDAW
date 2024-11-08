@@ -3,9 +3,9 @@
 @section('title', 'Mis Gastos')
 
 @section('content')
-<div class="table-wrapper">
 <div class="py-4">
-    <div class="container" style="display: flex; justify-content: center; flex-direction: column; align-items: center;">
+    <div class="card-body">
+    <h2 class="card-title">Mis gastos</h2>
         @if($gastos->isEmpty())
             <div class="card">
                 <div class="description">
@@ -14,7 +14,7 @@
                 </div>
             </div>
         @else
-            <table class="table table-striped table-hover" id="tablaGastos" style="width: 100%; max-width: 1000px; border-collapse: collapse; background-color: #FFFFFF; color: #3B4013; border-radius: 10px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);">
+            <table class="tabla-gastos">
                 <thead>
                     <tr>
                         <th>Nombre del Gasto</th>
@@ -27,7 +27,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                <a href="{{ route('gasto.exportarGastos') }}" class="btn btn-success">Exportar Gastos a Excel</a>
+                <a href="{{ route('gasto.exportarGastos') }}" class="boton-enviar">Exportar Gastos a Excel</a>
 
                     @foreach ($gastos as $gasto)
                         <tr style="text-align: center; border-bottom: 1px solid #BFD1C9;">
@@ -44,18 +44,18 @@
                             </td>
                             <td>
                                 <div class="btn-container" style="position: relative;">
-                                    <button class="btn btn-light options-icon" title="Opciones" style="border: none; background: none; padding: 0;">
-                                        <i class="fa-solid fa-ellipsis-v" style="font-size: 18px; cursor: pointer;"></i>
+                                    <button class="btn btn-light options-icon" title="Opciones">
+                                        <i class="fa-solid fa-ellipsis-v"></i>
                                     </button>
                                     <!-- Menú de opciones -->
                                     <div class="options-menu" style="display: none;">
                                         <ul>
                                             <li><a href="{{ route('gastos.edit', $gasto->id) }}">Editar</a></li>
                                             <li>
-                                                <form action="{{ route('gastos.destroy', $gasto->id) }}" method="POST" style="display:inline;">
+                                                <form action="{{ route('gastos.destroy', $gasto->id) }}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" style="background: none; border: none; color: #4CAF50;" onclick="return confirm('¿Estás seguro de que quieres eliminar este gasto?');">Eliminar</button>
+                                                    <button type="submit" onclick="return confirm('¿Estás seguro de que quieres eliminar este gasto?');">Eliminar</button>
                                                 </form>
                                             </li>
                                         </ul>
@@ -67,8 +67,7 @@
                 </tbody>
             </table>
         @endif
-    </div>
-</div>
+     </div>
 </div>
 @endsection
 

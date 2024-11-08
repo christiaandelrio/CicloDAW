@@ -8,8 +8,13 @@ use Illuminate\Support\Facades\Route;
 
 // Ruta principal (homepage)
 Route::get('/', function () {
-    return view('gastos.index'); // Mostrar la vista de la homepage
-});
+    if (Auth::check()) {
+        // Si el usuario está autenticado, redirigir al dashboard
+        return redirect()->route('dashboard');
+    }
+    // Si no está autenticado, mostrar el índice (home)
+    return view('gastos.index');
+})->name('index');
 
 // Rutas de autenticación
 Route::view('/login', 'auth.login')->name('login');

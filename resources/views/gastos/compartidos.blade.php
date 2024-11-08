@@ -3,16 +3,16 @@
 @section('title', 'Gastos Compartidos')
 
 @section('content')
-<div class="container mt-5">
-    <h2 class="text-center">Gastos Compartidos</h2>
+<div class="container py-4">
+<h2 class="card-title">Mis gastos compartidos</h2>
 
     @if($gastosCompartidos->isEmpty())
         <p>No hay gastos compartidos para mostrar.</p>
     @else
         @foreach($gastosCompartidos as $nombreUsuario => $gastos)
-            <div class="user-shared-table mt-4">
+            <div class="user-shared-table">
                 <h3>Gastos compartidos con {{ $nombreUsuario }}</h3>
-                <table class="table table-hover mt-3">
+                <table class="tabla-gastos">
                     <thead>
                         <tr>
                             <th>Nombre del Gasto</th>
@@ -39,7 +39,7 @@
                                     <form action="{{ route('gastos.destroy', $gastoCompartido->gasto->id) }}" method="POST" style="display:inline-block;">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('¿Estás seguro de que quieres eliminar este gasto compartido?');">
+                                        <button type="submit" class="boton-eliminar" onclick="return confirm('¿Estás seguro de que quieres eliminar este gasto compartido?');">
                                             <i class="fa fa-trash"></i> Eliminar
                                         </button>
                                     </form>

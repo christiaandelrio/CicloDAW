@@ -1,7 +1,7 @@
     <!-- Footer -->
     <footer>
         <!-- Encabezado del footer -->
-        <div class="footer-header">
+        <div class="footer-encabezado">
             <!-- Información de marca a la izquierda -->
             <div class="brand-info">
                 <strong>Huchapp</strong> | ES | España | Español
@@ -21,7 +21,7 @@
         <hr>
 
         <!-- Contenido principal del footer -->
-        <div class="footer-content">
+        <div class="footer-contenido">
             <!-- Enlaces legales y de políticas -->
             <div>
                 <h4>Información Legal</h4>

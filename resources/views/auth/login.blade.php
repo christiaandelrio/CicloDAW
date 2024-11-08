@@ -3,24 +3,27 @@
 @section('title', 'Iniciar Sesión')
 
 @section('content')
-<div class="login-container">
-    <div class="login-card">
-        <div class="login-card-header">Iniciar Sesión</div>
-        <div class="login-card-body">
-            <form action="/login" method="POST">
-                @csrf
-                <div class="form-group">
-                    <label for="email">Correo Electrónico</label>
-                    <input type="email" name="email" class="form-input" required>
-                </div>
-                <div class="form-group">
-                    <label for="password">Contraseña</label>
-                    <input type="password" name="password" class="form-input" required>
-                </div>
-                <button type="submit" class="btn-submit">Iniciar Sesión</button>
-            </form>
+<div class="py-4">
+<div class="formulario">
+<div class="card-body">
+<h2 class="card-title">Iniciar Sesión</h2>
+<form action="{{ route('login') }}" method="POST">
+@csrf
+        <div class="formulario-grupo">
+            <label for="email" class="formulario-label">Correo Electrónico</label>  
+            <input type="email" name="email" class="formulario-input" required>
         </div>
-    </div>
+        <div class="formulario-grupo">
+            <label for="password">Contraseña</label>
+            <input type="password" name="password" class="formulario-input" required>
+        </div>
+        <button type="submit" class="boton-enviar">Iniciar Sesión</button>
+    </form>
+
+</div>
+</div>
+<a href="{{ route('index') }}">Volver al Inicio</a>
+
 </div>
 @endsection
 

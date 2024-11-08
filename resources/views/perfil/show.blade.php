@@ -3,18 +3,16 @@
 @section('title', 'Mi Perfil')
 
 @section('content')
-<div class="py-4">
-    <div class="card shadow-sm" style="background-color: #FFFFFF; padding: 20px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); margin: 0 auto; max-width: 600px;">
-        <div class="card-body">
-            <h2 class="card-title" style="color: #3B4013; text-align: center;">Mi Perfil</h2>
-            
+<div class="formulario">
+    <div class="card-body">
+    <h2 class="card-title">Mi perfil</h2>
             @if($user)
-                <div class="form-group">
-                    <label style="color: #0D0D0D;">Nombre:</label>
+                <div class="formulario-grupo">
+                    <label class="formulario-label">Nombre:</label>
                     <p>{{ $user->name }}</p>
                 </div>
-                <div class="form-group">
-                    <label style="color: #0D0D0D;">Email:</label>
+                <div class="formulario-grupo">
+                    <label class="formulario-label">Email:</label>
                     <p>{{ $user->email }}</p>
                 </div>
             @else
@@ -22,7 +20,7 @@
             @endif
 
             <!-- Sección de Invitaciones Pendientes -->
-            <div class="mt-4">
+            <div  class="formulario-grupo">
                 <h4>Invitaciones Pendientes</h4>
                 @if($invitacionesPendientes->isEmpty())
                     <p>No tienes invitaciones pendientes.</p>
@@ -33,8 +31,8 @@
                                 Invitación de {{ $invitacion->sender->name }} para compartir gastos.
                                 <form action="{{ route('invitaciones.responder', $invitacion->id) }}" method="POST" style="display: inline;">
                                     @csrf
-                                    <button type="submit" name="accion" value="aceptar" class="btn btn-sm btn-success">Aceptar</button>
-                                    <button type="submit" name="accion" value="rechazar" class="btn btn-sm btn-danger">Rechazar</button>
+                                    <button type="submit" name="accion" value="aceptar" class="boton-enviar">Aceptar</button>
+                                    <button type="submit" name="accion" value="rechazar" class="boton-eliminar">Rechazar</button>
                                 </form>
                             </li>
                         @endforeach
@@ -42,17 +40,17 @@
                 @endif
             </div>
 
-            <a href="{{ route('dashboard') }}" class="btn btn-primary">Volver al Dashboard</a>
+            <a href="{{ route('dashboard') }}" class="boton-enviar">Volver al Dashboard</a>
         </div>
-        <div class="mt-4">
+    <div class="formulario">
     <h4>Enviar Invitación</h4>
     <form action="{{ route('invitaciones.enviar') }}" method="POST">
         @csrf
-        <div class="form-group">
+        <div class="formulario-grupo">
             <label for="email">Correo electrónico del usuario a invitar:</label>
-            <input type="email" name="email" id="email" class="form-control" required>
+            <input type="email" name="email" id="email" class="formulario-input" required>
         </div>
-        <button type="submit" class="btn btn-primary mt-2">Enviar Invitación</button>
+        <button type="submit" class="boton-enviar">Enviar Invitación</button>
     </form>
 </div>
 

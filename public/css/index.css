@@ -1,0 +1,38 @@
+.index-background {
+    background-image: url('/images/fondo.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    width: 100%;
+}
+
+/* Contenedor de gráficas y tablas */
+.chart-container {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin-top: 40px;
+    display: flex; justify-content: space-around; align-items: center; flex-wrap: wrap; gap: 20px;
+}
+
+.chart {
+    flex: 1;
+    margin: 10px;
+    flex: 1; background-color: #FFFFFF; padding: 20px; border-radius: 10px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.description-article {
+    flex: 1;
+    background-color: #E0E0E0;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    flex: 1; background-color: #F2F4F5; padding: 20px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilos de la gráfica */
+canvas {
+    width: 100% !important;
+    height: auto !important;
+}

@@ -1,4 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Habibi&family=Muli:wght@400;600&family=Roboto:wght@400;500&display=swap');
+/* Estilos principales de la aplicación */
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Fira+Sans+Condensed:wght@400;500&family=Amiko:wght@400;600&display=swap');
 
 :root {
     /* Colores principales */
@@ -41,191 +43,104 @@ header {
 }
 
 h1 {
-    font-size: 3rem; /* Tamaño grande para el texto */
-    color: white; /* Letra blanca */
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Sombra de texto */
-    font-weight: bold; /* Opcional: para hacerlo más pesado */
+    font-size: 3rem; 
+    font-family: 'Fira Sans Condensed', sans-serif;
+    color: white; 
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    font-weight: bold;
 }
 
-
-/* Contenedor principal */
-.home-container {
-    display: flex;
-    flex-grow: 1;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    padding: 50px;
-    height: 100vh;
-}
-
-.index-background {
-    background-image: url('/images/fondo.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    min-height: 100vh;
-    width: 100%;
-}
-
-
-/* Estilos del contenedor de la tarjeta */
-.card-container {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-    background-color: #FFFFFF;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-    margin: 20px 0;
-}
-
-/* Estilos de la tarjeta */
-.card {
-    display: flex;
-    flex-direction: column;
-    background-color: #FFFFFF;
-    border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    margin: 20px;
-    overflow: hidden;
-    width: 600px;
-    max-width: 90%;
-    transition: transform 0.2s ease;
-}
-
-.card img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-}
-
-
-.description {
-    font-family: 'Muli', sans-serif;
-    padding: 20px;
+h2{
+    color: #3B4013;
+    font-family: 'Fira Sans Condensed', sans-serif;
     text-align: center;
+}
+
+hr {
+    border: 0;
+    height: 2px;
+    background-color: #fff;
+    margin: 20px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+p {
+    font-family: 'Amiko', sans-serif;
+}
+
+a{
+    text-decoration: none;
     color: var(--primary-color);
 }
 
-.description h2 {
-    margin-bottom: 10px;
-    font-family: 'Habibi', sans-serif;
-}
-
-.description p {
-    margin: 0;
-    font-family: 'Muli', sans-serif;
-}
-
-/* Contenedor de gráficas y tablas */
-.chart-container {
-    display: flex;
-    justify-content: space-around;
-    width: 100%;
-    margin-top: 40px;
-}
-
-.chart {
-    flex: 1;
-    margin: 10px;
-}
-
-.description-article {
-    flex: 1;
-    background-color: #E0E0E0;
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-}
-
-/* Estilos de la gráfica */
-canvas {
-    width: 100% !important;
-    height: auto !important;
-}
-
-/* Contenedor del formulario de inicio de sesión */
-.login-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: calc(100vh - 60px);
-}
-
-.login-card {
+/*Estilos formularios*/
+.formulario{
     background-color: #FFFFFF;
+    padding: 20px;
     border-radius: 10px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-    width: 100%;
-    max-width: 400px;
-    padding: 20px;
-}
-
-.login-card-header {
-    text-align: center;
-    font-size: 24px;
-    margin-bottom: 20px;
-    color: #4CAF50;
-}
-
-.login-card-body {
+    margin: 0 auto;
+    margin-top: 10px;
+    max-width: 600px;
     display: flex;
     flex-direction: column;
 }
 
-.form-group {
+.formulario .formulario-grupo{
     margin-bottom: 15px;
 }
 
-label {
-    margin-bottom: 5px;
+.formulario .formulario-grupo .formulario-label{
     color: #0D0D0D;
 }
 
-/* Estilos de los inputs del formulario */
-.form-input {
+.formulario .formulario-grupo .formulario-input{
     width: 100%;
     padding: 10px;
-    border: 1px solid #A5D6A7;
+    border: 1px solid #BFD1C9;
     border-radius: 5px;
     background-color: #F2EFDF;
-    color: #4CAF50;
 }
 
-.form-input:focus {
-    outline: none;
-    border-color: #388E3C;
+.formulario .formulario-grupo .formulario-descripcion{
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #BFD1C9;
+    border-radius: 5px;
+    background-color: #F2EFDF;
 }
 
-/* Botón de enviar */
-.btn-submit {
-    background-color: var(--primary-color);
+.boton-enviar{
+    background-color: #4CAF50;
     color: #FFFFFF;
     padding: 10px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s;
     width: 100%;
-    font-family: 'Roboto', sans-serif;
+    transition: background-color 0.3s;
 }
 
-.btn-submit:hover {
-    background-color: var(--highlight-color);
+.boton-eliminar{
+    background-color: #af4c4c;
+    color: #FFFFFF;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s;
 }
 
-/* Contenedor del logo */
-.logo-container {
+/*Estilos para el logo*/
+.logo-container{
     position: absolute;
     top: 10px;
     left: 10px;
     z-index: 1000;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center;    
 }
 
 .logo {
@@ -235,213 +150,14 @@ label {
     object-fit: contain;
 }
 
-/* Barra de navegación inferior */
-nav.navbar-bottom {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    padding: 10px 0;
-    z-index: 1000;
-}
-
-/* Navbar superior (no autenticados) */
-.navbar-top .menu {
-    display: flex;
-    justify-content: flex-end; /* Alinea los elementos a la derecha */
-    align-items: center;
-    width: 100%;
-    padding: 10px;
-}
-
-.navbar-top .menu-item {
-    margin-left: 10px; /* Añade espacio entre los elementos */
-    margin-right: 20px;
-    font-size: 20px;
-}
-
-.navbar-top .menu-item .nav-link {
-    color: #ffffff; /* Color del texto */
-    text-decoration: none;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Sombra del texto */
-}
-
-
-.navbar-top .menu-item .nav-link:hover {
-    color: #388E3C; /* Un tono más oscuro al pasar el ratón */
-}
-
-/* Estilo para el botón de registrarse */
-.navbar-top .menu-item .register-button {
-    background-color: #FFFFFF; /* Fondo blanco */
-    color: #000000; /* Texto negro */
-    border-radius: 40px; /* Esquinas redondeadas */
-    padding: 10px 20px; /* Relleno interno */
-    text-decoration: none; /* Sin subrayado */
-    border: 1px solid #4CAF50; /* Borde verde */
-    transition: background-color 0.3s, color 0.3s;
-}
-
-.navbar-top .menu-item .register-button:hover {
-    background-color: #4CAF50; /* Fondo verde al pasar el ratón */
-    color: #FFFFFF; /* Texto blanco al pasar el ratón */
-}
-
-
-/* Navbar inferior (autenticados) */
-.navbar-bottom .menu-icons {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-}
-
-/* Estilos para el menú de opciones */
-.options-menu {
-    display: none; /* Oculto por defecto */
-    position: absolute;
-    top: 100%; /* Posiciona el menú justo debajo del botón */
-    left: 0; /* Alinear a la izquierda */
-    width: 120px; /* Ajusta el ancho */
-    background-color: #FFFFFF;
-    border-radius: 5px;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
-    z-index: 999;
-    opacity: 0.9;
-    padding: 10px;
-}
-
-
-/* Estilos para los enlaces del menú de opciones */
-.options-menu ul {
-    list-style-type: none; /* Sin viñetas */
-    padding: 0; /* Sin relleno */
-    margin: 0; /* Sin márgenes */
-}
-
-.options-menu ul li {
-    margin-bottom: 10px; /* Espacio entre los elementos */
-}
-
-.options-menu ul li a {
-    display: block; /* Mostrar como bloque para que ocupe toda el área */
-    padding: 5px 10px; /* Espaciado interno */
-    color: #4CAF50; /* Color verde */
-    text-decoration: none; /* Sin subrayado */
-    transition: background-color 0.3s; /* Transición suave */
-}
-
-.options-menu ul li a:hover {
-    background-color: #f0f0f0; /* Fondo gris al pasar el mouse */
-}
-
-/* Estilo para el botón de eliminar */
-.options-menu ul li button {
-    color: #4CAF50; /* Color del texto */
-    cursor: pointer; /* Cambiar cursor al pasar */
-    background: none; /* Sin fondo */
-    border: none; /* Sin borde */
-    padding: 0; /* Sin relleno */
-    text-align: left; /* Alinear el texto a la izquierda */
-}
-
-/* Menú de usuario */
-.user-menu, .search-menu {
-    display: none;
-    position: absolute;
-    background-color: #fff;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-    z-index: 10;
-}
-
-
-/* Iconos del menú */
-.menu-icon {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 60px; /* Ajusta el tamaño según sea necesario */
-    height: 60px; /* Ajusta el tamaño según sea necesario */
-    margin: 0 10px; /* Añade separación entre los íconos */
-    border-radius: 50%;
-    background-color: #FFFFFF;
-    color: #4CAF50; /* Color verde para las figuras */
-    font-size: 24px;
-    transition: background-color 0.3s, color 0.3s, transform 0.3s;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.menu-icon:hover {
-    background-color: #388E3C;
-    color: #FFFFFF;
-    transform: scale(1.1);
-}
-
-/* Menú de búsqueda */
-.search-menu, .user-menu {
-    display: none;
-    position: fixed;
-    bottom: 100px; /* Incrementa la separación desde el botón */
-    left: 40%; /* Reduce el ancho del menú */
-    right: 40%; /* Reduce el ancho del menú */
-    background-color: #FFFFFF;
-    border-radius: 5px;
-    box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.2);
-    z-index: 999;
-    opacity: 0.9;
-    padding: 10px; /* Reduce el padding para minimizar el espacio */
-    text-align: center;
-    max-width: 300px; /* Ancho máximo en pantallas grandes */
-    margin: 0 auto; /* Centra el menú en caso de que se necesite */
-}
-
-
-
-/* Enlaces del menú de búsqueda */
-.search-menu ul, .user-menu ul {
-    list-style-type: none; /* Sin puntos de lista */
-    display: flex;
-    flex-direction: column; /* Coloca los enlaces en una columna */
-    align-items: center; /* Centra los enlaces dentro del menú */
-    padding: 0;
-    margin: 0;
-}
-
-.search-menu ul li, .user-menu ul li {
-    margin-bottom: 10px; /* Añade espacio entre los enlaces */
-}
-
-.search-menu ul li a, .user-menu ul li a {
-    display: block;
-    padding: 5px 15px; /* Reduce el padding */
-    font-size: 18px; /* Tamaño de fuente más pequeño */
-    color: #4CAF50; /* Color verde */
-    text-decoration: none;
-    transition: color 0.3s;
-}
-
-.search-menu ul li a:hover, .user-menu ul li a:hover {
-    color: #388E3C; /* Un tono más oscuro al pasar el ratón */
-}
-
-
-/* Contenedor de la tabla con borde redondeado */
-.table-container {
-    display: flex;
-    justify-content: center;
+/*Estilos para tablas*/
+.tabla-gastos{
     width: 100%;
     max-width: 1000px;
-    overflow-x: auto;
-}
-
-table {
-    width: 100%;
     border-collapse: collapse;
     background-color: #FFFFFF;
-    border-radius: 10px; /* Bordes redondeados solo para el exterior */
-    overflow: hidden; /* Oculta cualquier desbordamiento en las esquinas */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 /* Encabezado de la tabla */
@@ -466,389 +182,5 @@ tbody tr:hover {
 
 /* Colores de fondo alternos */
 tbody tr:nth-child(even) {
-    background-color: #F9FAFB;
+    background-color: #e6e7e8;
 }
-
-/* Botones de acción */
-.btn-container {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-}
-
-.btn {
-    padding: 6px 10px;
-    border-radius: 5px;
-    font-size: 14px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-}
-
-
-.btn-primary {
-    background-color: #4CAF50;
-    color: #FFFFFF;
-    border: none;
-    transition: background-color 0.3s;
-}
-
-.btn-primary:hover {
-    background-color: #388E3C;
-}
-
-.btn-danger {
-    background-color: #E57373;
-    color: #FFFFFF;
-    border: none;
-    transition: background-color 0.3s;
-}
-
-.btn-danger:hover {
-    background-color: #D32F2F;
-}
-
-/* Estilos de barra de búsqueda y otros elementos */
-.dataTables_filter input {
-    width: 200px;
-    padding: 8px;
-    border: 1px solid #A5D6A7;
-    border-radius: 5px;
-    background-color: #F2EFDF;
-    color: #4CAF50;
-    margin-bottom: 10px;
-}
-
-.dataTables_length select,
-.dataTables_paginate a {
-    border: 1px solid #A5D6A7;
-    border-radius: 5px;
-    padding: 5px;
-    margin: 0 3px;
-    color: #388E3C;
-    background-color: #FFFFFF;
-    transition: background-color 0.3s;
-}
-
-.dataTables_paginate a:hover,
-.dataTables_paginate .current {
-    background-color: #4CAF50;
-    color: #FFFFFF;
-}
-
-.dataTables_wrapper .dataTables_info {
-    margin-top: 10px;
-    color: #4CAF50;
-}
-
-/* Sombra para toda la tabla */
-.table-wrapper {
-    padding: 15px;
-    border-radius: 15px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    background-color: #FFFFFF;
-}
-
-/* Estilos para el footer */
-footer {
-    font-family: 'Roboto', sans-serif;
-    background-color: #363535;
-    color: #fff;
-    font-size: 0.9em;
-    padding: 20px;
-    position: relative;
-    bottom: 0;
-    width: 100%;
-    box-sizing: border-box;
-}
-
-.footer-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
-    flex-wrap: wrap;
-}
-
-.footer-header .brand-info {
-    font-size: 1em;
-}
-
-.social-icons {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-    justify-content: flex-end;
-    margin-top: 5px;
-}
-
-.social-icons a {
-    color: #fff;
-    font-size: 24px;
-    text-decoration: none;
-}
-
-.social-icons a:hover {
-    color: #bfbcbb;
-}
-
-hr {
-    border: 0;
-    height: 2px;
-    background-color: #fff;
-    margin: 20px 0;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
-}
-
-        /* Sección de enlaces */
-        .footer-content {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            font-size: 0.9em;
-        }
-        
-        .footer-content div {
-            flex: 1;
-            min-width: 150px;
-            margin-bottom: 10px;
-        }
-        
-        .footer-content h4 {
-            font-size: 1em;
-            margin-bottom: 10px;
-        }
-        
-        .footer-content ul {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-        }
-        
-        .footer-content ul li {
-            margin: 5px 0;
-        }
-        
-        .footer-content ul li a {
-            color: #fff;
-            text-decoration: none;
-        }
-        
-        .footer-content ul li a:hover {
-            color: #bfbcbb;
-        }
-
-        .copyright {
-            text-align: center;
-            font-size: 0.8em;
-            color: #999;
-            margin-top: 10px;
-        }
-
-
-/* Contenedor de la tabla para versión móvil */
-.table-container {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    max-width: 1000px;
-    overflow-x: auto; /* Permite desplazamiento horizontal en móviles */
-}
-
-table {
-    width: 100%;
-    min-height: 400px; /* Aumenta la altura de la tabla por defecto */
-    border-collapse: collapse;
-    background-color: #FFFFFF;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-
-/* Estilos para el menú de opciones */
-.options-menu {
-    display: none; /* Oculto por defecto */
-    position: absolute;
-    top: calc(100% + 10px); /* Ajuste la posición debajo del botón */
-    left: 0;
-    width: 150px; /* Aumenta el ancho para mejor visualización */
-    max-width: 90%; /* Evita que se corte en pantallas pequeñas */
-    background-color: #FFFFFF;
-    border-radius: 5px;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
-    z-index: 999;
-    opacity: 0.9;
-    padding: 10px;
-}
-
-/* Estilos para enlaces del menú */
-.options-menu ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-}
-
-.options-menu ul li {
-    margin-bottom: 10px;
-}
-
-.options-menu ul li a,
-.options-menu ul li button {
-    display: block;
-    padding: 6px 12px;
-    font-size: 14px;
-    color: #4CAF50;
-    text-decoration: none;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    justify-content: center;
-}
-
-.options-menu ul li a:hover,
-.options-menu ul li button:hover {
-    background-color: #f0f0f0;
-}
-
-/* Ajustes específicos para el menú en pantallas pequeñas */
-@media (max-width: 600px) {
-    .options-menu {
-        width: 100%;
-        left: 0;
-        right: 0;
-        top: 40px;
-        margin: 0 auto;
-        padding: 15px;
-    }
-
-    .options-menu ul li a,
-    .options-menu ul li button {
-        font-size: 16px;
-        padding: 8px 12px;
-    }
-
-    /* Estilos para la tabla en dispositivos móviles */
-    .table-wrapper {
-        width: 100%;
-        overflow-x: auto; /* Permitir desplazamiento horizontal si es necesario */
-    }
-
-    table {
-        width: 100%;
-        table-layout: auto; /* Asegura que las celdas no se desborden */
-        border-collapse: collapse;
-        background-color: #FFFFFF;
-    }
-
-    thead {
-        display: none; /* Ocultamos los encabezados en móviles */
-    }
-
-    tbody tr {
-        display: block;
-        margin-bottom: 10px;
-        border-bottom: 1px solid #BFD1C9;
-        padding: 10px;
-        background-color: #FFFFFF;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    }
-
-    tbody td {
-        display: block;
-        text-align: right;
-        padding: 10px 15px;
-        border: none;
-        position: relative;
-    }
-
-    tbody td:before {
-        content: attr(data-label);
-        position: absolute;
-        left: 0;
-        font-weight: bold;
-        color: #4CAF50;
-    }
-
-    /* Estilos para las celdas de la tabla */
-    .table-wrapper table td:last-child {
-        border-bottom: none;
-    }
-
-    .table-container {
-        padding: 15px;
-        width: 100%;
-        overflow-x: hidden; /* Eliminar desplazamiento horizontal */
-    }
-
-    .table-wrapper {
-        padding: 10px;
-        box-shadow: none; /* Opcional: reduce la sombra en móviles */
-    }
-
-    /* Asegurar que el formulario de login o registro sea accesible */
-    .login-form, .register-form {
-        margin: 20px 0;
-        padding: 20px;
-        background-color: #fff;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        border-radius: 8px;
-        overflow-y: auto;
-        max-height: calc(100vh - 60px); /* Permite desplazamiento si el formulario es largo */
-        position: relative;
-        z-index: 10; /* Asegura que el formulario esté por encima de otros elementos */
-    }
-
-    .login-form input, .register-form input {
-        width: 100%;
-        margin-bottom: 15px;
-    }
-
-    .btn-container {
-        position: relative;
-        text-align: center;
-    }
-
-    .options-menu {
-        position: absolute;
-        left: 0;
-        right: 0;
-        top: 100%;
-        display: none;
-        background-color: #fff;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        z-index: 10;
-        width: 100%;
-    }
-}
-
-@media (max-width: 768px) {
-    .chart-container {
-        flex-direction: column;
-        width: 100%;
-        margin-bottom: 20px;
-    }
-
-    .chart, .description-article {
-        width: 100%;
-        margin: 0;
-    }
-
-    nav.navbar-bottom {
-        flex-direction: column;
-        width: 100%;
-    }
-
-    .menu-icon {
-        width: 50px;
-        height: 50px;
-    }
-
-    /* Asegurar que el dashboard y los formularios tengan márgenes adecuados */
-    .dashboard-container {
-        padding: 20px;
-        margin-top: 10px;
-        overflow-y: auto;
-    }
-}
-
-
