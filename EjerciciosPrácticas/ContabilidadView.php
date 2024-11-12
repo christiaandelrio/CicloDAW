@@ -17,7 +17,9 @@ class ContabilidadView extends BaseView
     public function indexHtml()
     {
 
-        $template = $this->template_render("Contabilidad.phtml");
+        $appUrl_base = $this->ini['app_url_base'];
+
+        $template = $this->template_render("Contabilidad.phtml",['app.url_base'=>$appUrl_base]);
 
         return $template;
     }
