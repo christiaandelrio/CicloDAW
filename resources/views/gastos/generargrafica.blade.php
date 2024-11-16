@@ -3,10 +3,9 @@
 @section('title', 'Generar Gráfica de Gastos')
 
 @section('content')
-<div class="py-4">
+<div class="contenedor-formulario">
     <div class="formulario">
-        <div class="card-body">
-            <h2 class="card-title">Generar Gráfica de Gastos</h2>
+            <h2>Generar Gráfica de Gastos</h2>
             <form id="fecha-form">
                 <div class="formulario-grupo">
                     <label for="fecha_inicio" class="formulario-label">Fecha de Inicio</label>
@@ -20,16 +19,15 @@
 
                 <button type="submit" class="boton-enviar">Generar Gráfica</button>
             </form>
-        </div>
-    </div>
 
-    <!-- Canvas para la gráfica -->
-    <div class="formulario">
-        <h2 class="card-title">Gráfica de Gastos</h2>
-        <div class="card-body">
+                <!-- Canvas para la gráfica -->
+        <h2>Gráfica de Gastos</h2>
+        <div class="formulario-grupo">
             <canvas id="gastosChart"></canvas>
         </div>
     </div>
+
+
 </div>
 @endsection
 
@@ -75,7 +73,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             label: 'Gastos por Categoría',
                             data: Object.values(data),
                             backgroundColor: [
-                                '#4CAF50', '#FF9800', '#2196F3', '#FFC107', '#E91E63', '#9C27B0'
+                             '#BF5F56', '#BF3326', '#BFCDD9', '#6D8BA6', '#586F8C'
                             ],
                         }]
                     },

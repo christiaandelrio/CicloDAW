@@ -12,7 +12,7 @@ class Gasto extends Model
     use HasFactory;
 
     protected $fillable = [ //Creo un array rellenable con los campos de la tabla
-        'user_id','nombre_gasto','tipo','valor','fecha','descripcion','icono','categoria'
+        'user_id','nombre_gasto','tipo','valor','fecha','descripcion','icono','categoria','tutorial_visto'
     ];
 
     public function user(){

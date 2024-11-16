@@ -1,6 +1,11 @@
 <!-- Barra de navegación superior solo para usuarios no autenticados -->
 <nav class="navbar-top">
     @guest
+    <div class="logo-container">
+        <a href="{{ url('/') }}">
+            <img src="{{ asset('images/logo.png') }}" alt="Logo" class="logo">
+        </a>
+   </div>
     <div class="menu">
         <div class="menu-item">
             <a href="{{ route('login') }}" class="nav-link">Iniciar sesión</a>
@@ -53,7 +58,7 @@
             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                 @csrf
             </form>
-            <li><a href="#">Configuración</a></li>
+            <li><a href="{{ route('perfil.configuracion') }}">Configuración</a></li>
         </ul>
     </div>
 </nav>

@@ -3,10 +3,10 @@
 @section('title', 'Registro')
 
 @section('content')
-<div class="py-4">
+
+<div class="contenedor-formulario">
 <div class="formulario">
-<div class="card-body">
-<h2 class="card-title">Registrarse</h2>
+<h2>Registrarse</h2>
 <form action="{{ route('register') }}" method="POST">
 @csrf
             <div class="formulario-grupo">
@@ -27,9 +27,9 @@
             <button type="submit" class="boton-enviar">Registrarse</button>
         </form>
     </div>
-</div>
-<a href="{{ route('index') }}">Volver al Inicio</a>
 
+<a href="{{ route('index') }}">Volver al Inicio</a>
+</div>
 </div>
 @endsection
 

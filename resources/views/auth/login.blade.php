@@ -3,10 +3,10 @@
 @section('title', 'Iniciar Sesión')
 
 @section('content')
-<div class="py-4">
+<div class="contenedor-formulario">
 <div class="formulario">
-<div class="card-body">
-<h2 class="card-title">Iniciar Sesión</h2>
+<!-- <div class="card-body"> -->
+<h2>Iniciar Sesión</h2>
 <form action="{{ route('login') }}" method="POST">
 @csrf
         <div class="formulario-grupo">
@@ -20,7 +20,7 @@
         <button type="submit" class="boton-enviar">Iniciar Sesión</button>
     </form>
 
-</div>
+<!-- </div> -->
 </div>
 <a href="{{ route('index') }}">Volver al Inicio</a>
 

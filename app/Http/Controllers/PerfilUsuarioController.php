@@ -37,6 +37,8 @@ class PerfilUsuarioController extends Controller
 
         return view('perfil.show', compact('user', 'invitacionesPendientes', 'gastosCompartidos'));
     }
+
+    
 }
 
 

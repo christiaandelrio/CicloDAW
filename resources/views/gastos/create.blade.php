@@ -3,10 +3,9 @@
 @section('title', 'Crear Nuevo Gasto')
 
 @section('content')
-<div class="py-4">
+<div class="contenedor-formulario">
     <div class="formulario">
-        <div class="card-body">
-            <h2 class="card-title">Crear Nuevo Gasto</h2>
+            <h2>Crear Nuevo Gasto</h2>
             <form action="{{ route('gastos.store') }}" method="POST">
                 @csrf
                 <div class="formulario-grupo">
@@ -31,7 +30,7 @@
                 </div>
                 <div class="formulario-grupo">
                     <label for="categoria" class="formulario-label">Categoría</label>
-                    <select id="categoria" name="categoria" required class="formulario-input" style="width: 100%; padding: 10px; border: 1px solid #BFD1C9; border-radius: 5px; background-color: #F2EFDF;">
+                    <select id="categoria" name="categoria" required class="formulario-select">
                         <option value="">Selecciona una categoría</option>
                         @foreach ($categorias as $categoria => $icono)
                             <option value="{{ $categoria }}">{{ ucfirst($categoria) }}</option>
@@ -40,16 +39,16 @@
                 </div>
 
                 <!-- Checkbox para gasto compartido -->
-                <div class="form-group" style="margin-bottom: 15px;">
+                <div class="formulario-grupo">
                     <label>
-                        <input type="checkbox" class="formulario-input" id="es_compartido" name="es_compartido"> Este gasto es compartido
+                        <input type="checkbox"  id="es_compartido" name="es_compartido"> Este gasto es compartido
                     </label>
                 </div>
 
                 <!-- Selección de usuarios con los que se comparte el gasto -->
-                <div id="usuarios_compartidos" style="display:none;">
-                    <label for="shared_with" style="color: #0D0D0D;">Compartido con:</label>
-                    <select id="shared_with" name="shared_with[]" multiple class="form-input" style="width: 100%; padding: 10px; border: 1px solid #BFD1C9; border-radius: 5px; background-color: #F2EFDF;">
+                <div class="formulario-grupo" id="usuarios_compartidos" style="display:none;">
+                    <label for="shared_with">Compartido con:</label>
+                    <select id="shared_with" name="shared_with[]" multiple class="formulario-select">
                         <!-- Aquí puedes cargar los usuarios desde la base de datos -->
                         @foreach ($usuarios as $usuario)
                             <option value="{{ $usuario->id }}">{{ $usuario->name }}</option>
@@ -59,7 +58,6 @@
 
                 <button type="submit" class="boton-enviar">Guardar Gasto</button>
             </form>
-        </div>
     </div>
 </div>
 

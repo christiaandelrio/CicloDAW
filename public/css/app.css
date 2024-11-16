@@ -7,7 +7,7 @@
     --primary-color: #007566;  /* Verde principal */
     --secondary-color: #589A8D;  /* Verde claro */
     --accent-color: #8FC1B5;  /* Verde suave para detalles */
-    --background-color: #F2F4F5;  /* Gris claro de fondo */
+    --background-color: #d3dade;  /* Gris claro de fondo */
     --text-color: #0D0D0D;  /* Texto principal oscuro */
     
     /* Colores complementarios */
@@ -21,17 +21,12 @@ body {
     font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #F2F4F5;
+    background-color: #BFCDD9;
     color: var(--text-color);
     min-height: 100vh;
     display: flex;
     flex-direction: column;
 }
-
-/* Contenedor principal que ocupa el espacio restante */
- main { 
-    flex: 1;
- }
 
 /* Encabezado */
 header {
@@ -70,24 +65,53 @@ p {
 
 a{
     text-decoration: none;
-    color: var(--primary-color);
+    color: #6D8BA6;
 }
 
 /*Estilos formularios*/
 .formulario{
+    width: clamp(300px, 40vw, 800px);
     background-color: #FFFFFF;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
     margin: 0 auto;
-    margin-top: 10px;
-    max-width: 600px;
+    /* margin-top: 10px;
+    max-width: 600px; */
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+ul li{
+    list-style: none;
+    font-family: 'Amiko', sans-serif;
+    
+}
+
+.contenedor-formulario{
+    /* background-color: pink; */
+    display: flex;
+    flex-direction: column;
+    padding: 25vh;
+}
+
+.formulario form{
+    width: 100%;
+}
+
+.contenedor-formulario a{
+    text-align: center;
+    margin: 20px auto;
 }
 
 .formulario .formulario-grupo{
-    margin-bottom: 15px;
+    /* background-color: pink; */
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
 }
 
 .formulario .formulario-grupo .formulario-label{
@@ -96,10 +120,11 @@ a{
 
 .formulario .formulario-grupo .formulario-input{
     width: 100%;
-    padding: 10px;
+    height: 2rem;
+    margin: 10px 0;
     border: 1px solid #BFD1C9;
     border-radius: 5px;
-    background-color: #F2EFDF;
+    background-color: #ecf1f6;
 }
 
 .formulario .formulario-grupo .formulario-descripcion{
@@ -110,10 +135,19 @@ a{
     background-color: #F2EFDF;
 }
 
+.formulario .formulario-grupo .formulario-select{
+    color: #0D0D0D;
+    background-color: #ecf1f6;
+    border: 1px solid #BFD1C9;
+    border-radius: 5px;
+    padding:8px;
+    margin: 10px auto;
+}
+
 .boton-enviar{
-    background-color: #4CAF50;
+    background-color: #6D8BA6;
     color: #FFFFFF;
-    padding: 10px;
+    padding: 10px 0;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -122,7 +156,7 @@ a{
 }
 
 .boton-eliminar{
-    background-color: #af4c4c;
+    background-color: #BF3326;
     color: #FFFFFF;
     padding: 10px;
     border: none;
@@ -132,32 +166,13 @@ a{
     transition: background-color 0.3s;
 }
 
-/*Estilos para el logo*/
-.logo-container{
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    z-index: 1000;
-    display: flex;
-    justify-content: center;
-    align-items: center;    
-}
 
-.logo {
-    width: 150px;
-    height: auto;
-    max-width: 100%;
-    object-fit: contain;
-}
-
-/*Estilos para tablas*/
-.tabla-gastos{
+.tabla-gastos {
     width: 100%;
     max-width: 1000px;
-    border-collapse: collapse;
-    background-color: #FFFFFF;
-    border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-collapse: separate;
+    border-spacing: 0 10px; /* Espaciado entre filas */
+    background-color: #F2F4F5;
 }
 
 /* Encabezado de la tabla */
@@ -172,15 +187,27 @@ thead {
 th, td {
     padding: 12px;
     text-align: center;
-    border-bottom: 1px solid #BFD1C9; /* Bordes solo en la parte inferior de cada celda */
+    border: none; /* Remueve los bordes para unificar visualmente las celdas */
 }
 
 /* Filas de la tabla */
-tbody tr:hover {
-    background-color: #F0F4F7;
+tbody tr {
+    background-color: #ffffff; /* Color de fondo para las filas */
+    border-radius: 8px; /* Bordes redondeados en cada fila */
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Sombra para destacar cada fila */
+    transition: transform 0.3s ease, background-color 0.3s ease; /* Transición suave para el efecto de crecimiento */
+    border-radius: 15px;
 }
 
 /* Colores de fondo alternos */
 tbody tr:nth-child(even) {
     background-color: #e6e7e8;
 }
+
+/* Efecto de hover en toda la fila */
+tbody tr:hover {
+    transform: scale(1.02); /* Efecto de agrandamiento en toda la fila */
+    background-color: #F0F4F7; /* Cambia el color de fondo al hacer hover */
+}
+
+

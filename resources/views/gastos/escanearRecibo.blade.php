@@ -4,13 +4,13 @@
 @section('title', 'Escanear Ticket de Compra')
 
 @section('content')
-<div class="container mt-4">
+<div class="contenedor-formulario">
     <h2 class="text-center">Escanea tu Ticket de Compra</h2>
-    <div class="card p-4">
-        <button id="captureReceiptBtn" class="btn btn-primary btn-block mb-3">Abrir Cámara o Galería</button>
+    <div class="formulario">
+        <button id="captureReceiptBtn" class="boton-enviar">Abrir Cámara o Galería</button>
         <input type="file" id="uploadReceipt" accept="image/*" capture="environment" style="display:none;">
 
-        <div id="preview" class="mt-3"></div> <!-- Vista previa de la imagen si es necesario -->
+        <!--<div id="preview"></div>  Vista previa de la imagen si es necesario -->
     </div>
 </div>
 

@@ -1,0 +1,136 @@
+@media (max-width: 600px) {
+    .options-menu {
+        width: 100%;
+        left: 0;
+        right: 0;
+        top: 40px;
+        margin: 0 auto;
+        padding: 15px;
+    }
+
+    .options-menu ul li a,
+    .options-menu ul li button {
+        font-size: 16px;
+        padding: 8px 12px;
+    }
+
+    /* Estilos para la tabla en dispositivos móviles */
+
+    table {
+        width: 100%;
+        table-layout: auto; /* Asegura que las celdas no se desborden */
+        border-collapse: collapse;
+        background-color: #FFFFFF;
+    }
+
+    thead {
+        display: none; /* Ocultamos los encabezados en móviles */
+    }
+
+    tbody tr {
+        display: block;
+        margin-bottom: 10px;
+        border-bottom: 1px solid #BFD1C9;
+        padding: 10px;
+        background-color: #FFFFFF;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    tbody td {
+        display: block;
+        text-align: right;
+        padding: 10px 15px;
+        border: none;
+        position: relative;
+    }
+
+    tbody td:before {
+        content: attr(data-label);
+        position: absolute;
+        left: 0;
+        font-weight: bold;
+        color: #BF5F56;
+    }
+
+    /* Estilos para las celdas de la tabla */
+    .table-wrapper table td:last-child {
+        border-bottom: none;
+    }
+
+    .table-container {
+        padding: 15px;
+        width: 100%;
+        overflow-x: hidden; /* Eliminar desplazamiento horizontal */
+    }
+
+    .table-wrapper {
+        padding: 10px;
+        box-shadow: none; /* Opcional: reduce la sombra en móviles */
+    }
+
+    /* Asegurar que el formulario de login o registro sea accesible */
+    .login-form, .register-form {
+        margin: 20px 0;
+        padding: 20px;
+        background-color: #fff;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        overflow-y: auto;
+        max-height: calc(100vh - 60px); /* Permite desplazamiento si el formulario es largo */
+        position: relative;
+        z-index: 10; /* Asegura que el formulario esté por encima de otros elementos */
+    }
+
+    .login-form input, .register-form input {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+
+    .btn-container {
+        position: relative;
+        text-align: center;
+    }
+
+    .options-menu {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 100%;
+        display: none;
+        background-color: #fff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        z-index: 10;
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .chart-container {
+        flex-direction: column;
+        width: 100%;
+        margin-bottom: 20px;
+        display: flex; justify-content: space-around; align-items: center; flex-wrap: wrap; gap: 20px; margin-top: 50px;
+    }
+
+    .chart, .description-article {
+        width: 100%;
+        margin: 0;
+    }
+
+    nav.navbar-bottom {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .menu-icon {
+        width: 50px;
+        height: 50px;
+    }
+
+    /* Asegurar que el dashboard y los formularios tengan márgenes adecuados */
+    .dashboard-container {
+        padding: 20px;
+        margin-top: 10px;
+        overflow-y: auto;
+    }
+}

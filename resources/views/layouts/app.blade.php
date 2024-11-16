@@ -6,7 +6,7 @@
     <title>@yield('title', 'Control de Gastos')</title>
 
     <!-- Script Estilos Bootstrap-->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Incluye Chart.js -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" crossorigin="anonymous">
     
@@ -19,31 +19,42 @@
 
     <!-- Tu archivo JavaScript -->
     <script src="{{ asset('js/datatable.js') }}"></script>
+    <script src="{{ asset('js/modal.js') }}"></script>
+    <script src="{{ asset('js/primerospasos.js') }}"></script>
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/footer.css') }}">
     <link rel="stylesheet" href="{{ asset('css/navbar.css') }}">
     <link rel="stylesheet" href="{{ asset('css/index.css') }}">
-    
+    <link rel="stylesheet" href="{{ asset('css/estilosmoviles.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/register.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/compartidos.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/perfil.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/darkmode.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/modales.css') }}">
+
 
     <!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Muli:wght@300;400;600&family=Habibi&display=swap" rel="stylesheet">
 
 </head>
-<body class="@yield('body-class')">
-    <div class="logo-container">
+<body class="@yield('body-class') {{ $darkMode ? 'dark' : '' }}" >
+    <!-- <div class="logo-container">
         <a href="{{ url('/') }}">
             <img src="{{ asset('images/Logo_Proyecto.png') }}" alt="Logo" class="logo">
         </a>
-   </div>
+   </div> -->
     <!-- Inclusión de la plantilla de la barra de navegación-->
-    @include('layouts.navbar')
+        @include('layouts.navbar')
 
     <!-- Aquí va el contenido de la propia página -->
-    <div class="container mt-4">
+    <div class="contenedor-principal">
+
         @yield('content')
     </div>
+    
 
 </body>
 

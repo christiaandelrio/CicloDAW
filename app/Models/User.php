@@ -21,6 +21,9 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'tutorial_visto', 
+        'dark_mode', 
+        'notifications', 
     ];
 
     /**
@@ -41,6 +44,8 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
+        'tutorial_visto' => 'boolean', 
+        'dark_mode' => 'boolean', 
     ];
 
     public function sharedGastos()
@@ -48,4 +53,26 @@ class User extends Authenticatable
         return $this->hasMany(Gasto::class, 'shared_with_user_id');
     }
 
+    public function marcarTutorialVisto()
+    {
+        try {
+            $user = Auth::user();
+    
+            if (!$user) {
+                Log::error('Usuario no autenticado al intentar marcar tutorial.');
+                return response()->json(['success' => false, 'error' => 'Usuario no autenticado'], 403);
+            }
+    
+            $user->tutorial_visto = true;
+            $user->save();
+    
+            Log::info('Tutorial marcado como visto para el usuario ID: ' . $user->id);
+    
+            return response()->json(['success' => true]);
+    
+        } catch (\Exception $e) {
+            Log::error('Error al marcar tutorial: ' . $e->getMessage());
+            return response()->json(['success' => false, 'error' => 'Error interno del servidor'], 500);
+        }
+    }
 }

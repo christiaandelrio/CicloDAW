@@ -1,0 +1,23 @@
+/*Estilos para el modo oscuro*/
+
+body.dark {
+    background-color: #0D2626;
+    color: #ffffff;
+}
+
+body.dark h2{
+    color: #F0F2F2;
+}
+
+body.dark .navbar {
+    background-color: #1f1f1f;
+    color: #ffffff;
+}
+
+body.dark .gasto-row{
+    background-color:#5F7373;
+}
+
+body.dark .gasto-row:nth-child(even) {
+    background-color: #0D2626; /* Color alternado para las filas */
+  }

@@ -26,13 +26,19 @@ class GastoController extends Controller
             'ropa' => 'fas fa-tshirt',
             'decoracion' => 'fas fa-couch',
         ];
-
+    
+        $user = Auth::user();
+    
         // Obtener los gastos del usuario autenticado
-        $gastos = Gasto::where('user_id', Auth::id())->get();
-
-        // Pasar tanto los gastos como las categorías a la vista
-        return view('gastos.dashboard', compact('gastos', 'categorias'));
+        $gastos = Gasto::where('user_id', $user->id)->get();
+    
+        $darkMode = $user->dark_mode;
+        $mostrarTutorial = !$user->tutorial_visto; // Determinar si el tutorial debe mostrarse
+    
+        // Pasar tanto los gastos como las categorías y el estado del tutorial a la vista
+        return view('gastos.dashboard', compact('gastos', 'categorias', 'darkMode', 'mostrarTutorial'));
     }
+    
     
 
     public function create()
@@ -325,6 +331,28 @@ class GastoController extends Controller
         exit;
     }
 
+    public function marcarTutorialVisto()
+    {
+        try {
+            $user = Auth::user(); // Obtiene el usuario autenticado
+        
+            if (!$user) {
+                return response()->json(['success' => false, 'error' => 'Usuario no autenticado'], 403);
+            }
+        
+            // Actualiza el campo tutorial_visto en la base de datos
+            $user->tutorial_visto = true;
+            $user->save();
+        
+            return response()->json(['success' => true]);
+        
+        } catch (\Exception $e) {
+            Log::error('Error al marcar el tutorial como visto: ' . $e->getMessage());
+            return response()->json(['success' => false, 'error' => 'Error interno del servidor'], 500);
+        }
+    }
+    
+    
     
 }
 

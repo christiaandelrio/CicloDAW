@@ -10,7 +10,31 @@ nav.navbar-bottom {
     z-index: 1000;
 }
 
-/* Navbar superior (no autenticados) */
+/* Estilos para la Navbar */
+.navbar-top {
+    display: flex;
+    justify-content: space-between; /* Alinea el logo a la izquierda y los enlaces a la derecha */
+    align-items: center;
+    position: fixed; /* Posiciona la navbar de manera fija */
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.284); /* Fondo semi-transparente */
+    z-index: 1000; /* Asegura que la navbar esté por encima de otros elementos */
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+/*Estilos para el logo*/
+.logo-container img{
+    height: clamp(50px, 2vh , 75px);
+    margin-top: 20px;
+    margin-left: clamp(5px, 2vw, 15px);
+    
+}
+
+.logo {
+    object-fit: contain;
+}
+
 .navbar-top .menu {
     display: flex;
     justify-content: flex-end; /* Alinea los elementos a la derecha */
@@ -33,7 +57,7 @@ nav.navbar-bottom {
 
 
 .navbar-top .menu-item .nav-link:hover {
-    color: #388E3C; /* Un tono más oscuro al pasar el ratón */
+    color: #BF5F56; /* Un tono más oscuro al pasar el ratón */
 }
 
 /* Estilo para el botón de registrarse */
@@ -43,12 +67,12 @@ nav.navbar-bottom {
     border-radius: 40px; /* Esquinas redondeadas */
     padding: 10px 20px; /* Relleno interno */
     text-decoration: none; /* Sin subrayado */
-    border: 1px solid #4CAF50; /* Borde verde */
+    border: 1px solid #BF5F56; /* Borde verde */
     transition: background-color 0.3s, color 0.3s;
 }
 
 .navbar-top .menu-item .register-button:hover {
-    background-color: #4CAF50; /* Fondo verde al pasar el ratón */
+    background-color: #BF5F56; /* Fondo verde al pasar el ratón */
     color: #FFFFFF; /* Texto blanco al pasar el ratón */
 }
 
@@ -90,7 +114,7 @@ nav.navbar-bottom {
 .options-menu ul li a {
     display: block; /* Mostrar como bloque para que ocupe toda el área */
     padding: 5px 10px; /* Espaciado interno */
-    color: #4CAF50; /* Color verde */
+    color: #BF5F56; /* Color verde */
     text-decoration: none; /* Sin subrayado */
     transition: background-color 0.3s; /* Transición suave */
 }
@@ -101,7 +125,7 @@ nav.navbar-bottom {
 
 /* Estilo para el botón de eliminar */
 .options-menu ul li button {
-    color: #4CAF50; /* Color del texto */
+    color: #BF5F56; /* Color del texto */
     cursor: pointer; /* Cambiar cursor al pasar */
     background: none; /* Sin fondo */
     border: none; /* Sin borde */
@@ -118,7 +142,6 @@ nav.navbar-bottom {
     z-index: 10;
 }
 
-
 /* Iconos del menú */
 .menu-icon {
     display: flex;
@@ -129,14 +152,14 @@ nav.navbar-bottom {
     margin: 0 10px; /* Añade separación entre los íconos */
     border-radius: 50%;
     background-color: #FFFFFF;
-    color: #4CAF50; /* Color verde para las figuras */
+    color: #BF5F56; /* Color verde para las figuras */
     font-size: 24px;
     transition: background-color 0.3s, color 0.3s, transform 0.3s;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .menu-icon:hover {
-    background-color: #388E3C;
+    background-color: #a0443c;
     color: #FFFFFF;
     transform: scale(1.1);
 }
@@ -179,11 +202,11 @@ nav.navbar-bottom {
     display: block;
     padding: 5px 15px; /* Reduce el padding */
     font-size: 18px; /* Tamaño de fuente más pequeño */
-    color: #4CAF50; /* Color verde */
+    color: #BF5F56; /* Color verde */
     text-decoration: none;
     transition: color 0.3s;
 }
 
 .search-menu ul li a:hover, .user-menu ul li a:hover {
-    color: #388E3C; /* Un tono más oscuro al pasar el ratón */
+    color: #a0443c; /* Un tono más oscuro al pasar el ratón */
 }

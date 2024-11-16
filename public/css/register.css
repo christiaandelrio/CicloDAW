@@ -1,0 +1,32 @@
+/* Pantallas medianas (tablets) */
+@media (max-width: 768px) {
+    .contenedor-formulario {
+        padding: 20px;
+        margin-top: 100px; /* Aumenta el margen superior para una mayor separación */
+    }
+    .formulario {
+        padding: 20px;
+    }
+    .formulario h2 {
+        font-size: 1.6rem;
+    }
+}
+
+/* Pantallas pequeñas (móviles) */
+@media (max-width: 480px) {
+    .contenedor-formulario {
+        padding: 10px;
+        margin-top: 120px; /* Mayor margen superior para móviles */
+    }
+    .formulario {
+        padding: 15px;
+    }
+    .formulario h2 {
+        font-size: 1.4rem;
+    }
+    .formulario-input, .boton-enviar {
+        padding: 8px;
+        font-size: 0.9rem;
+    }
+}
+

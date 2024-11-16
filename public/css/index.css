@@ -1,25 +1,71 @@
-.index-background {
-    background-image: url('/images/fondo.jpg');
+* {
+    box-sizing: border-box;
+}
+
+/* Evitar desbordamiento en dispositivos móviles */
+body {
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilo de la primera sección con imagen de fondo */
+.first-section {
+    background-image: url('/images/business-861325_1280.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    min-height: 100vh;
-    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 2rem;
+    text-align: center;
+}
+
+/* Estilo de la segunda sección con fondo blanco */
+.second-section {
+    background-color: #BFCDD9;
+    padding-top: 50px;
+}
+
+/* Efecto de desvanecimiento para la visibilidad de las gráficas */
+.chart-container, .description-article {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.chart-container.visible, .description-article.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.home-container {
+    width: clamp(300px, 80vw, 1200px);
+    margin: 100px auto;
 }
 
 /* Contenedor de gráficas y tablas */
 .chart-container {
     display: flex;
     justify-content: space-around;
-    width: 100%;
     margin-top: 40px;
-    display: flex; justify-content: space-around; align-items: center; flex-wrap: wrap; gap: 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
 }
 
 .chart {
     flex: 1;
     margin: 10px;
-    flex: 1; background-color: #FFFFFF; padding: 20px; border-radius: 10px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    background-color: #FFFFFF;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .description-article {
@@ -28,7 +74,7 @@
     border-radius: 10px;
     padding: 20px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-    flex: 1; background-color: #F2F4F5; padding: 20px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    background-color: #F2F4F5;
 }
 
 /* Estilos de la gráfica */
@@ -36,3 +82,58 @@ canvas {
     width: 100% !important;
     height: auto !important;
 }
+
+/* Media queries */
+
+/* Pantallas grandes (1024px y superiores) */
+@media (min-width: 1024px) {
+    .first-section h1 {
+        font-size: 3rem;
+    }
+    .home-container {
+        margin: 150px auto;
+    }
+}
+
+/* Tablets y pantallas medianas (768px a 1023px) */
+@media (max-width: 1023px) {
+    .first-section {
+        font-size: 1.5rem;
+        padding: 20px;
+    }
+    .chart-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .chart, .description-article {
+        width: 90%;
+        margin: 20px 0;
+    }
+}
+
+/* Teléfonos móviles (menores a 768px) */
+@media (max-width: 767px) {
+    .first-section {
+        font-size: 1.2rem;
+        padding: 10px;
+        text-align: center;
+    }
+    .home-container {
+        width: 90%;
+        margin: 50px auto;
+    }
+    .chart-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .chart, .description-article {
+        width: 100%;
+        margin: 15px 0;
+        padding: 15px;
+        font-size: 0.9rem;
+    }
+    .second-section {
+        padding-top: 30px;
+    }
+}
+

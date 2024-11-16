@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\GastoController;
 use App\Http\Controllers\InvitacionController;
 use App\Http\Controllers\PerfilUsuarioController; 
+use App\Http\Controllers\PerfilConfiguracionController; 
 use Illuminate\Support\Facades\Route;
 
 // Ruta principal (homepage)
@@ -60,3 +61,12 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::get('/export-expenses', [GastoController::class, 'exportarGastos'])->name('gasto.exportarGastos');
+
+
+// Ruta para mostrar la configuración
+Route::get('/perfil/configuracion', [PerfilConfiguracionController::class, 'index'])->name('perfil.configuracion');
+
+// Ruta para actualizar la configuración
+Route::post('/perfil/configuracion/update', [PerfilConfiguracionController::class, 'update'])->name('perfil.configuracion.update');
+
+Route::post('/tutorial-visto', [GastoController::class, 'marcarTutorialVisto'])->middleware('auth')->name('tutorial.visto');
