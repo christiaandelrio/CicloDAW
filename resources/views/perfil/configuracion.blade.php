@@ -4,7 +4,7 @@
 @section('title', 'Configuración')
 
 @section('content')
-<div class="container mt-4">
+<div class="contenedor-configuracion">
     <h2>Configuración</h2>
     <form class="formulario" action="{{ route('perfil.configuracion.update') }}" method="POST">
         @csrf
@@ -30,3 +30,4 @@
     </form>
 </div>
 @endsection
+

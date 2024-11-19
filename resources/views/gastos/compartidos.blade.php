@@ -47,30 +47,30 @@
                         <div class="gasto-cell">{{ $gastoCompartido->gasto->user->name }}</div>
                         <div class="gasto-cell">{{ $gastoCompartido->porcentaje }}%</div>
                         <div class="gasto-cell">
-                            <form action="{{ route('gastos.destroy', $gastoCompartido->gasto->id) }}" method="POST" >
+                            <form action="{{ route('gastos.destroy', $gastoCompartido->gasto->id) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
-                            <button type="button" class="boton-eliminar open-delete-modal"> <i class="fa fa-trash"></i>Eliminar</button>
+                                <button type="button" class="boton-eliminar open-delete-modal">
+                                    <i class="fa fa-trash"></i> Eliminar
+                                </button>
+                            </form>
                         </div>
                     </div>
 
                     <!-- Calcular total pagado y total deuda -->
                     @php
-                        // Inicializa las variables para cada gasto compartido
                         $valorPorcentaje = $gastoCompartido->gasto->valor * ($gastoCompartido->porcentaje / 100);
 
                         if ($gastoCompartido->gasto->user->name === $nombreUsuario) {
-                            // Si el otro usuario es el creador del gasto
-                            $totalPagadoPorOtro += $valorPorcentaje; // Lo que pagó el otro usuario
+                            $totalPagadoPorOtro += $valorPorcentaje;
                         } elseif ($gastoCompartido->gasto->user->name === auth()->user()->name) {
-                            // Si tú eres el creador del gasto
-                            $totalDeudaUsuario += $valorPorcentaje; // Lo que te deben del gasto
+                            $totalDeudaUsuario += $valorPorcentaje;
                         }
                     @endphp
-
                 @endforeach
 
-                                <div class="saldo-mensaje">
+                <!-- Mostrar saldo debajo de cada tabla -->
+                <div class="saldo-mensaje">
                     @if($totalPagadoPorOtro > 0)
                         <p>{{ $nombreUsuario }} ha pagado un total de {{ number_format($totalPagadoPorOtro, 2) }} €.</p>
                         <p>Tú le debes {{ number_format($totalPagadoPorOtro, 2) }} €.</p>
@@ -79,9 +79,6 @@
                         <p>{{ $nombreUsuario }} te debe {{ number_format($totalDeudaUsuario, 2) }} €.</p>
                     @endif
                 </div>
-
-
-                </div>
             </div>
         @endforeach
     @endif
@@ -89,32 +86,6 @@
 @endsection
 
 
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-    const sections = document.querySelectorAll(".tarjeta-gastos"); // Cambiado a ".tarjeta-gastos"
-    const dots = document.querySelectorAll(".scroll-dot");
-
-    function activateDot(index) {
-        dots.forEach(dot => dot.classList.remove("active"));
-        if (dots[index]) dots[index].classList.add("active");
-    }
-
-    function updateDotOnScroll() {
-        let currentIndex = 0;
-        sections.forEach((section, index) => {
-            const rect = section.getBoundingClientRect();
-            if (rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2) {
-                currentIndex = index;
-            }
-        });
-        activateDot(currentIndex);
-    }
-
-    window.addEventListener("scroll", updateDotOnScroll);
-    updateDotOnScroll();  // Ejecutar inicialmente
-});
-
-</script>
 
 
 

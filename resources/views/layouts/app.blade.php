@@ -21,6 +21,9 @@
     <script src="{{ asset('js/datatable.js') }}"></script>
     <script src="{{ asset('js/modal.js') }}"></script>
     <script src="{{ asset('js/primerospasos.js') }}"></script>
+    <script src="{{ asset('js/options-menu.js') }}"></script>
+    <script src="{{ asset('js/scroll.js') }}"></script>
+    <script src="{{ asset('js/graficas.js') }}"></script>
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
@@ -34,6 +37,9 @@
     <link rel="stylesheet" href="{{ asset('css/perfil.css') }}">
     <link rel="stylesheet" href="{{ asset('css/darkmode.css') }}">
     <link rel="stylesheet" href="{{ asset('css/modales.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/create.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/configuracion.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/generargraficas.css') }}">
 
 
     <!-- Google Fonts -->
@@ -47,6 +53,7 @@
         </a>
    </div> -->
     <!-- Inclusión de la plantilla de la barra de navegación-->
+        
         @include('layouts.navbar')
 
     <!-- Aquí va el contenido de la propia página -->

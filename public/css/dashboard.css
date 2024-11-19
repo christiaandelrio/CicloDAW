@@ -146,3 +146,37 @@
     font-size: 1rem;
   }
   
+  .contenedor-graficas {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start; /* Cambiado a flex-start para alinear las gráficas en la parte superior */
+    gap: 20px; /* Espaciado entre las gráficas */
+    margin-bottom: 20px;
+    flex-wrap: nowrap; /* Evita el wrap para mantener las gráficas en una fila */
+}
+
+.grafica {
+    flex: 1; /* Asegura que cada gráfica tenga un tamaño proporcional */
+    max-width: 33%; /* Cada gráfica ocupará un tercio del contenedor */
+    height: 300px; /* Ajusta la altura de las gráficas */
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    background-color: #fff; /* Fondo blanco */
+    padding: 10px;
+    box-sizing: border-box; /* Incluye padding y borde en el tamaño total */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.grafica canvas {
+    width: 100% !important; /* Asegura que el canvas ocupe todo el ancho del contenedor gráfico */
+    height: 100% !important; /* Asegura que el canvas ocupe todo el alto del contenedor gráfico */
+}
+
+
+
+
+
+

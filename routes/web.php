@@ -7,6 +7,10 @@ use App\Http\Controllers\PerfilUsuarioController;
 use App\Http\Controllers\PerfilConfiguracionController; 
 use Illuminate\Support\Facades\Route;
 
+/**
+ * Fichero que contiene las rutas de la aplicación
+ */
+
 // Ruta principal (homepage)
 Route::get('/', function () {
     if (Auth::check()) {
@@ -17,7 +21,9 @@ Route::get('/', function () {
     return view('gastos.index');
 })->name('index');
 
-// Rutas de autenticación
+// ===================================
+// Rutas de Autenticación
+// ===================================
 Route::view('/login', 'auth.login')->name('login');
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
@@ -25,10 +31,15 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::view('/register', 'auth.register')->name('register');
 Route::post('/register', [AuthController::class, 'register']);
 
-// Ruta para el dashboard (donde se mostrarán los gastos)una vez autenticado
+// ===================================
+// Rutas del Dashboard (Autenticación Requerida)
+// ===================================
 Route::get('/dashboard', [GastoController::class, 'index'])->middleware('auth')->name('dashboard');
 
-// Rutas de gastos
+// ===================================
+// Rutas de Gastos
+// ===================================
+// CRUD de Gastos
 Route::get('/gastos/create', [GastoController::class, 'create'])->middleware('auth')->name('gastos.create');
 Route::post('/gastos', [GastoController::class, 'store'])->middleware('auth')->name('gastos.store');
 Route::get('/gastos/dashboard', [GastoController::class, 'index'])->middleware('auth')->name('gastos.dashboard');
@@ -36,37 +47,39 @@ Route::put('gastos/{gasto}', [GastoController::class, 'update'])->name('gastos.u
 Route::get('gastos/{gasto}/edit', [GastoController::class, 'edit'])->name('gastos.edit');
 Route::delete('gastos/{gasto}', [GastoController::class, 'destroy'])->name('gastos.destroy');
 
-// Ruta para el perfil de usuario
-Route::get('/perfil', [PerfilUsuarioController::class, 'show'])->name('perfil');
-
-
+// Funcionalidades adicionales de Gastos
 Route::get('/gastos/generargrafica', [GastoController::class, 'generarGrafica'])->middleware('auth')->name('gastos.generargrafica');
 Route::post('/gastos/generargrafica/data', [GastoController::class, 'getReportData'])->middleware('auth')->name('gastos.generargrafica.data');
-
 Route::get('/gastos/escanear-recibo', [GastoController::class, 'showEscanearRecibo'])->name('gastos.escanearRecibo');
-Route::post('/gastos/process-receipt', [GastoController::class, 'processReceipt'])->name('gastos.processReceipt');
-Route::post('/gastos/process-receipt', [GastoController::class, 'processReceipt'])->middleware('auth');
+Route::post('/gastos/process-receipt', [GastoController::class, 'processReceipt'])->middleware('auth')->name('gastos.processReceipt');
 
+// Gastos Compartidos
 Route::middleware('auth')->group(function () {
     Route::get('/gastos/compartidos', [GastoController::class, 'mostrarGastosCompartidos'])->name('gastos.compartidos');
 });
+Route::get('/gastoscompartidos', [InvitacionController::class, 'mostrarGastosCompartidos'])->middleware('auth')->name('gastoscompartidos');
 
-Route::middleware(['auth'])->group(function () {
-    Route::post('/invitaciones/{id}/responder', [InvitacionController::class, 'responder'])->name('invitaciones.responder');
-    Route::get('/perfil', [PerfilUsuarioController::class, 'show'])->name('perfil');
-    Route::post('/invitaciones/enviar', [InvitacionController::class, 'enviar'])->name('invitaciones.enviar');
-    Route::get('/gastoscompartidos', [InvitacionController::class, 'mostrarGastosCompartidos'])->name('gastoscompartidos');
-    Route::get('/gastos/compartidos', [GastoController::class, 'mostrarGastosCompartidos'])->name('gastos.compartidos');
-
-});
-
+// Exportación de Gastos
 Route::get('/export-expenses', [GastoController::class, 'exportarGastos'])->name('gasto.exportarGastos');
 
+// ===================================
+// Rutas del Perfil
+// ===================================
+Route::get('/perfil', [PerfilUsuarioController::class, 'show'])->middleware('auth')->name('perfil');
 
-// Ruta para mostrar la configuración
+// Configuración del Perfil
 Route::get('/perfil/configuracion', [PerfilConfiguracionController::class, 'index'])->name('perfil.configuracion');
-
-// Ruta para actualizar la configuración
 Route::post('/perfil/configuracion/update', [PerfilConfiguracionController::class, 'update'])->name('perfil.configuracion.update');
 
+/**
+ * Rutas necesarias para enviar invitaciones en la función de gastos compartidos, ambas protegidas por autenticación
+ */
+Route::middleware(['auth'])->group(function () {
+    Route::post('/invitaciones/enviar', [InvitacionController::class, 'enviar'])->name('invitaciones.enviar');
+    Route::post('/invitaciones/{id}/responder', [InvitacionController::class, 'responder'])->name('invitaciones.responder');
+});
+
+/** Ruta que marca que el nuevo usuario ha visto el tutorial de primeros pasos */
 Route::post('/tutorial-visto', [GastoController::class, 'marcarTutorialVisto'])->middleware('auth')->name('tutorial.visto');
+
+Route::get('/dashboard/chart-data', [GastoController::class, 'getDashboardChartData'])->middleware('auth')->name('dashboard.chartData');

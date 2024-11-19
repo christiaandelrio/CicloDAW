@@ -1,35 +1,35 @@
+<!-- resources/views/generar-graficas.blade.php -->
 @extends('layouts.app')
 
 @section('title', 'Generar Gráfica de Gastos')
 
 @section('content')
-<div class="contenedor-formulario">
+<div class="contenedor-generar">
+    <h2>Generar Gráfica de Gastos</h2>
     <div class="formulario">
-            <h2>Generar Gráfica de Gastos</h2>
-            <form id="fecha-form">
-                <div class="formulario-grupo">
-                    <label for="fecha_inicio" class="formulario-label">Fecha de Inicio</label>
-                    <input type="date" name="fecha_inicio" id="fecha_inicio" class="formulario-input" required>
-                </div>
+        <form id="fecha-form">
+            <div class="formulario-grupo">
+                <label for="fecha_inicio" class="formulario-label">Fecha de Inicio</label>
+                <input type="date" name="fecha_inicio" id="fecha_inicio" class="formulario-input" required>
+            </div>
 
-                <div class="formulario-grupo">
-                    <label for="fecha_fin" class="formulario-label">Fecha de Fin</label>
-                    <input type="date" name="fecha_fin" id="fecha_fin" class="formulario-input" required>
-                </div>
+            <div class="formulario-grupo">
+                <label for="fecha_fin" class="formulario-label">Fecha de Fin</label>
+                <input type="date" name="fecha_fin" id="fecha_fin" class="formulario-input" required>
+            </div>
 
-                <button type="submit" class="boton-enviar">Generar Gráfica</button>
-            </form>
+            <button type="submit" class="boton-enviar">Generar Gráfica</button>
+        </form>
 
-                <!-- Canvas para la gráfica -->
+        <!-- Canvas para la gráfica -->
         <h2>Gráfica de Gastos</h2>
         <div class="formulario-grupo">
             <canvas id="gastosChart"></canvas>
         </div>
     </div>
-
-
 </div>
 @endsection
+
 
 @section('scripts')
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

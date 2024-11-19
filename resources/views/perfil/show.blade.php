@@ -3,9 +3,10 @@
 @section('title', 'Mi Perfil')
 
 @section('content')
-<div class="contenedor-formulario">
-<div class="formulario">
-        <h2>Mi perfil</h2>
+<div class="perfil-formulario">
+<h2>Mi perfil</h2>
+
+    <div class="formulario">
         @if($user)
             <div class="formulario-grupo">
                 <label class="formulario-label">Nombre:</label>
@@ -28,11 +29,16 @@
                 <ul>
                     @foreach($invitacionesPendientes as $invitacion)
                         <li>
-                            Invitación de {{ $invitacion->sender->name }} para compartir gastos.
-                            <form action="{{ route('invitaciones.responder', $invitacion->id) }}" method="POST" style="display: inline;">
-                                @csrf
-                                <button type="submit" name="accion" value="aceptar" class="boton-enviar"><i class="fa-solid fa-check"></i> Aceptar</button>
-                                <button type="submit" name="accion" value="rechazar" class="boton-eliminar"><i class="fa-solid fa-xmark"></i> Rechazar</button>
+                        <form action="{{ route('invitaciones.responder', $invitacion->id) }}" method="POST" style="display: inline-flex; align-items: center;">
+                        @csrf
+                            Invitación de {{ $invitacion->sender->name }} para compartir gastos.                                <button type="submit" name="accion" value="aceptar" class="boton-icono">
+                                    <i class="fa-solid fa-circle-check"></i>
+                                </button>
+                                <button type="submit" name="accion" value="rechazar" class="boton-icono">
+                                    <i class="fa-solid fa-circle-xmark"></i>
+                                </button>
+
+
                             </form>
                         </li>
                     @endforeach
@@ -47,16 +53,10 @@
                     <input type="email" name="email" id="email" class="formulario-input" required>
                 </div>
                 <button type="submit" class="boton-enviar">Enviar Invitación</button>
-                
             </form>
-
-
         </div>
-
-
-</div> 
-    <a href="{{ route('index') }}">Volver al Inicio</a>
-
+    </div>
 </div>
 @endsection
+
 

@@ -46,7 +46,7 @@
 .scroll-dot {
     width: 10px;
     height: 10px;
-    background-color: #ccc;
+    background-color: #6D8BA6;
     border-radius: 50%;
     transition: background-color 0.3s;
 }

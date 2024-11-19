@@ -41,10 +41,24 @@
         </div>
     </div>
     @else
+
+
     <div class="tabla-gastos">
         <a href="{{ route('gasto.exportarGastos') }}" class="export-button">Exportar Gastos a Excel</a>
-        <div class="tarjeta-gastos">
 
+        <div class="contenedor-graficas">
+            <div class="grafica">
+                <canvas id="graficaPie"></canvas>
+            </div>
+            <div class="grafica">
+                <canvas id="graficaBar"></canvas>
+            </div>
+            <div class="grafica">
+                <canvas id="graficaLine"></canvas>
+            </div>
+        </div>
+
+        <div class="tarjeta-gastos">
             @foreach ($gastos as $gasto)
             <div class="gasto-row">
                 <div class="gasto-cell categoria">
@@ -79,75 +93,14 @@
                         </div>
                     </div>
                 </div>
-
             </div>
-        @endforeach
-    </div>
+            @endforeach
         </div>
 
-</div>
-@endif
+
+    </div>
+
+
+    @endif
 </div>
 @endsection
-
-
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        document.querySelectorAll('.options-icon').forEach(function(icon) {
-            icon.addEventListener("click", function(event) {
-                event.stopPropagation();
-
-                // Cierra todos los menús abiertos
-                document.querySelectorAll('.options-menu').forEach(function(menu) {
-                    menu.style.display = "none";
-                });
-
-                // Toggle el menú de opciones correspondiente
-                const optionsMenu = this.nextElementSibling;
-                optionsMenu.style.display = optionsMenu.style.display === "block" ? "none" : "block";
-            });
-        });
-
-        // Cerrar el menú al hacer clic fuera
-        document.addEventListener('click', function(event) {
-            if (!event.target.closest('.btn-container')) {
-                document.querySelectorAll('.options-menu').forEach(function(menu) {
-                    menu.style.display = 'none';
-                });
-            }
-        });
-    });
-
-    document.addEventListener('DOMContentLoaded', function() {
-        const tableSections = document.querySelectorAll('.tabla-gastos'); // Seleccionamos las secciones de gastos
-        const indicatorDots = document.querySelectorAll('.indicator-dot'); // Los puntos de indicador
-
-        function updateActiveSection() {
-            tableSections.forEach((section, index) => {
-                const rect = section.getBoundingClientRect(); // Obtenemos las dimensiones de la sección
-                const sectionCenter = (rect.top + rect.bottom) / 2; // Calculamos el centro de la sección
-
-                // Verificar si el centro de la sección está en la ventana de visualización
-                const isVisible = sectionCenter >= 0 && sectionCenter <= window.innerHeight;
-
-                // Aplicar clases activas según visibilidad
-                if (isVisible) {
-                    section.classList.add('active');
-                    section.classList.remove('inactive');
-                    indicatorDots[index].classList.add('active');
-                } else {
-                    section.classList.remove('active');
-                    section.classList.add('inactive');
-                    indicatorDots[index].classList.remove('active');
-                }
-            });
-        }
-
-        // Detectar el scroll en la página
-        window.addEventListener('scroll', updateActiveSection);
-
-        // Inicializar la primera sección como activa
-        updateActiveSection();
-    });
-</script>
-<script src="{{ asset('js/primerospasos.js') }}"></script>

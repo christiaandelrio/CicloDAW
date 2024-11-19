@@ -1,23 +1,124 @@
-/*Estilos para el modo oscuro*/
-
+/* Estilos para el modo oscuro */
 body.dark {
-    background-color: #0D2626;
-    color: #ffffff;
+    background-color: #050B0D; /* Fondo principal */
+    color: #F0F2F2; /* Texto principal */
 }
 
-body.dark h2{
-    color: #F0F2F2;
+body.dark h1, body.dark h2, body.dark h3 {
+    color: #F0F2F2; /* Encabezados */
 }
 
 body.dark .navbar {
-    background-color: #1f1f1f;
-    color: #ffffff;
+    background-color: #050B0D; /* Fondo de la barra de navegación */
+    color: #F0F2F2; /* Texto de la barra de navegación */
+    border-bottom: 1px solid #0D2626; /* Línea inferior */
 }
 
-body.dark .gasto-row{
-    background-color:#5F7373;
+body.dark .gasto-row {
+    background-color: #5F7373; /* Fondo de las filas */
+    border-radius: 10px;
+    margin-bottom: 10px; /* Espaciado entre filas */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra sutil */
+    color: #F0F2F2; /* Texto de las filas */
 }
 
 body.dark .gasto-row:nth-child(even) {
-    background-color: #0D2626; /* Color alternado para las filas */
-  }
+    background-color: #0D2626; /* Color alternado para las filas pares */
+}
+
+body.dark p, body.dark li, body.dark a {
+    color: #A1A5A6; /* Texto general y enlaces */
+}
+
+body.dark a:hover {
+    color: #F0F2F2; /* Enlaces al pasar el mouse */
+    text-decoration: underline;
+}
+
+body.dark .formulario {
+    background-color: #5F7373; /* Fondo del formulario */
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Sombra para destacar */
+}
+
+body.dark .formulario label {
+    color: #F0F2F2; /* Texto de etiquetas en el formulario */
+}
+
+body.dark .formulario input, 
+body.dark .formulario textarea, 
+body.dark .formulario select {
+    background-color: #0D2626; /* Campos de entrada */
+    color: black; /* Texto en los campos */
+    border: 1px solid #5F7373; /* Borde de los campos */
+    border-radius: 5px;
+    padding: 8px;
+}
+
+body.dark .formulario input:focus, 
+body.dark .formulario textarea:focus, 
+body.dark .formulario select:focus {
+    border-color: #F0F2F2; /* Borde al enfocar */
+    outline: none;
+}
+
+body.dark .btn {
+    background-color: #0D2626; /* Fondo del botón */
+    color: #F0F2F2; /* Texto del botón */
+    border: 1px solid #5F7373; /* Borde del botón */
+    border-radius: 5px;
+    padding: 10px 20px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.dark .btn:hover {
+    background-color: #5F7373; /* Fondo al pasar el mouse */
+    color: #050B0D; /* Texto al pasar el mouse */
+}
+
+body.dark .saldo-mensaje {
+    background-color: #0D2626; /* Fondo del mensaje */
+    color: #F0F2F2; /* Texto del mensaje */
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); /* Sombra sutil */
+}
+
+body.dark .modal-overlay {
+    background-color: rgba(5, 11, 13, 0.8); /* Fondo del modal semi-transparente */
+    color: #F0F2F2; /* Texto del modal */
+}
+
+body.dark .modal-content {
+    background-color: #0D2626; /* Fondo del contenido del modal */
+    border-radius: 10px;
+    padding: 20px;
+    color: #F0F2F2; /* Texto dentro del modal */
+}
+
+body.dark .tarjeta-gastos{
+    background-color: #5F7373;
+}
+
+body.dark .tarjeta-gastos .gasto-row{
+    background-color: #F0F2F2;
+    color: #050B0D;
+}
+
+body.dark div.grafica{
+    background-color: #5F7373;
+    color:#F0F2F2;
+}
+
+body.dark .export-button{
+    color:#F0F2F2;
+    background-color:#0D2626;
+}
+
+body.dark .contenedor-create, body.dark .perfil-formulario,
+body.dark .contenedor-configuracion, body.dark .contenedor-generar{
+    background-color: #050B0D;
+}
+

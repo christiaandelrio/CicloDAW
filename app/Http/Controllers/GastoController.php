@@ -26,25 +26,26 @@ class GastoController extends Controller
             'ropa' => 'fas fa-tshirt',
             'decoracion' => 'fas fa-couch',
         ];
-    
+
         $user = Auth::user();
-    
+
         // Obtener los gastos del usuario autenticado
         $gastos = Gasto::where('user_id', $user->id)->get();
-    
+
+
         $darkMode = $user->dark_mode;
         $mostrarTutorial = !$user->tutorial_visto; // Determinar si el tutorial debe mostrarse
-    
+
         // Pasar tanto los gastos como las categorías y el estado del tutorial a la vista
         return view('gastos.dashboard', compact('gastos', 'categorias', 'darkMode', 'mostrarTutorial'));
     }
-    
-    
+
+
 
     public function create()
     {
         $user = Auth::user();
-    
+
         // Definir categorías de ejemplo
         $categorias = [
             'comida' => 'fas fa-utensils',
@@ -54,35 +55,33 @@ class GastoController extends Controller
             'decoracion' => 'fas fa-couch',
             // Agrega más categorías según necesites
         ];
-    
 
-        
-            // Recuperar usuarios con los que hay invitaciones aceptadas, evitando duplicados
-            $usuarios = Invitacion::where(function ($query) use ($user) {
-                                        $query->where('sender_id', $user->id)
-                                              ->orWhere('receiver_id', $user->id);
-                                    })
-                                    ->where('status', 'aceptada')
-                                    ->with('receiver', 'sender')
-                                    ->get()
-                                    ->map(function ($invitacion) use ($user) {
-                                        return $invitacion->sender_id == $user->id ? $invitacion->receiver : $invitacion->sender;
-                                    })
-                                    ->unique('id'); // Asegura que no haya duplicados
-        
-            // Pasar tanto categorías como usuarios únicos a la vista
-            return view('gastos.create', compact('categorias', 'usuarios'));
-        
-        
+
+
+        // Recuperar usuarios con los que hay invitaciones aceptadas, evitando duplicados
+        $usuarios = Invitacion::where(function ($query) use ($user) {
+            $query->where('sender_id', $user->id)
+                ->orWhere('receiver_id', $user->id);
+        })
+            ->where('status', 'aceptada')
+            ->with('receiver', 'sender')
+            ->get()
+            ->map(function ($invitacion) use ($user) {
+                return $invitacion->sender_id == $user->id ? $invitacion->receiver : $invitacion->sender;
+            })
+            ->unique('id'); // Asegura que no haya duplicados
+
+        // Pasar tanto categorías como usuarios únicos a la vista
+        return view('gastos.create', compact('categorias', 'usuarios'));
     }
-    
-    
-    
+
+
+
 
     public function store(Request $request)
     {
         $user = Auth::user();
-    
+
         // Crear el gasto
         $gasto = Gasto::create([
             'user_id' => $user->id,
@@ -93,7 +92,7 @@ class GastoController extends Controller
             'descripcion' => $request->descripcion,
             'categoria' => $request->categoria,
         ]);
-    
+
         // Si el gasto es compartido y hay usuarios seleccionados
         if ($request->has('es_compartido') && $request->filled('shared_with')) {
             foreach ($request->shared_with as $sharedWithUserId) {
@@ -105,18 +104,18 @@ class GastoController extends Controller
                 ]);
             }
         }
-    
+
         return redirect()->route('gastos.dashboard')->with('success', 'Gasto creado exitosamente.');
     }
-    
-    
+
+
 
 
     public function edit($id)
     {
         // Buscar el gasto por su ID
         $gasto = Gasto::findOrFail($id);
-    
+
         // Definir las categorías y sus iconos
         $categorias = [
             'comida' => 'fas fa-utensils',
@@ -125,7 +124,7 @@ class GastoController extends Controller
             'ropa' => 'fa-solid fa-shirt',
             'decoracion' => 'fas fa-couch',
         ];
-    
+
         // Retornar la vista de edición con los datos del gasto
         return view('gastos.edit', compact('gasto', 'categorias'));
     }
@@ -152,7 +151,7 @@ class GastoController extends Controller
         return redirect()->route('gastos.dashboard')->with('success', 'Gasto actualizado con éxito.');
     }
 
-    
+
     public function destroy($id)
     {
         // Buscar el gasto por su ID
@@ -165,6 +164,11 @@ class GastoController extends Controller
         return redirect()->route('gastos.dashboard')->with('success', 'Gasto eliminado con éxito.');
     }
 
+    /**
+     * Funciones para las gráficas de generargrafica.blade.php
+     *
+     * @return void
+     */
     public function generarGrafica()
     {
         return view('gastos.generargrafica');
@@ -176,32 +180,62 @@ class GastoController extends Controller
             'fecha_inicio' => 'required|date',
             'fecha_fin' => 'required|date|after_or_equal:fecha_inicio',
         ]);
-    
+
         $fechaInicio = $request->input('fecha_inicio');
         $fechaFin = $request->input('fecha_fin');
-    
+
         $gastos = Gasto::where('user_id', Auth::id())
-                        ->whereBetween('fecha', [$fechaInicio, $fechaFin])
-                        ->get();
-    
+            ->whereBetween('fecha', [$fechaInicio, $fechaFin])
+            ->get();
+
         if ($gastos->isEmpty()) {
             return response()->json(['message' => 'No se encontraron gastos para el rango de fechas especificado.'], 404);
         }
-    
+
         $datos = $gastos->groupBy('categoria')->map(function ($grupo) {
             return $grupo->sum('valor');
         });
-    
+
         return response()->json($datos);
     }
+
+    /**
+     * Para trabajar con las gráficas del dashboard
+     *
+     * @return void
+     */
+    public function getDashboardChartData()
+    {
+        $gastos = Gasto::where('user_id', Auth::id())->get();
     
+        // Agrupar los gastos por categoría
+        $gastosPorCategoria = $gastos->groupBy('categoria')->map(function ($grupo) {
+            return $grupo->sum('valor');
+        });
     
+        // Agrupar los gastos por fecha para la gráfica de líneas
+        $gastosPorFecha = $gastos->sortBy('fecha')->groupBy(function ($gasto) {
+            // Verifica si la fecha es un objeto DateTime o una cadena
+            return \Carbon\Carbon::parse($gasto->fecha)->format('Y-m-d');
+        })->map(function ($grupo) {
+            return $grupo->sum('valor');
+        });
+    
+        return response()->json([
+            'categorias' => $gastosPorCategoria->keys(), // Ejemplo: ["comida", "transporte"]
+            'valores' => $gastosPorCategoria->values(), // Ejemplo: [200, 100]
+            'fechas' => $gastosPorFecha->keys(), // Ejemplo: ["2024-11-01", "2024-11-02"]
+            'valoresPorFecha' => $gastosPorFecha->values(), // Ejemplo: [200, 150]
+        ]);
+    }
+    
+
     public function showEscanearRecibo()
     {
         return view('gastos.escanearRecibo');
     }
 
- 
+
 
     public function processReceipt(Request $request)
     {
@@ -209,19 +243,19 @@ class GastoController extends Controller
             $request->validate([
                 'receipt' => 'required|image|mimes:jpeg,png,jpg|max:2048',
             ]);
-    
+
             $path = $request->file('receipt')->store('receipts', 'public');
             $imagePath = storage_path("app/public/{$path}");
-    
+
             // Procesar la imagen con Tesseract para extraer texto
             $tesseract = new TesseractOCR($imagePath);
-            $tesseract->executable('/usr/bin/tesseract'); 
+            $tesseract->executable('/usr/bin/tesseract');
             $extractedText = $tesseract->lang('spa')->run();
-            
-    
+
+
             // Extraer datos del ticket
             $data = $this->parseReceiptText($extractedText);
-    
+
             // Crear el gasto en la base de datos
             Gasto::create([
                 'nombre_gasto' => $data['nombre'],
@@ -231,7 +265,7 @@ class GastoController extends Controller
                 'categoria' => 'Compra',
                 'user_id' => Auth::id(),
             ]);
-    
+
             return response()->json([
                 'success' => true,
                 'message' => 'Gasto creado con éxito a partir del ticket',
@@ -244,8 +278,8 @@ class GastoController extends Controller
             ], 500);
         }
     }
-    
-    
+
+
 
     private function parseReceiptText($text)
     {
@@ -265,11 +299,11 @@ class GastoController extends Controller
             'fecha' => $fecha,
         ];
     }
-    
+
     public function mostrarGastosCompartidos()
     {
         $user = Auth::user();
-    
+
         // Recupera y agrupa los gastos compartidos por el nombre del usuario con el que se compartió
         $gastosCompartidos = GastoCompartido::with(['gasto', 'gasto.user', 'sharedWithUser'])
             ->where('user_id', $user->id)
@@ -280,10 +314,10 @@ class GastoController extends Controller
                     ? $gastoCompartido->gasto->user->name
                     : $gastoCompartido->sharedWithUser->name;
             });
-    
+
         return view('gastos.compartidos', compact('gastosCompartidos'));
     }
-    
+
     public function exportarGastos()
     {
         // Crear un nuevo objeto Spreadsheet
@@ -335,28 +369,19 @@ class GastoController extends Controller
     {
         try {
             $user = Auth::user(); // Obtiene el usuario autenticado
-        
+
             if (!$user) {
                 return response()->json(['success' => false, 'error' => 'Usuario no autenticado'], 403);
             }
-        
+
             // Actualiza el campo tutorial_visto en la base de datos
             $user->tutorial_visto = true;
             $user->save();
-        
+
             return response()->json(['success' => true]);
-        
         } catch (\Exception $e) {
             Log::error('Error al marcar el tutorial como visto: ' . $e->getMessage());
             return response()->json(['success' => false, 'error' => 'Error interno del servidor'], 500);
         }
     }
-    
-    
-    
 }
-
-
-
-
-

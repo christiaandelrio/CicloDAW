@@ -2,19 +2,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Fira+Sans+Condensed:wght@400;500&family=Amiko:wght@400;600&display=swap');
 
-:root {
-    /* Colores principales */
-    --primary-color: #007566;  /* Verde principal */
-    --secondary-color: #589A8D;  /* Verde claro */
-    --accent-color: #8FC1B5;  /* Verde suave para detalles */
-    --background-color: #d3dade;  /* Gris claro de fondo */
-    --text-color: #0D0D0D;  /* Texto principal oscuro */
-    
-    /* Colores complementarios */
-    --highlight-color: #265C4B;  /* Verde oscuro para hovers o resaltar */
-    --light-gray: #bcbcbc;  /* Gris claro para fondos */
-    --dark-gray: #3B4013;  /* Gris oscuro para títulos */
-}
+
 
 /* Estilos generales */
 body {
