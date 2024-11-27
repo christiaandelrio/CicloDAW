@@ -41,27 +41,28 @@ class InvitacionController extends Controller
         $request->validate([
             'email' => 'required|email'
         ]);
-
+    
         // Encontrar el usuario con el email introducido
         $receiver = User::where('email', $request->email)->first();
-
+    
         if (!$receiver) {
-            return redirect()->route('perfil')->with('error', 'Usuario no encontrado.');
+            return redirect()->route('perfil')->with('mensaje_popup', 'Usuario no encontrado.');
         }
-
+    
         // Verificar que el usuario no se esté invitando a sí mismo
         if ($receiver->id == Auth::id()) {
-            return redirect()->route('perfil')->with('error', 'No puedes invitarte a ti mismo.');
+            return redirect()->route('perfil')->with('mensaje_popup', 'No puedes invitarte a ti mismo.');
         }
-
+    
         // Crear la invitación
         Invitacion::create([
             'sender_id' => Auth::id(),
             'receiver_id' => $receiver->id,
             'status' => 'pendiente'
         ]);
-
-        return redirect()->route('perfil')->with('message', 'Invitación enviada con éxito.');
+    
+        return redirect()->route('perfil')->with('mensaje_popup', 'Invitación enviada correctamente a ' . $receiver->name . '.');
     }
+    
 }
 

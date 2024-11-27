@@ -48,14 +48,24 @@
 
         <div class="contenedor-graficas">
             <div class="grafica">
-                <canvas id="graficaPie"></canvas>
+                <canvas id="graficaPie" title="Gráfica de Quesitos"></canvas>
             </div>
             <div class="grafica">
-                <canvas id="graficaBar"></canvas>
+                <canvas id="graficaBar" title="Gráfica de Barras"></canvas>
             </div>
             <div class="grafica">
-                <canvas id="graficaLine"></canvas>
+                <canvas id="graficaLine" title="Gráfica de Líneas"></canvas>
             </div>
+        </div>
+
+        <!-- Encabezado de la "tabla" -->
+        <div class="gasto-row header">
+            <div class="gasto-cell" title="Nombre">Nombre del Gasto</div>
+            <div class="gasto-cell" title="Tipo">Tipo</div>
+            <div class="gasto-cell" title="Valor">Valor</div>
+            <div class="gasto-cell" title="Fecha">Fecha</div>
+            <div class="gasto-cell" title="Descripción">Descripción</div>
+            <div class="gasto-cell" title="Acciones">Acciones</div>
         </div>
 
         <div class="tarjeta-gastos">
@@ -82,13 +92,13 @@
                             <!-- Formulario para editar -->
                             <form action="{{ route('gastos.edit', $gasto->id) }}" method="GET" class="edit-form" data-id="{{ $gasto->id }}">
                                 @csrf
-                                <button type="submit" class="boton-enviar">Editar</button>
+                                <button type="submit" class="boton-enviar" title="Editar Gasto">Editar</button>
                             </form>
                             <!-- Formulario para eliminar -->
                             <form action="{{ route('gastos.destroy', $gasto->id) }}" method="POST" class="delete-form" data-id="{{ $gasto->id }}">
                                 @csrf
                                 @method('DELETE')
-                                <button type="button" class="boton-eliminar open-delete-modal">Eliminar</button>
+                                <button type="button" class="boton-eliminar open-delete-modal" title="Eliminar Gasto">Eliminar</button>
                             </form>
                         </div>
                     </div>

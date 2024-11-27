@@ -45,6 +45,7 @@ Route::post('/gastos', [GastoController::class, 'store'])->middleware('auth')->n
 Route::get('/gastos/dashboard', [GastoController::class, 'index'])->middleware('auth')->name('gastos.dashboard');
 Route::put('gastos/{gasto}', [GastoController::class, 'update'])->name('gastos.update');
 Route::get('gastos/{gasto}/edit', [GastoController::class, 'edit'])->name('gastos.edit');
+Route::get('gastos/compartidos/{gastoCompartido}/edit', [GastoController::class, 'edit'])->name('gastos.compartidos.edit');
 Route::delete('gastos/{gasto}', [GastoController::class, 'destroy'])->name('gastos.destroy');
 
 // Funcionalidades adicionales de Gastos

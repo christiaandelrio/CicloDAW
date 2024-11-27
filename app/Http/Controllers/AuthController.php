@@ -15,48 +15,49 @@ class AuthController extends Controller
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8',
         ]);
-
+    
         // Crear un nuevo usuario
         $user = User::create([
             'name' => $validatedData['name'],
             'email' => $validatedData['email'],
             'password' => bcrypt($validatedData['password']),
         ]);
-
+    
         // Iniciar sesión automáticamente después de registrarse
         auth()->login($user);
-
-        // Redirigir al dashboard
-        return redirect()->route('dashboard')->with('success', 'Usuario registrado exitosamente.');
+    
+        // Redirigir al dashboard con un mensaje
+        return redirect()->route('dashboard')->with('mensaje_popup', 'Te has registrado correctamente, bienvenido!');
     }
-
+    
     // Iniciar sesión
     public function login(Request $request)
     {
+
         // Validar los datos del formulario de login
         $credentials = $request->validate([
             'email' => 'required|email',
             'password' => 'required',
         ]);
-
+    
         // Intentar iniciar sesión
         if (auth()->attempt($credentials)) {
-            return redirect()->route('dashboard')->with('success', 'Inicio de sesión exitoso.');
+            $nombreUsuario = auth()->user()->name; //Tengo que obtenerlo aquí dentro para que no sea null
+
+            return redirect()->route('dashboard')->with('mensaje_popup', 'Bienvenido, '.$nombreUsuario.'!');
         }
-        
-
+    
         // Si falla, redirigir de nuevo con un mensaje de error
-        return back()->withErrors([
-            'email' => 'Las credenciales no coinciden con nuestros registros.',
-        ]);
+        return back()->with('mensaje_popup', 'Credenciales incorrectas.');
     }
-
-    // Cerrar sesión
+    
+    //Cerrar sesión
     public function logout()
     {
         auth()->logout();
-        return redirect('/')->with('success', 'Has cerrado sesión correctamente.'); // Redirigir a la página principal
+        return redirect('/')->with('mensaje_popup', 'Has cerrado sesión correctamente.');
     }
+    
 
     
 }

@@ -118,7 +118,7 @@ body.dark .export-button{
 }
 
 body.dark .contenedor-create, body.dark .perfil-formulario,
-body.dark .contenedor-configuracion, body.dark .contenedor-generar{
+body.dark .contenedor-configuracion, body.dark .contenedor-generar, body.dark .contenedor-editar{
     background-color: #050B0D;
 }
 

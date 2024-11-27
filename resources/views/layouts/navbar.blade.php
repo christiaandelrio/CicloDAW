@@ -1,11 +1,11 @@
 <!-- Barra de navegación superior solo para usuarios no autenticados -->
+@guest
 <nav class="navbar-top">
-    @guest
     <div class="logo-container">
         <a href="{{ url('/') }}">
             <img src="{{ asset('images/logo.png') }}" alt="Logo" class="logo">
         </a>
-   </div>
+    </div>
     <div class="menu">
         <div class="menu-item">
             <a href="{{ route('login') }}" class="nav-link">Iniciar sesión</a>
@@ -14,9 +14,8 @@
             <a href="{{ route('register') }}" class="nav-link register-button">Registrarse</a>
         </div>
     </div>
-    @endguest
 </nav>
-
+@endguest
 
 <!-- Barra de navegación inferior solo para usuarios autenticados -->
 @auth
@@ -32,10 +31,15 @@
             <i class="fa-solid fa-plus"></i>
         </div>
 
-        <!-- Icono de usuario -->
-        <div class="menu-icon" id="user-icon" title="Mi perfil">
+        <div class="menu-icon" id="user-icon" title="Mi perfil" style="position: relative;">
             <i class="fas fa-user"></i>
+
+            <!-- Indicador de notificaciones -->
+            @if($invitacionesCount > 0) <!-- Cambiar $invitacionesPendientes a $invitacionesCount -->
+            <span class="notificacion-badge">{{ $invitacionesCount }}</span>
+            @endif
         </div>
+
     </div>
 
     <!-- Menú desplegable para Crear y opciones adicionales -->
@@ -90,3 +94,20 @@
 
 
 
+<style>
+    .notificacion-badge {
+        position: absolute;
+        top: -5px;
+        right: -10px;
+        background-color: #FF5722;
+        /* Color del badge */
+        color: white;
+        font-size: 0.8rem;
+        font-weight: bold;
+        border-radius: 50%;
+        padding: 5px 8px;
+        min-width: 20px;
+        text-align: center;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+</style>

@@ -13,7 +13,9 @@ use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use Illuminate\Support\Facades\Log;
 
-
+/**
+ * Controlador principal de la aplicación encargado de gestionar los gastos de los usuarios
+ */
 class GastoController extends Controller
 {
     public function index()
@@ -41,7 +43,11 @@ class GastoController extends Controller
     }
 
 
-
+    /**
+     * Método create empleado para crear nuevos gastos
+     *
+     * @return void
+     */
     public function create()
     {
         $user = Auth::user();
@@ -75,9 +81,12 @@ class GastoController extends Controller
         return view('gastos.create', compact('categorias', 'usuarios'));
     }
 
-
-
-
+    /**
+     * Método store empleado para almacenar los gastos creados
+     *
+     * @param Request $request
+     * @return void
+     */
     public function store(Request $request)
     {
         $user = Auth::user();
@@ -108,13 +117,26 @@ class GastoController extends Controller
         return redirect()->route('gastos.dashboard')->with('success', 'Gasto creado exitosamente.');
     }
 
-
-
-
+    /**
+     * Método edit empleado para modificar un gasto
+     *
+     * @param [type] $id
+     * @return void
+     */
     public function edit($id)
     {
-        // Buscar el gasto por su ID
-        $gasto = Gasto::findOrFail($id);
+        // Intentar encontrar el gasto como gasto compartido
+        $gastoCompartido = GastoCompartido::find($id);
+
+        if ($gastoCompartido) {
+            // Si se encuentra el gasto como gasto compartido
+            $gasto = $gastoCompartido->gasto; // Obtenemos el gasto relacionado
+            $esGastoCompartido = true;
+        } else {
+            // Si no se encuentra como gasto compartido, buscamos como gasto normal
+            $gasto = Gasto::findOrFail($id);
+            $esGastoCompartido = false;
+        }
 
         // Definir las categorías y sus iconos
         $categorias = [
@@ -125,10 +147,17 @@ class GastoController extends Controller
             'decoracion' => 'fas fa-couch',
         ];
 
-        // Retornar la vista de edición con los datos del gasto
-        return view('gastos.edit', compact('gasto', 'categorias'));
+        // Retornar la vista de edición con los datos del gasto o gasto compartido
+        return view('gastos.edit', compact('gasto', 'categorias', 'esGastoCompartido'));
     }
 
+    /**
+     * Método update empleado para actualizar un gasto modificado
+     *
+     * @param Request $request
+     * @param [type] $id
+     * @return void
+     */
     public function update(Request $request, $id)
     {
         // Validar los datos que llegan del formulario
@@ -151,7 +180,12 @@ class GastoController extends Controller
         return redirect()->route('gastos.dashboard')->with('success', 'Gasto actualizado con éxito.');
     }
 
-
+    /**
+     * Método empleado a la hora de eliminar un gasto determinado
+     *
+     * @param [type] $id
+     * @return void
+     */
     public function destroy($id)
     {
         // Buscar el gasto por su ID
@@ -207,12 +241,12 @@ class GastoController extends Controller
     public function getDashboardChartData()
     {
         $gastos = Gasto::where('user_id', Auth::id())->get();
-    
+
         // Agrupar los gastos por categoría
         $gastosPorCategoria = $gastos->groupBy('categoria')->map(function ($grupo) {
             return $grupo->sum('valor');
         });
-    
+
         // Agrupar los gastos por fecha para la gráfica de líneas
         $gastosPorFecha = $gastos->sortBy('fecha')->groupBy(function ($gasto) {
             // Verifica si la fecha es un objeto DateTime o una cadena
@@ -220,7 +254,7 @@ class GastoController extends Controller
         })->map(function ($grupo) {
             return $grupo->sum('valor');
         });
-    
+
         return response()->json([
             'categorias' => $gastosPorCategoria->keys(), // Ejemplo: ["comida", "transporte"]
             'valores' => $gastosPorCategoria->values(), // Ejemplo: [200, 100]
@@ -228,78 +262,134 @@ class GastoController extends Controller
             'valoresPorFecha' => $gastosPorFecha->values(), // Ejemplo: [200, 150]
         ]);
     }
-    
 
+    /**
+     * Métodos encargados del escaneo e inserción de gastos a través de un ticket
+     *
+     * @return void
+     */
     public function showEscanearRecibo()
     {
         return view('gastos.escanearRecibo');
     }
 
-
-
+    /**
+     * Se encarga de procesar la imagen obtenida comprobando formato, haciendo manejo de errores y asignando datos por defecto
+     *
+     * @param Request $request
+     * @return void
+     */
     public function processReceipt(Request $request)
     {
         try {
+            // Validar que se suba una imagen
             $request->validate([
                 'receipt' => 'required|image|mimes:jpeg,png,jpg|max:2048',
             ]);
 
+            // Guardar la imagen en el almacenamiento
             $path = $request->file('receipt')->store('receipts', 'public');
             $imagePath = storage_path("app/public/{$path}");
 
             // Procesar la imagen con Tesseract para extraer texto
             $tesseract = new TesseractOCR($imagePath);
-            $tesseract->executable('/usr/bin/tesseract');
-            $extractedText = $tesseract->lang('spa')->run();
+            $tesseract->executable('/usr/bin/tesseract'); 
+            $extractedText = $tesseract->lang('spa')->run(); //Incluye el diccionario de idioma español
 
-
-            // Extraer datos del ticket
+            // Extraer datos del texto del ticket
             $data = $this->parseReceiptText($extractedText);
 
-            // Crear el gasto en la base de datos
+            // Validar que se encontró un total válido
+            if (!$data['total'] || $data['total'] <= 0) {
+                return response()->json([
+                    'success' => false,
+                    'error' => 'No se detectó el total en el ticket. Intenta con otra imagen.',
+                ], 400);
+            }
+
+            // Crear el gasto
             Gasto::create([
-                'nombre_gasto' => $data['nombre'],
-                'valor' => $data['total'],
-                'fecha' => $data['fecha'],
-                'descripcion' => 'Ticket procesado automáticamente',
-                'categoria' => 'Compra',
                 'user_id' => Auth::id(),
+                'nombre_gasto' => $data['nombre'] ?: 'Gasto desconocido',
+                'tipo' => $data['tipo'] ?: 'General',
+                'valor' => $data['total'],
+                'fecha' => $data['fecha'] ?: now()->toDateString(),
+                'descripcion' => 'Procesado automáticamente',
+                'categoria' => 'Compra',
+                'es_compartido' => 0,
             ]);
 
             return response()->json([
                 'success' => true,
-                'message' => 'Gasto creado con éxito a partir del ticket',
+                'message' => 'Gasto creado con éxito a partir del ticket.',
             ]);
         } catch (\Exception $e) {
-            Log::error('Error en el procesamiento del ticket: ' . $e->getMessage());
+            Log::error('Error procesando el ticket: ' . $e->getMessage());
             return response()->json([
                 'success' => false,
-                'error' => 'Error en el procesamiento del ticket',
+                'error' => 'Error en el procesamiento del ticket.',
             ], 500);
         }
     }
 
-
-
+    /**
+     * Se encarga de parsear los datos del ticket, incluye un diccionario con palabras frecuentes
+     *
+     * @param [type] $text
+     * @return void
+     */
     private function parseReceiptText($text)
     {
-        // Implementa aquí la lógica de extracción de datos con expresiones regulares
-        $nombre = 'Nombre de tienda';
-        $total = 0.00;
-        $fecha = date('Y-m-d');
+        // Diccionario para deducir el nombre
+        $diccionario = [
+            'supermercado' => 'Supermercado',
+            'corte inglés' => 'El Corte Inglés',
+            'farmacia' => 'Farmacia',
+            'restaurante' => 'Restaurante',
+            'tienda' => 'Tienda',
+            'compra' => 'Compra',
+            'Mercadona' => 'Mercadona',
+            'A pagar' => 'Total',
+            'Eroski' => 'Eroski'
+        ];
 
-        // Ejemplo simple de extracción
-        if (preg_match('/Total:\s*([\d\.]+)/i', $text, $matches)) {
-            $total = floatval($matches[1]);
+        // Valores predeterminados
+        $nombre = 'Gasto desconocido';
+        $tipo = 'General';
+        $total = 0.00;
+        $fecha = now()->toDateString();
+
+        // Buscar el total en el texto
+        if (preg_match('/total.*?([\d.,]+)/i', $text, $matches)) {
+            $total = floatval(str_replace(',', '.', $matches[1]));
+        }
+
+        // Buscar fecha
+        if (preg_match('/(\d{2}[\/\-]\d{2}[\/\-]\d{4})/', $text, $matches)) {
+            $fecha = \Carbon\Carbon::parse(str_replace('/', '-', $matches[1]))->format('Y-m-d');
+        }
+
+        // Buscar el nombre en el diccionario
+        foreach ($diccionario as $clave => $valor) {
+            if (stripos($text, $clave) !== false) {
+                $nombre = $valor;
+                break;
+            }
         }
 
         return [
             'nombre' => $nombre,
+            'tipo' => $tipo,
             'total' => $total,
             'fecha' => $fecha,
         ];
     }
 
+    /**
+     * Se encarga de mostrar los gastos compartidos de un usuario, recuperados previamente
+     *
+     * @return void
+     */
     public function mostrarGastosCompartidos()
     {
         $user = Auth::user();
@@ -318,6 +408,11 @@ class GastoController extends Controller
         return view('gastos.compartidos', compact('gastosCompartidos'));
     }
 
+    /**
+     * Se encarga de generar la hoja de cálculo y asignar los datos de los gastos 
+     *
+     * @return void
+     */
     public function exportarGastos()
     {
         // Crear un nuevo objeto Spreadsheet
@@ -365,6 +460,11 @@ class GastoController extends Controller
         exit;
     }
 
+/**
+ * Maneja la lógica que se encarga de comprobar y actualizar si un usuario ha visto el tutorial inicial o no
+ *
+ * @return void
+ */
     public function marcarTutorialVisto()
     {
         try {
