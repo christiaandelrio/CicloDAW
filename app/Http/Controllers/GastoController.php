@@ -13,6 +13,7 @@ use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use Illuminate\Support\Facades\Log;
 
+
 /**
  * Controlador principal de la aplicación encargado de gestionar los gastos de los usuarios
  */
@@ -27,6 +28,7 @@ class GastoController extends Controller
             'transporte' => 'fas fa-bus',
             'ropa' => 'fas fa-tshirt',
             'decoracion' => 'fas fa-couch',
+            'medico'=>'fa-solid fa-hospital'
         ];
 
         $user = Auth::user();
@@ -52,14 +54,13 @@ class GastoController extends Controller
     {
         $user = Auth::user();
 
-        // Definir categorías de ejemplo
         $categorias = [
             'comida' => 'fas fa-utensils',
             'mascota' => 'fas fa-paw',
             'transporte' => 'fas fa-bus',
             'ropa' => 'fa-solid fa-shirt',
             'decoracion' => 'fas fa-couch',
-            // Agrega más categorías según necesites
+            'medico'=>'fa-solid fa-hospital'
         ];
 
 

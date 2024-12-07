@@ -53,5 +53,6 @@ class User extends Authenticatable
         return $this->hasMany(Gasto::class, 'shared_with_user_id');
     }
 
+    
 
 }

@@ -3,7 +3,7 @@
 @section('title', 'Gastos Compartidos')
 
 @section('content')
-<div class="contenedor-gastos">
+<div class="contenedor-gastos" id="contenedor-compartidos">
     <h2 class="card-title">Mis gastos compartidos</h2>
 
     @if($gastosCompartidos->isEmpty())

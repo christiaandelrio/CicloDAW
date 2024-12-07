@@ -140,6 +140,12 @@ ul li{
     border-radius: 5px;
     cursor: pointer;
     width: 100%;
+    margin-top:1rem;
+    transition: background-color 0.5s;
+}
+
+.boton-enviar:hover{
+    background-color: rgba(109, 139, 166, 0.7);
     transition: background-color 0.3s;
 }
 
@@ -151,6 +157,7 @@ ul li{
     border-radius: 5px;
     cursor: pointer;
     width: 100%;
+    margin-top:10px;
     transition: background-color 0.3s;
 }
 
@@ -224,4 +231,3 @@ tbody tr:hover {
     visibility: visible;
     transform: translateX(-50%) translateY(10px); /* Suave desplazamiento */
 }
-

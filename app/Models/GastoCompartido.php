@@ -9,7 +9,7 @@ class GastoCompartido extends Model
 {
     use HasFactory;
 
-    protected $table = 'gastos_compartidos'; // Asegúrate de que este sea el nombre correcto de la tabla
+    protected $table = 'gastos_compartidos'; 
 
     protected $fillable = [
         'gasto_id',

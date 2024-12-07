@@ -3,7 +3,7 @@
 @section('title', 'Mis Gastos')
 
 @section('content')
-<div class="contenedor-gastos">
+<div class="contenedor-gastos" id="contenedor-dashboard">
     <h2 class="titulo-tabla">Mis gastos</h2>
     @if ($mostrarTutorial)
     <div id="tutorial-modal" class="modal-overlay active">

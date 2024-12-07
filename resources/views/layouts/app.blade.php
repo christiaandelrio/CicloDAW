@@ -43,6 +43,7 @@
     <link rel="stylesheet" href="{{ asset('css/configuracion.css') }}">
     <link rel="stylesheet" href="{{ asset('css/generargraficas.css') }}">
     <link rel="stylesheet" href="{{ asset('css/editar.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/escanearRecibo.css') }}">
 
 
     <!-- Google Fonts -->

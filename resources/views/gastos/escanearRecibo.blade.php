@@ -4,7 +4,7 @@
 @section('title', 'Escanear Ticket de Compra')
 
 @section('content')
-<div class="contenedor-formulario">
+<div class="contenedor-formulario" id="contenedor-ticket">
     <h2 class="text-center">Escanea tu Ticket de Compra</h2>
     <div class="formulario">
         <!-- Botón para abrir la cámara o galería -->
@@ -12,7 +12,17 @@
         <input type="file" id="uploadReceipt" accept="image/*" capture="environment" style="display:none;">
     </div>
 </div>
-
+<div class="contenedor-imagenes">
+    <div class="tarjeta">
+        <img src="/images/ticket_fondo.jpg" alt="Imagen 1" class="imagen-tarjeta">
+    </div>
+    <div class="flecha">
+        <i class="fa-solid fa-arrow-right"></i>
+    </div>
+    <div class="tarjeta">
+        <img src="/images/finanzas.jpg" alt="Imagen 2" class="imagen-tarjeta">
+    </div>
+</div>
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         const captureButton = document.querySelector('#captureReceiptBtn');
