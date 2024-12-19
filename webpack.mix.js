@@ -20,11 +20,5 @@ mix.styles([
 ], 'public/css/all.css');
 
 mix.js('resources/js/app.js', 'public/js')
-   .js('resources/js/datatable.js', 'public/js')
-   .js('resources/js/modal.js', 'public/js')
-   .js('resources/js/primerospasos.js', 'public/js')
-   .js('resources/js/options-menu.js', 'public/js')
-   .js('resources/js/scroll.js', 'public/js')
-   .js('resources/js/graficas.js', 'public/js')
-   .js('resources/js/popup.js', 'public/js')
    .version();
+

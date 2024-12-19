@@ -1,11 +1,4 @@
 {
     "/js/app.js": "/js/app.js?id=204a6fdbbae93b69bd2fb386cd79d9c1",
-    "/js/datatable.js": "/js/datatable.js?id=42b9b743bcf8194bbc800b9106d21f41",
-    "/js/modal.js": "/js/modal.js?id=715caaae0ae0e19c069c710c14934427",
-    "/js/primerospasos.js": "/js/primerospasos.js?id=4dc64a8aeb64d04cf8d59803b65e84e4",
-    "/js/options-menu.js": "/js/options-menu.js?id=c1a0316a0d0f27ab5ff72adbff70b864",
-    "/js/scroll.js": "/js/scroll.js?id=f71567c9aa189c11d306dd320598b71e",
-    "/js/graficas.js": "/js/graficas.js?id=5865f0398f85fc070147c21bed0673f4",
-    "/js/popup.js": "/js/popup.js?id=3af6cafc9b15e3fd2b040850043d2b84",
     "/css/all.css": "/css/all.css?id=5beae5ea7b13217647af20775665e745"
 }
