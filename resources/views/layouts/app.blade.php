@@ -10,8 +10,7 @@
     <link rel="stylesheet" href="{{ mix('css/all.css') }}">
 
     <!-- Script Estilos Bootstrap-->
-    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Incluye Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" crossorigin="anonymous">
 
     <!-- CSS de DataTables -->
@@ -21,28 +20,13 @@
     <!-- JS de DataTables -->
     <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
 
-    <!-- Tu archivo JavaScript -->
-    <script src="{{ asset('js/datatable.js') }}"></script>
-    <script src="{{ asset('js/modal.js') }}"></script>
-    <script src="{{ asset('js/primerospasos.js') }}"></script>
-    <script src="{{ asset('js/options-menu.js') }}"></script>
-    <script src="{{ asset('js/scroll.js') }}"></script>
-    <script src="{{ asset('js/graficas.js') }}"></script>
-    <script src="{{ asset('js/popup.js') }}"></script>
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Muli:wght@300;400;600&family=Habibi&display=swap" rel="stylesheet">
 
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 
 <body class="@yield('body-class') {{ $darkMode ? 'dark' : '' }}">
-    <!-- <div class="logo-container">
-        <a href="{{ url('/') }}">
-            <img src="{{ asset('images/Logo_Proyecto.png') }}" alt="Logo" class="logo">
-        </a>
-   </div> -->
-    <!-- Popup de alerta -->
     @if(session('mensaje_popup'))
     <script>
         document.addEventListener("DOMContentLoaded", function() {
@@ -63,5 +47,14 @@
         @yield('content')
     </div>
 
+    <!-- Archivos JavaScript compilados -->
+    <script src="{{ mix('js/app.js') }}"></script>
+    <script src="{{ mix('js/datatable.js') }}"></script>
+    <script src="{{ mix('js/modal.js') }}"></script>
+    <script src="{{ mix('js/primerospasos.js') }}"></script>
+    <script src="{{ mix('js/options-menu.js') }}"></script>
+    <script src="{{ mix('js/scroll.js') }}"></script>
+    <script src="{{ mix('js/graficas.js') }}"></script>
+    <script src="{{ mix('js/popup.js') }}"></script>
 </body>
 </html>

@@ -1,6 +1,5 @@
 const mix = require('laravel-mix');
 
-// Aquí estamos combinando varios archivos CSS en un solo archivo
 mix.styles([
     'resources/css/app.css',
     'resources/css/footer.css',
@@ -20,6 +19,12 @@ mix.styles([
     'resources/css/escanearRecibo.css'
 ], 'public/css/all.css');
 
-// Configuración para el archivo JS (si es necesario)
 mix.js('resources/js/app.js', 'public/js')
-    .version();  // Para evitar problemas con el caché
+   .js('resources/js/datatable.js', 'public/js')
+   .js('resources/js/modal.js', 'public/js')
+   .js('resources/js/primerospasos.js', 'public/js')
+   .js('resources/js/options-menu.js', 'public/js')
+   .js('resources/js/scroll.js', 'public/js')
+   .js('resources/js/graficas.js', 'public/js')
+   .js('resources/js/popup.js', 'public/js')
+   .version();
