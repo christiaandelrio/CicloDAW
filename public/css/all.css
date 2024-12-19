@@ -1,0 +1,1859 @@
+/* Estilos principales de la aplicación */
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Fira+Sans+Condensed:wght@400;500&family=Amiko:wght@400;600&display=swap');
+
+
+
+/* Estilos generales */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #BFCDD9;
+    color: var(--text-color);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Encabezado */
+header {
+    font-family: 'Habibi', sans-serif;
+    text-align: center;
+    padding: 20px;
+    background-color: transparent;
+    color: var(--primary-color);
+}
+
+h1 {
+    font-size: 3rem; 
+    font-family: 'Fira Sans Condensed', sans-serif;
+    color: white; 
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    font-weight: bold;
+}
+
+h2{
+    color: #3B4013;
+    font-family: 'Fira Sans Condensed', sans-serif;
+    text-align: center;
+}
+
+hr {
+    border: 0;
+    height: 2px;
+    background-color: #fff;
+    margin: 20px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+p {
+    font-family: 'Amiko', sans-serif;
+}
+
+a{
+    text-decoration: none;
+    color: #43596c;
+}
+
+/*Estilos formularios*/
+.formulario{
+    width: clamp(300px, 40vw, 800px);
+    background-color: #FFFFFF;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    margin: 0 auto;
+    /* margin-top: 10px;
+    max-width: 600px; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+ul li{
+    list-style: none;
+    font-family: 'Amiko', sans-serif;
+    
+}
+
+.contenedor-formulario{
+    /* background-color: pink; */
+    display: flex;
+    flex-direction: column;
+    padding: 25vh;
+}
+
+.formulario form{
+    width: 100%;
+}
+
+.contenedor-formulario a{
+    text-align: center;
+    margin: 20px auto;
+}
+
+.formulario .formulario-grupo{
+    /* background-color: pink; */
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+}
+
+.formulario .formulario-grupo .formulario-label{
+    color: #0D0D0D;
+}
+
+.formulario .formulario-grupo .formulario-input{
+    width: 100%;
+    height: 2rem;
+    margin: 10px 0;
+    border: 1px solid #BFD1C9;
+    border-radius: 5px;
+    background-color: #ecf1f6;
+}
+
+.formulario .formulario-grupo .formulario-descripcion{
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #BFD1C9;
+    border-radius: 5px;
+    background-color: #F2EFDF;
+}
+
+.formulario .formulario-grupo .formulario-select{
+    color: #0D0D0D;
+    background-color: #ecf1f6;
+    border: 1px solid #BFD1C9;
+    border-radius: 5px;
+    padding:8px;
+    margin: 10px auto;
+}
+
+.boton-enviar{
+    background-color: #6D8BA6;
+    color: #FFFFFF;
+    padding: 10px 0;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    margin-top:1rem;
+    transition: background-color 0.5s;
+}
+
+.boton-enviar:hover{
+    background-color: rgba(109, 139, 166, 0.7);
+    transition: background-color 0.3s;
+}
+
+.boton-eliminar{
+    background-color: #BF3326;
+    color: #FFFFFF;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    margin-top:10px;
+    transition: background-color 0.3s;
+}
+
+
+.tabla-gastos {
+    width: 100%;
+    max-width: 1000px;
+    border-collapse: separate;
+    border-spacing: 0 10px; /* Espaciado entre filas */
+    background-color: #F2F4F5;
+}
+
+/* Encabezado de la tabla */
+thead {
+    background-color: var(--primary-color); /* Verde pastel oscuro */
+    color: #FFFFFF;
+    text-align: center;
+    font-weight: bold;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+    padding: 12px;
+    text-align: center;
+    border: none; /* Remueve los bordes para unificar visualmente las celdas */
+}
+
+/* Filas de la tabla */
+tbody tr {
+    background-color: #ffffff; /* Color de fondo para las filas */
+    border-radius: 8px; /* Bordes redondeados en cada fila */
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Sombra para destacar cada fila */
+    transition: transform 0.3s ease, background-color 0.3s ease; /* Transición suave para el efecto de crecimiento */
+    border-radius: 15px;
+}
+
+/* Colores de fondo alternos */
+tbody tr:nth-child(even) {
+    background-color: #e6e7e8;
+}
+
+/* Efecto de hover en toda la fila */
+tbody tr:hover {
+    transform: scale(1.02); /* Efecto de agrandamiento en toda la fila */
+    background-color: #F0F4F7; /* Cambia el color de fondo al hacer hover */
+}
+
+/* Popup de alerta */
+.popup-alerta {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    padding: 15px 30px; /* Ajusta el tamaño del padding */
+    font-size: 1rem;
+    color: #333;
+    z-index: 1000;
+    border: 1px solid #ddd;
+    text-align: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Estado de visibilidad */
+.popup-alerta.mostrar {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(10px); /* Suave desplazamiento */
+}
+
+/* Estilos para el footer */
+footer {
+    font-family: 'Roboto', sans-serif;
+    background-color: #363535;
+    color: #fff;
+    font-size: 0.9em;
+    padding: 20px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.footer-encabezado {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+}
+
+.footer-header .brand-info {
+    font-size: 1em;
+}
+
+.social-icons {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    margin-top: 5px;
+}
+
+.social-icons a {
+    color: #fff;
+    font-size: 24px;
+    text-decoration: none;
+}
+
+.social-icons a:hover {
+    color: #bfbcbb;
+}
+
+/* Sección de enlaces */
+.footer-contenido {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    font-size: 0.9em;
+}
+        
+.footer-contenido div {
+    flex: 1;
+    min-width: 150px;
+    margin-bottom: 10px;
+}
+        
+.footer-contenido h4 {
+    font-size: 1em;
+    margin-bottom: 10px;
+}
+        
+.footer-contenido ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+        
+.footer-contenido ul li {
+    margin: 5px 0;
+}
+        
+.footer-contenido ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+        
+.footer-contenido ul li a:hover {
+    color: #bfbcbb;
+}
+
+.copyright {
+    text-align: center;
+    font-size: 0.8em;
+    color: #999;
+    margin-top: 10px;
+}
+/* Barra de navegación inferior */
+nav.navbar-bottom {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px 0;
+    z-index: 1000;
+}
+
+/* Estilos para la Navbar */
+.navbar-top {
+    display: flex;
+    justify-content: space-between; /* Alinea el logo a la izquierda y los enlaces a la derecha */
+    align-items: center;
+    position: fixed; /* Posiciona la navbar de manera fija */
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.284); /* Fondo semi-transparente */
+    z-index: 1000; /* Asegura que la navbar esté por encima de otros elementos */
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+/*Estilos para el logo*/
+.logo-container img{
+    height: clamp(50px, 2vh , 75px);
+    margin-top: 20px;
+    margin-left: clamp(5px, 2vw, 15px);
+    
+}
+
+.logo {
+    object-fit: contain;
+}
+
+.navbar-top .menu {
+    display: flex;
+    justify-content: flex-end; /* Alinea los elementos a la derecha */
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+}
+
+.navbar-top .menu-item {
+    margin-left: 10px; /* Añade espacio entre los elementos */
+    margin-right: 20px;
+    font-size: 20px;
+}
+
+.navbar-top .menu-item .nav-link {
+    color: #ffffff; /* Color del texto */
+    text-decoration: none;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Sombra del texto */
+}
+
+
+.navbar-top .menu-item .nav-link:hover {
+    color: #BF5F56; /* Un tono más oscuro al pasar el ratón */
+}
+
+/* Estilo para el botón de registrarse */
+.navbar-top .menu-item .register-button {
+    background-color: #FFFFFF; /* Fondo blanco */
+    color: #000000; /* Texto negro */
+    border-radius: 40px; /* Esquinas redondeadas */
+    padding: 10px 20px; /* Relleno interno */
+    text-decoration: none; /* Sin subrayado */
+    border: 1px solid #BF5F56; /* Borde verde */
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.navbar-top .menu-item .register-button:hover {
+    background-color: #BF5F56; /* Fondo verde al pasar el ratón */
+    color: #FFFFFF; /* Texto blanco al pasar el ratón */
+}
+
+
+/* Navbar inferior (autenticados) */
+.navbar-bottom .menu-icons {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+/* Estilos para el menú de opciones */
+.options-menu {
+    display: none; /* Oculto por defecto */
+    position: absolute;
+    top: 100%; /* Posiciona el menú justo debajo del botón */
+    left: 0; /* Alinear a la izquierda */
+    width: 120px; /* Ajusta el ancho */
+    background-color: #FFFFFF;
+    border-radius: 5px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 999;
+    opacity: 0.9;
+    padding: 10px;
+}
+
+
+/* Estilos para los enlaces del menú de opciones */
+.options-menu ul {
+    list-style-type: none; /* Sin viñetas */
+    padding: 0; /* Sin relleno */
+    margin: 0; /* Sin márgenes */
+}
+
+.options-menu ul li {
+    margin-bottom: 10px; /* Espacio entre los elementos */
+}
+
+.options-menu ul li a {
+    display: block; /* Mostrar como bloque para que ocupe toda el área */
+    padding: 5px 10px; /* Espaciado interno */
+    color: #BF5F56; /* Color verde */
+    text-decoration: none; /* Sin subrayado */
+    transition: background-color 0.3s; /* Transición suave */
+}
+
+.options-menu ul li a:hover {
+    background-color: #f0f0f0; /* Fondo gris al pasar el mouse */
+}
+
+/* Estilo para el botón de eliminar */
+.options-menu ul li button {
+    color: #BF5F56; /* Color del texto */
+    cursor: pointer; /* Cambiar cursor al pasar */
+    background: none; /* Sin fondo */
+    border: none; /* Sin borde */
+    padding: 0; /* Sin relleno */
+    text-align: left; /* Alinear el texto a la izquierda */
+}
+
+/* Menú de usuario */
+.user-menu, .search-menu {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+}
+
+/* Iconos del menú */
+.menu-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px; /* Ajusta el tamaño según sea necesario */
+    height: 60px; /* Ajusta el tamaño según sea necesario */
+    margin: 0 10px; /* Añade separación entre los íconos */
+    border-radius: 50%;
+    background-color: #FFFFFF;
+    color: #BF5F56; /* Color verde para las figuras */
+    font-size: 24px;
+    transition: background-color 0.3s, color 0.3s, transform 0.3s;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.menu-icon:hover {
+    background-color: #a0443c;
+    color: #FFFFFF;
+    transform: scale(1.1);
+}
+
+/* Menú de búsqueda */
+.search-menu, .user-menu {
+    display: none;
+    position: fixed;
+    bottom: 100px; /* Incrementa la separación desde el botón */
+    left: 40%; /* Reduce el ancho del menú */
+    right: 40%; /* Reduce el ancho del menú */
+    background-color: #FFFFFF;
+    border-radius: 5px;
+    box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 999;
+    opacity: 0.9;
+    padding: 10px; /* Reduce el padding para minimizar el espacio */
+    text-align: center;
+    max-width: 300px; /* Ancho máximo en pantallas grandes */
+    margin: 0 auto; /* Centra el menú en caso de que se necesite */
+}
+
+
+
+/* Enlaces del menú de búsqueda */
+.search-menu ul, .user-menu ul {
+    list-style-type: none; /* Sin puntos de lista */
+    display: flex;
+    flex-direction: column; /* Coloca los enlaces en una columna */
+    align-items: center; /* Centra los enlaces dentro del menú */
+    padding: 0;
+    margin: 0;
+}
+
+.search-menu ul li, .user-menu ul li {
+    margin-bottom: 10px; /* Añade espacio entre los enlaces */
+}
+
+.search-menu ul li a, .user-menu ul li a {
+    display: block;
+    padding: 5px 15px; /* Reduce el padding */
+    font-size: 18px; /* Tamaño de fuente más pequeño */
+    color: #BF5F56; /* Color verde */
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.search-menu ul li a:hover, .user-menu ul li a:hover {
+    color: #a0443c; /* Un tono más oscuro al pasar el ratón */
+}
+* {
+    box-sizing: border-box;
+}
+
+/* Evitar desbordamiento en dispositivos móviles */
+body {
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilo de la primera sección con imagen de fondo */
+.first-section {
+    background-image: url('/images/business-861325_1280.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 2rem;
+    text-align: center;
+}
+
+/* Estilo de la segunda sección con fondo blanco */
+.second-section {
+    background-color: #BFCDD9;
+    padding-top: 50px;
+}
+
+/* Efecto de desvanecimiento para la visibilidad de las gráficas */
+.chart-container, .description-article {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.chart-container.visible, .description-article.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.home-container {
+    width: clamp(300px, 80vw, 1200px);
+    margin: 100px auto;
+}
+
+/* Contenedor de gráficas y tablas */
+.chart-container {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.chart {
+    flex: 1;
+    margin: 10px;
+    background-color: #FFFFFF;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.description-article {
+    flex: 1;
+    background-color: #E0E0E0;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    background-color: #F2F4F5;
+}
+
+/* Estilos de la gráfica */
+canvas {
+    width: 100% !important;
+    height: auto !important;
+}
+
+/* Media queries */
+
+/* Pantallas grandes (1024px y superiores) */
+@media (min-width: 1024px) {
+    .first-section h1 {
+        font-size: 3rem;
+    }
+    .home-container {
+        margin: 150px auto;
+    }
+}
+
+/* Tablets y pantallas medianas (768px a 1023px) */
+@media (max-width: 1023px) {
+    .first-section {
+        font-size: 1.5rem;
+        padding: 20px;
+    }
+    .chart-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .chart, .description-article {
+        width: 90%;
+        margin: 20px 0;
+    }
+}
+
+/* Teléfonos móviles (menores a 768px) */
+@media (max-width: 767px) {
+    .first-section {
+        font-size: 1.2rem;
+        padding: 10px;
+        text-align: center;
+    }
+    .home-container {
+        width: 90%;
+        margin: 50px auto;
+    }
+    .chart-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .chart, .description-article {
+        width: 100%;
+        margin: 15px 0;
+        padding: 15px;
+        font-size: 0.9rem;
+    }
+    .second-section {
+        padding-top: 30px;
+    }
+}
+
+
+@media (max-width: 600px) {
+    .options-menu {
+        width: auto; /* Ajustar el ancho */
+        max-width: 300px; /* Ancho máximo */
+        min-width: 200px; /* Ancho mínimo */
+        right: 10px; /* Desplaza hacia la derecha */
+        top: 40px;
+        margin: 0;
+        padding: 15px;
+        background-color: #fff; /* Fondo blanco */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra suave */
+        border-radius: 8px; /* Bordes redondeados */
+        z-index: 10;
+    }
+
+    .options-menu ul {
+        list-style: none; /* Eliminar puntos de lista */
+        padding: 0;
+        margin: 0;
+    }
+
+    .options-menu ul li {
+        padding: 8px 12px; /* Espaciado interno */
+        border-bottom: 1px solid #ddd; /* Línea inferior */
+    }
+
+    .options-menu ul li:last-child {
+        border-bottom: none; /* Eliminar línea inferior del último elemento */
+    }
+
+    .options-menu ul li a,
+    .options-menu ul li button {
+        font-size: 16px;
+        padding: 8px 12px;
+        text-align: left; /* Alineación a la izquierda */
+        color: #333; /* Color del texto */
+        background: none; /* Fondo transparente */
+        border: none; /* Sin bordes */
+        width: 100%; /* Ancho completo */
+        display: block; /* Mostrar como bloque */
+    }
+
+    .options-menu ul li a:hover,
+    .options-menu ul li button:hover {
+        background-color: #f0f0f0; /* Fondo al pasar el ratón */
+    }
+
+    .btn-container {
+        position: relative;
+        text-align: center;
+    }
+
+    .options-icon {
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-size: 1.5rem; /* Tamaño del icono */
+        color: #333; /* Color del icono */
+    }
+
+    .search-menu{
+        padding: 70px;
+    }
+
+    .user-menu{
+        padding: 70px;
+    }
+
+    .register-button {
+        width: 70%; /* Ajusta al 90% del ancho de la pantalla */
+        max-width: 100px; /* Evita que sea demasiado grande */
+        margin: 0 auto; /* Centra horizontalmente */
+        padding:20px 20px; /* Espaciado interno */
+        font-size: 16px; /* Tamaño adecuado del texto */
+        text-align: center; /* Centra el texto */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+    }
+
+}
+
+@media (max-width: 768px) {
+    .chart-container {
+        flex-direction: column;
+        width: 100%;
+        margin-bottom: 20px;
+        display: flex; 
+        justify-content: space-around; 
+        align-items: center; 
+        flex-wrap: wrap; 
+        gap: 20px; 
+        margin-top: 50px;
+    }
+
+    .chart, .description-article {
+        width: 100%;
+        margin: 0;
+    }
+
+    nav.navbar-bottom {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .menu-icon {
+        width: 50px;
+        height: 50px;
+    }
+
+    .dashboard-container {
+        padding: 20px;
+        margin-top: 10px;
+        overflow-y: auto;
+    }
+}
+
+
+#contenedor-dashboard{
+  max-width: 100vw;
+}
+
+.contenedor-gastos{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+  
+  .export-button {
+    margin-bottom: 20px;
+    padding: 10px 15px;
+    background-color: #BF5F56;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    display: inline-block;
+    font-weight: bold;
+  }
+  
+  .export-button:hover {
+    background-color: #BF3326;
+  }
+  
+  /* Estilo para las filas de los gastos */
+  .tabla-gastos {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: transparent;
+  }
+  
+  .gasto-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #e1e9f0;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+  }
+  
+  .gasto-row:nth-child(even) {
+    background-color: #d0e1e9; /* Color alternado para las filas */
+  }
+  
+  .gasto-cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .gasto-cell i {
+    font-size: 20px;
+  }
+  
+  .gasto-cell.acciones {
+    justify-content: flex-end;
+  }
+  
+  .gasto-cell.nombre-gasto,
+  .gasto-cell.tipo,
+  .gasto-cell.valor,
+  .gasto-cell.fecha,
+  .gasto-cell.descripcion {
+    font-size: 1rem;
+  }
+  
+  .gasto-cell.valor {
+    font-weight: bold;
+  }
+  
+  /* Estilos para el botón de opciones */
+  .btn-container {
+    position: relative;
+  }
+  
+  .options-icon {
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .options-menu {
+    position: absolute;
+    top: -30px; /* Cambiar esto*/
+    left: -20px; /* Cambiar esto*/
+    background-color: #fff;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: none;
+    padding: 10px;
+    z-index: 10;
+  }
+  
+  .options-menu ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .options-menu ul li {
+    margin: 5px 0;
+  }
+  
+  .options-menu ul li a,
+  .options-menu ul li button {
+    text-decoration: none;
+    color: #333;
+    padding: 5px 10px;
+    border: none;
+    background: none;
+    cursor: pointer;
+  }
+  
+  .options-menu ul li button {
+    color: #BF5F56;
+  }
+  
+  .options-menu ul li a:hover,
+  .options-menu ul li button:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .options-icon:hover + .options-menu {
+    display: block;
+  }
+  
+  /* Estilos para la card en caso de no haber gastos */
+  .card {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .description h2 {
+    color: #333;
+    font-size: 1.5rem;
+  }
+  
+  .description p {
+    color: #666;
+    font-size: 1rem;
+  }
+  
+  .contenedor-graficas {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start; /* Cambiado a flex-start para alinear las gráficas en la parte superior */
+    gap: 20px; /* Espaciado entre las gráficas */
+    margin-bottom: 20px;
+    flex-wrap: nowrap; /* Evita el wrap para mantener las gráficas en una fila */
+}
+
+.grafica {
+    flex: 1; /* Asegura que cada gráfica tenga un tamaño proporcional */
+    max-width: 33%; /* Cada gráfica ocupará un tercio del contenedor */
+    height: 300px; /* Ajusta la altura de las gráficas */
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    background-color: #fff; /* Fondo blanco */
+    padding: 10px;
+    box-sizing: border-box; /* Incluye padding y borde en el tamaño total */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.grafica canvas {
+    width: 100% !important; /* Asegura que el canvas ocupe todo el ancho del contenedor gráfico */
+    height: 100% !important; /* Asegura que el canvas ocupe todo el alto del contenedor gráfico */
+}
+
+.paginacion {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.paginacion .pagination {
+  display: flex;
+  justify-content: center;
+  gap: 8px; 
+}
+
+.paginacion .page-item {
+  list-style: none;
+}
+
+.paginacion .page-item .page-link {
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  color: #333;
+  padding: 8px 12px;
+  text-decoration: none;
+  font-size: 0.875rem;
+}
+
+.paginacion .page-item .page-link:hover {
+  background-color: #ddd;
+  color: #000;
+}
+
+.paginacion .page-item.active .page-link {
+  background-color: #586F8C;
+  border-color: #F0F2F2;
+  color: #fff;
+}
+
+.paginacion .page-link:hover {
+  background-color: rgba(109, 139, 166, 0.7);
+  transition: background-color 0.3s;
+}
+
+@media (max-width: 600px) {
+  .paginacion .pagination {
+    gap: 4px; 
+  }
+
+  .paginacion .page-item .page-link {
+    padding: 6px 10px;
+    font-size: 0.75rem;
+  }
+}
+
+/* Pantallas medianas (tablets) */
+@media (max-width: 768px) {
+    .contenedor-formulario {
+        padding: 20px;
+        margin-top: 100px; /* Aumenta el margen superior para una mayor separación */
+    }
+    .formulario {
+        padding: 20px;
+    }
+    .formulario h2 {
+        font-size: 1.6rem;
+    }
+}
+
+/* Pantallas pequeñas (móviles) */
+@media (max-width: 480px) {
+    .contenedor-formulario {
+        padding: 10px;
+        margin-top: 120px; /* Mayor margen superior para móviles */
+    }
+    .formulario {
+        padding: 15px;
+    }
+    .formulario h2 {
+        font-size: 1.4rem;
+    }
+    .formulario-input, .boton-enviar {
+        padding: 8px;
+        font-size: 0.9rem;
+    }
+}
+
+
+#contenedor-compartidos{
+    max-width: 100vw;
+}
+
+.contenedor-gastos {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    overflow-y: auto;
+    margin-bottom: 100px;
+}
+
+.tarjeta-gastos {
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+.gasto-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-radius: 6px;
+    margin-bottom: 10px;
+}
+
+.header {
+    font-weight: bold;
+    background-color: #e9ecef;
+}
+
+.gasto-cell {
+    flex: 1;
+    text-align: center;
+}
+
+.scroll-indicator {
+    position: fixed;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.scroll-dot {
+    width: 10px;
+    height: 10px;
+    background-color: #6D8BA6;
+    border-radius: 50%;
+    transition: background-color 0.3s;
+}
+
+.scroll-dot.active {
+    background-color:#BF3326;
+}
+
+@media (max-width: 1024px) {
+    .contenedor-gastos {
+        padding: 15px; /* Reducir padding */
+        max-width: 90%; /* Limitar ancho */
+    }
+    
+    .tarjeta-gastos {
+        padding: 10px; /* Reducir padding */
+        margin-bottom: 15px; /* Menos espacio entre tarjetas */
+    }
+
+    .gasto-row {
+        padding: 8px; /* Reducir espacio interno */
+    }
+
+    .scroll-indicator {
+        right: 8px; /* Ajustar posición en pantalla */
+    }
+}
+
+/* Ajuste para pantallas pequeñas (smartphones hasta 768px) */
+@media (max-width: 768px) {
+    .contenedor-gastos {
+        padding: 10px;
+        max-width: 100%; /* Ancho completo */
+        overflow-y: visible; /* Limitar el scroll automático */
+    }
+    
+    .tarjeta-gastos {
+        padding: 8px;
+        margin-bottom: 12px;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Reducir sombra */
+    }
+
+    .gasto-row {
+        flex-direction: column; /* Apilar items verticalmente */
+        align-items: flex-start;
+        padding: 5px;
+    }
+
+    .gasto-cell {
+        text-align: left; /* Alinear al inicio */
+        padding: 5px 0;
+    }
+
+    .scroll-indicator {
+        right: 5px;
+    }
+
+    .scroll-dot {
+        width: 8px;
+        height: 8px; /* Reducir tamaño */
+    }
+}
+
+/* Ajuste para pantallas extra pequeñas (smartphones verticales hasta 480px) */
+@media (max-width: 480px) {
+    .contenedor-gastos {
+        padding: 8px;
+    }
+    
+    .tarjeta-gastos {
+        padding: 5px;
+        margin-bottom: 10px;
+        border-radius: 5px; /* Redondeado más pequeño */
+    }
+
+    .gasto-row {
+        padding: 4px;
+        margin-bottom: 8px;
+    }
+
+    .scroll-indicator {
+        gap: 5px;
+    }
+
+    .scroll-dot {
+        width: 6px;
+        height: 6px;
+    }
+}
+/* Fondo general de la tarjeta */
+.perfil-formulario .formulario {
+    background-color:#f9f9f9; /* Celeste pastel */
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Centrado del formulario */
+.perfil-formulario {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
+    padding: 20px;
+    background-color: #BFCDD9; /* Rojo salmón */
+    color: #050B0D; /* Negro azabache */
+}
+
+/* Encabezados y texto */
+.perfil-formulario h2,
+.perfil-formulario h4 {
+    margin: 0 0 20px;
+    text-align: center;
+    color: #050B0D; /* Negro azabache */
+    font-family: 'Roboto', sans-serif;
+}
+
+.perfil-formulario .formulario-label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+    color: #586F8C; /* Azul grisáceo */
+}
+
+.perfil-formulario p {
+    color: #050B0D; /* Negro azabache */
+}
+
+/* Lista de invitaciones */
+.perfil-formulario ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.perfil-formulario ul li {
+    margin-bottom: 15px;
+    color: #050B0D; /* Negro azabache */
+}
+
+/* Botones circulares */
+.perfil-formulario .boton-icono {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    margin: 0 5px;
+    border: 2px solid #586F8C; /* Azul grisáceo */
+    border-radius: 50%;
+    background-color: #BFCDD9; /* Celeste pastel */
+    color: #050B0D; /* Negro azabache */
+    font-size: 18px;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.perfil-formulario .boton-icono i {
+    pointer-events: none;
+}
+
+/* Hover para los botones */
+.perfil-formulario .boton-icono:hover {
+    background-color: #6D8BA6; /* Azul acero */
+    color: #FFF; /* Blanco */
+}
+
+.perfil-formulario .boton-icono[name="accion"][value="aceptar"]:hover {
+    background-color: #BF3326; /* Rojo brillante */
+}
+
+.perfil-formulario .boton-icono[name="accion"][value="rechazar"]:hover {
+    background-color: #BF5F56; /* Rojo salmón */
+}
+
+/* Formulario de envío de invitaciones */
+.perfil-formulario .formulario-input {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #586F8C; /* Azul grisáceo */
+    border-radius: 5px;
+    margin-bottom: 10px;
+    background-color: #FFF;
+    color: #050B0D; /* Negro azabache */
+    box-sizing: border-box;
+}
+
+.perfil-formulario .boton-enviar {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #6D8BA6; /* Azul acero */
+    color: #FFF; /* Blanco */
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.perfil-formulario .boton-enviar:hover {
+    background-color: #586F8C; /* Azul grisáceo */
+}
+
+/* Bordes para formularios secundarios */
+.perfil-formulario form {
+    border-top: 1px solid #586F8C; /* Azul grisáceo */
+    padding-top: 10px;
+    margin-top: 10px;
+}
+
+/* Estilos para el modo oscuro */
+body.dark {
+    background-color: #050b0d; /* Fondo principal */
+    color: #f0f2f2; /* Texto principal */
+}
+
+body.dark h1,
+body.dark h2 {
+    color: #f0f2f2; /* Encabezados */
+}
+
+body.dark .navbar {
+    background-color: #050b0d; /* Fondo de la barra de navegación */
+    color: #f0f2f2; /* Texto de la barra de navegación */
+    border-bottom: 1px solid #0d2626; /* Línea inferior */
+}
+
+body.dark .gasto-row {
+    background-color: #5f7373; /* Fondo de las filas */
+    border-radius: 10px;
+    margin-bottom: 10px; /* Espaciado entre filas */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra sutil */
+    color: #f0f2f2; /* Texto de las filas */
+}
+
+body.dark .gasto-row:nth-child(even) {
+    background-color: #0d2626; /* Color alternado para las filas pares */
+}
+
+body.dark p,
+body.dark li,
+body.dark a {
+    color: #a1a5a6; /* Texto general y enlaces */
+}
+
+body.dark a:hover {
+    color: #f0f2f2; /* Enlaces al pasar el mouse */
+    text-decoration: underline;
+}
+
+body.dark .formulario {
+    background-color: #5f7373; /* Fondo del formulario */
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Sombra para destacar */
+}
+
+body.dark .formulario label {
+    color: #f0f2f2; /* Texto de etiquetas en el formulario */
+}
+
+body.dark .formulario input,
+body.dark .formulario textarea,
+body.dark .formulario select {
+    background-color: #0d2626; /* Campos de entrada */
+    color: black; /* Texto en los campos */
+    border: 1px solid #5f7373; /* Borde de los campos */
+    border-radius: 5px;
+    padding: 8px;
+}
+
+body.dark .formulario input:focus,
+body.dark .formulario textarea:focus,
+body.dark .formulario select:focus {
+    border-color: #f0f2f2; /* Borde al enfocar */
+    outline: none;
+}
+
+body.dark .btn {
+    background-color: transparent; /* Fondo del botón */
+    color: #f0f2f2; /* Texto del botón */
+    border: 1px solid #5f7373; /* Borde del botón */
+    border-radius: 5px;
+    padding: 10px 20px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.dark .btn:hover {
+    background-color: #5f7373; /* Fondo al pasar el mouse */
+    color: #050b0d; /* Texto al pasar el mouse */
+}
+
+body.dark .saldo-mensaje {
+    background-color: #0d2626; /* Fondo del mensaje */
+    color: #f0f2f2; /* Texto del mensaje */
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); /* Sombra sutil */
+}
+
+body.dark .modal-overlay {
+    background-color: rgba(
+        5,
+        11,
+        13,
+        0.8
+    ); /* Fondo del modal semi-transparente */
+    color: #f0f2f2; /* Texto del modal */
+}
+
+body.dark .modal-content {
+    background-color: #0d2626; /* Fondo del contenido del modal */
+    border-radius: 10px;
+    padding: 20px;
+    color: #f0f2f2; /* Texto dentro del modal */
+}
+
+body.dark .tarjeta-gastos {
+    background-color: #5f7373;
+}
+
+body.dark .tarjeta-gastos .gasto-row {
+    background-color: #f0f2f2;
+    color: #050b0d;
+}
+
+body.dark div.grafica {
+    background-color: #5f7373;
+    color: #f0f2f2;
+}
+
+body.dark .export-button {
+    color: #f0f2f2;
+    background-color: #0d2626;
+}
+
+body.dark .contenedor-create,
+body.dark .perfil-formulario,
+body.dark .contenedor-configuracion,
+body.dark .contenedor-generar,
+body.dark .contenedor-editar {
+    background-color: #050b0d;
+}
+
+body.dark input.input-porcentaje {
+    color: #f0f2f2;
+}
+
+body.dark .paginacion {
+    text-align: center;
+    margin-top: 20px; /* Añade margen para que no esté pegado a la tabla*/
+}
+
+body.dark .paginacion .pagination {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+
+body.dark .paginacion .page-item {
+    list-style: none;
+}
+
+body.dark .paginacion .page-item .page-link {
+    background-color: #f0f0f0; /* Fondo claro */
+    border: 1px solid #ccc; /* Borde gris */
+    border-radius: 4px;
+    color: #333; /* Texto negro */
+    padding: 8px 12px; /* Tamaño del botón */
+    text-decoration: none;
+    font-size: 0.875rem; /* Tamaño del texto */
+}
+
+body.dark .paginacion .page-item .page-link:hover {
+    background-color: #ddd; /* Fondo más oscuro al pasar el cursor */
+    color: #000; /* Texto más oscuro */
+}
+
+body.dark .paginacion .page-item.active .page-link {
+    background-color: #5f7373; /* Fondo azul para el elemento activo */
+    border-color: #f0f2f2;
+    color: #fff; /* Texto blanco */
+}
+
+body.dark .paginacion .page-link:hover {
+    background-color: rgba(109, 139, 166, 0.7);
+    transition: background-color 0.3s;
+}
+
+body.dark .boton-enviar{
+    background-color: #0d2626;
+}
+
+body.dark i{
+    color: #5f7373;    
+}
+/*Estilos para el modal de confirmación al eliminar */
+#contenedor-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease;
+    z-index: 9999;
+}
+
+#contenedor-modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+#modal-confirmation {
+    background: #fff;
+    padding: 20px;
+    max-width: 300px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.modal-header h3 {
+    margin: 0;
+    color: #BF5F56;
+    font-weight: normal;
+}
+
+#modal-buttons {
+    margin-top: 15px;
+}
+
+.modal-button {
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#modal-button-yes {
+    background: #BF5F56;
+    color: #fff;
+    border: none;
+    margin-left: 10px;
+}
+#modal-button-no {
+    background: #ccc;
+    border: none;
+}
+
+
+/*Estilos modal tutorial primeros pasos*/
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro */
+    display: none; /* Inicialmente está oculto */
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.modal-overlay.active {
+    display: flex; /* Mostrar cuando se activa */
+}
+
+
+.modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 400px;
+    text-align: center;
+}
+
+.carousel-slide {
+    display: none;
+}
+
+.carousel-slide.active {
+    display: block;
+}
+
+.boton-siguiente, .boton-anterior, #finalizar-tutorial {
+    margin: 10px 5px;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    color: #fff;
+}
+
+.boton-siguiente {
+    background-color: #4CAF50;
+}
+
+.boton-anterior {
+    background-color: #888;
+}
+
+#finalizar-tutorial {
+    background-color: #f44336;
+}
+
+/* Centrado del contenedor principal */
+.contenedor-create {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - 70px); /* Resta la altura aproximada de la barra de navegación */
+    padding: 20px;
+    background-color: #BFCDD9; /* Fondo de la página */
+    color: #050B0D; /* Negro azabache */
+    margin-top: 0px; /* Asegura que el contenido comience después de la barra */
+}
+
+/* Estilo del encabezado H2 fuera de la tarjeta */
+.contenedor-create h2 {
+    margin-bottom: 20px;
+    color: #050B0D;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Fondo blanco para el formulario */
+.contenedor-create .formulario {
+    background-color: #FFF;
+    border-radius: 10px;
+    padding: 20px;
+    max-width: 600px;
+    width: 100%;
+    box-sizing: border-box;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#shared_with{
+ position: relative;
+ z-index: 10;
+ top: 10px;
+ left: 10px;
+ padding: 10px 40px;
+ 
+}
+
+/* Centrado del contenedor principal */
+.contenedor-configuracion {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - 70px); /* Resta la altura aproximada de la barra de navegación */
+    padding: 20px;
+    background-color: #BFCDD9; /* Fondo de la página */
+    color: #050B0D; /* Negro azabache */
+    margin-top: 0px; /* Asegura que el contenido comience después de la barra */
+}
+
+/* Estilo del encabezado H2 fuera de la tarjeta */
+.contenedor-configuracion h2 {
+    margin-bottom: 20px;
+    color: #050B0D;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Fondo blanco para el formulario */
+.contenedor-configuracion .formulario {
+    background-color: #FFF;
+    border-radius: 10px;
+    padding: 20px;
+    max-width: 600px;
+    width: 100%;
+    box-sizing: border-box;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Centrado del contenedor principal */
+.contenedor-generar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - 70px); /* Resta la altura aproximada de la barra de navegación */
+    padding: 20px;
+    background-color: #BFCDD9; /* Fondo de la página */
+    color: #050B0D; /* Negro azabache */
+    margin-top: 0px; /* Asegura que el contenido comience después de la barra */
+}
+
+/* Estilo del encabezado H2 fuera de la tarjeta */
+.contenedor-generar h2 {
+    margin-bottom: 20px;
+    color: #050B0D;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Fondo blanco para el formulario */
+.contenedor-generar .formulario {
+    background-color: #FFF;
+    border-radius: 10px;
+    padding: 20px;
+    max-width: 600px;
+    width: 100%;
+    box-sizing: border-box;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Canvas de la gráfica */
+#h2 {
+    margin-top: 20px;
+}
+
+#canvas {
+    margin-top: 10px;
+    padding: 10px;
+}
+
+/* Centrado del contenedor principal */
+.contenedor-editar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - 70px); /* Ajusta por la barra de navegación */
+    padding: 20px;
+    background-color: #BFCDD9; /* Fondo de la página */
+    color: #050B0D; /* Negro azabache */
+    margin-top: 0; /* Evita superposición con la barra de navegación */
+}
+
+/* Estilo del encabezado H2 fuera de la tarjeta */
+.contenedor-editar h2 {
+    margin-bottom: 20px;
+    color: #050B0D;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Fondo blanco para el formulario */
+.contenedor-editar .formulario {
+    background-color: #FFF;
+    border-radius: 10px;
+    padding: 20px;
+    max-width: 600px;
+    width: 100%;
+    box-sizing: border-box;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+#contenedor-ticket{
+    padding: 2vh;
+}
+
+.contenedor-imagenes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px; /* Ajusta la distancia desde el contenedor superior */
+}
+
+.tarjeta {
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 5px;
+    margin: 5px;
+    width: 45%; /* Ajusta el ancho de las tarjetas */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.imagen-tarjeta {
+    max-width: 100%;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.flecha {
+    color: #fff;
+    font-size: 2.5rem;
+    margin: 0 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#contenedor-imagenes {
+    transition: opacity 0.5s ease-in-out;
+}
+
+#previsualizacion {
+    text-align: center;
+    margin-top: 20px;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.previsualizacion-imagen {
+    max-width: 90%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.detalles-detectados {
+    text-align: left;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    font-size: 1.2rem;
+    margin-top: 15px;
+}
+
+.detalles-detectados h3 {
+    margin-bottom: 10px;
+    font-size: 1.4rem;
+}
+
+.detalles-detectados p {
+    margin: 5px 0;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
