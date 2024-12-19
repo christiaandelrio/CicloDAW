@@ -9,7 +9,7 @@
     <!-- CSS Compilado -->
     <link rel="stylesheet" href="{{ mix('css/all.css') }}">
 
-    <!-- Script Estilos Bootstrap-->
+    <!-- Script Estilos Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" crossorigin="anonymous">
 
@@ -39,7 +39,7 @@
         <p id="mensaje-popup"></p>
     </div>
 
-    <!-- Inclusión de la plantilla de la barra de navegación-->
+    <!-- Inclusión de la plantilla de la barra de navegación -->
     @include('layouts.navbar')
 
     <!-- Aquí va el contenido de la propia página -->
@@ -49,12 +49,6 @@
 
     <!-- Archivos JavaScript compilados -->
     <script src="{{ mix('js/app.js') }}"></script>
-    <script src="{{ mix('js/datatable.js') }}"></script>
-    <script src="{{ mix('js/modal.js') }}"></script>
-    <script src="{{ mix('js/primerospasos.js') }}"></script>
-    <script src="{{ mix('js/options-menu.js') }}"></script>
-    <script src="{{ mix('js/scroll.js') }}"></script>
-    <script src="{{ mix('js/graficas.js') }}"></script>
-    <script src="{{ mix('js/popup.js') }}"></script>
 </body>
 </html>
+
