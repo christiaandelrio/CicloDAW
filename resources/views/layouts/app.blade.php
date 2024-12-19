@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'Control de Gastos')</title>
 
+    <!-- CSS Compilado -->
+    <link rel="stylesheet" href="{{ mix('css/all.css') }}">
+
     <!-- Script Estilos Bootstrap-->
     <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Incluye Chart.js -->
@@ -27,24 +30,6 @@
     <script src="{{ asset('js/graficas.js') }}"></script>
     <script src="{{ asset('js/popup.js') }}"></script>
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/footer.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/navbar.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/index.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/estilosmoviles.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/register.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/compartidos.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/perfil.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/darkmode.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/modales.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/create.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/configuracion.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/generargraficas.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/editar.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/escanearRecibo.css') }}">
-
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Muli:wght@300;400;600&family=Habibi&display=swap" rel="stylesheet">
@@ -70,19 +55,13 @@
         <p id="mensaje-popup"></p>
     </div>
 
-
-
     <!-- Inclusión de la plantilla de la barra de navegación-->
-
     @include('layouts.navbar')
 
     <!-- Aquí va el contenido de la propia página -->
     <div class="contenedor-principal">
-
         @yield('content')
     </div>
 
-
 </body>
-
 </html>
