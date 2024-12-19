@@ -1,0 +1,40 @@
+/* Centrado del contenedor principal */
+.contenedor-create {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - 70px); /* Resta la altura aproximada de la barra de navegación */
+    padding: 20px;
+    background-color: #BFCDD9; /* Fondo de la página */
+    color: #050B0D; /* Negro azabache */
+    margin-top: 0px; /* Asegura que el contenido comience después de la barra */
+}
+
+/* Estilo del encabezado H2 fuera de la tarjeta */
+.contenedor-create h2 {
+    margin-bottom: 20px;
+    color: #050B0D;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Fondo blanco para el formulario */
+.contenedor-create .formulario {
+    background-color: #FFF;
+    border-radius: 10px;
+    padding: 20px;
+    max-width: 600px;
+    width: 100%;
+    box-sizing: border-box;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#shared_with{
+ position: relative;
+ z-index: 10;
+ top: 10px;
+ left: 10px;
+ padding: 10px 40px;
+ 
+}

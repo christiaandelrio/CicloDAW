@@ -1,0 +1,143 @@
+#contenedor-compartidos{
+    max-width: 100vw;
+}
+
+.contenedor-gastos {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    overflow-y: auto;
+    margin-bottom: 100px;
+}
+
+.tarjeta-gastos {
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+.gasto-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-radius: 6px;
+    margin-bottom: 10px;
+}
+
+.header {
+    font-weight: bold;
+    background-color: #e9ecef;
+}
+
+.gasto-cell {
+    flex: 1;
+    text-align: center;
+}
+
+.scroll-indicator {
+    position: fixed;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.scroll-dot {
+    width: 10px;
+    height: 10px;
+    background-color: #6D8BA6;
+    border-radius: 50%;
+    transition: background-color 0.3s;
+}
+
+.scroll-dot.active {
+    background-color:#BF3326;
+}
+
+@media (max-width: 1024px) {
+    .contenedor-gastos {
+        padding: 15px; /* Reducir padding */
+        max-width: 90%; /* Limitar ancho */
+    }
+    
+    .tarjeta-gastos {
+        padding: 10px; /* Reducir padding */
+        margin-bottom: 15px; /* Menos espacio entre tarjetas */
+    }
+
+    .gasto-row {
+        padding: 8px; /* Reducir espacio interno */
+    }
+
+    .scroll-indicator {
+        right: 8px; /* Ajustar posición en pantalla */
+    }
+}
+
+/* Ajuste para pantallas pequeñas (smartphones hasta 768px) */
+@media (max-width: 768px) {
+    .contenedor-gastos {
+        padding: 10px;
+        max-width: 100%; /* Ancho completo */
+        overflow-y: visible; /* Limitar el scroll automático */
+    }
+    
+    .tarjeta-gastos {
+        padding: 8px;
+        margin-bottom: 12px;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Reducir sombra */
+    }
+
+    .gasto-row {
+        flex-direction: column; /* Apilar items verticalmente */
+        align-items: flex-start;
+        padding: 5px;
+    }
+
+    .gasto-cell {
+        text-align: left; /* Alinear al inicio */
+        padding: 5px 0;
+    }
+
+    .scroll-indicator {
+        right: 5px;
+    }
+
+    .scroll-dot {
+        width: 8px;
+        height: 8px; /* Reducir tamaño */
+    }
+}
+
+/* Ajuste para pantallas extra pequeñas (smartphones verticales hasta 480px) */
+@media (max-width: 480px) {
+    .contenedor-gastos {
+        padding: 8px;
+    }
+    
+    .tarjeta-gastos {
+        padding: 5px;
+        margin-bottom: 10px;
+        border-radius: 5px; /* Redondeado más pequeño */
+    }
+
+    .gasto-row {
+        padding: 4px;
+        margin-bottom: 8px;
+    }
+
+    .scroll-indicator {
+        gap: 5px;
+    }
+
+    .scroll-dot {
+        width: 6px;
+        height: 6px;
+    }
+}
