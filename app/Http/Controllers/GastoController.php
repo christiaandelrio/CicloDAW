@@ -28,14 +28,16 @@ class GastoController extends Controller
             'transporte' => 'fas fa-bus',
             'ropa' => 'fas fa-tshirt',
             'decoracion' => 'fas fa-couch',
-            'medico'=>'fa-solid fa-hospital'
+            'medico' => 'fa-solid fa-hospital',
+            'entretenimiento' => 'fa-solid fa-gamepad',
+
         ];
 
         $user = Auth::user();
 
         // Obtener los gastos del usuario autenticado
-        $gastos = Gasto::where('user_id', $user->id)->get();
-
+        $gastos = Gasto::where('user_id', $user->id)->paginate(5); //Antes tenía get y no me funcionaba porque le pedía todos los registros
+                                                                   //con paginate(x) le indico el número de registros a mostrar
 
         $darkMode = $user->dark_mode;
         $mostrarTutorial = !$user->tutorial_visto; // Determinar si el tutorial debe mostrarse
@@ -60,7 +62,9 @@ class GastoController extends Controller
             'transporte' => 'fas fa-bus',
             'ropa' => 'fa-solid fa-shirt',
             'decoracion' => 'fas fa-couch',
-            'medico'=>'fa-solid fa-hospital'
+            'medico' => 'fa-solid fa-hospital',
+            'entretenimiento' => 'fa-solid fa-gamepad',
+
         ];
 
 
@@ -106,17 +110,20 @@ class GastoController extends Controller
         // Si el gasto es compartido y hay usuarios seleccionados
         if ($request->has('es_compartido') && $request->filled('shared_with')) {
             foreach ($request->shared_with as $sharedWithUserId) {
+                $porcentaje = $request->input("porcentajes.$sharedWithUserId", 0); // Obtén el porcentaje o 0 si no existe
                 GastoCompartido::create([
                     'gasto_id' => $gasto->id,
                     'user_id' => $user->id, // El creador del gasto
                     'shared_with' => $sharedWithUserId, // Usuario con el que se comparte
-                    'porcentaje' => 50, // Ajustable según tus necesidades
+                    'porcentaje' => $porcentaje,
                 ]);
             }
         }
 
         return redirect()->route('gastos.dashboard')->with('success', 'Gasto creado exitosamente.');
     }
+
+
 
     /**
      * Método edit empleado para modificar un gasto
@@ -146,6 +153,9 @@ class GastoController extends Controller
             'transporte' => 'fas fa-bus',
             'ropa' => 'fa-solid fa-shirt',
             'decoracion' => 'fas fa-couch',
+            'medico' => 'fa-solid fa-hospital',
+            'entretenimiento' => 'fa-solid fa-gamepad',
+            
         ];
 
         // Retornar la vista de edición con los datos del gasto o gasto compartido
@@ -283,33 +293,31 @@ class GastoController extends Controller
     public function processReceipt(Request $request)
     {
         try {
-            // Validar que se suba una imagen
             $request->validate([
                 'receipt' => 'required|image|mimes:jpeg,png,jpg|max:2048',
             ]);
-
-            // Guardar la imagen en el almacenamiento
+    
+            // Guardar la imagen
             $path = $request->file('receipt')->store('receipts', 'public');
             $imagePath = storage_path("app/public/{$path}");
-
-            // Procesar la imagen con Tesseract para extraer texto
+    
+            // Procesar con Tesseract
             $tesseract = new TesseractOCR($imagePath);
-            $tesseract->executable('/usr/bin/tesseract'); 
-            $extractedText = $tesseract->lang('spa')->run(); //Incluye el diccionario de idioma español
-
-            // Extraer datos del texto del ticket
+            $tesseract->executable('/usr/bin/tesseract');
+            $extractedText = $tesseract->lang('spa')->run();
+    
+            // Extraer datos
             $data = $this->parseReceiptText($extractedText);
-
-            // Validar que se encontró un total válido
+    
             if (!$data['total'] || $data['total'] <= 0) {
                 return response()->json([
                     'success' => false,
                     'error' => 'No se detectó el total en el ticket. Intenta con otra imagen.',
                 ], 400);
             }
-
+    
             // Crear el gasto
-            Gasto::create([
+            $gasto = Gasto::create([
                 'user_id' => Auth::id(),
                 'nombre_gasto' => $data['nombre'] ?: 'Gasto desconocido',
                 'tipo' => $data['tipo'] ?: 'General',
@@ -319,10 +327,12 @@ class GastoController extends Controller
                 'categoria' => 'Compra',
                 'es_compartido' => 0,
             ]);
-
+    
             return response()->json([
                 'success' => true,
-                'message' => 'Gasto creado con éxito a partir del ticket.',
+                'message' => 'Gasto creado con éxito.',
+                'gasto_id' => $gasto->id,
+                'detected_data' => $data,
             ]);
         } catch (\Exception $e) {
             Log::error('Error procesando el ticket: ' . $e->getMessage());
@@ -332,6 +342,7 @@ class GastoController extends Controller
             ], 500);
         }
     }
+    
 
     /**
      * Se encarga de parsear los datos del ticket, incluye un diccionario con palabras frecuentes
@@ -395,6 +406,17 @@ class GastoController extends Controller
     {
         $user = Auth::user();
 
+        // Definir categorías y sus iconos FontAwesome
+        $categorias = [
+            'comida' => 'fas fa-utensils',
+            'mascota' => 'fas fa-paw',
+            'transporte' => 'fas fa-bus',
+            'ropa' => 'fas fa-tshirt',
+            'decoracion' => 'fas fa-couch',
+            'medico' => 'fa-solid fa-hospital',
+            'entretenimiento' => 'fa-solid fa-gamepad',
+        ];
+
         // Recupera y agrupa los gastos compartidos por el nombre del usuario con el que se compartió
         $gastosCompartidos = GastoCompartido::with(['gasto', 'gasto.user', 'sharedWithUser'])
             ->where('user_id', $user->id)
@@ -406,7 +428,7 @@ class GastoController extends Controller
                     : $gastoCompartido->sharedWithUser->name;
             });
 
-        return view('gastos.compartidos', compact('gastosCompartidos'));
+        return view('gastos.compartidos', compact('gastosCompartidos','categorias'));
     }
 
     /**
@@ -461,11 +483,11 @@ class GastoController extends Controller
         exit;
     }
 
-/**
- * Maneja la lógica que se encarga de comprobar y actualizar si un usuario ha visto el tutorial inicial o no
- *
- * @return void
- */
+    /**
+     * Maneja la lógica que se encarga de comprobar y actualizar si un usuario ha visto el tutorial inicial o no
+     *
+     * @return void
+     */
     public function marcarTutorialVisto()
     {
         try {

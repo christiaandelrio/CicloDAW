@@ -21,7 +21,7 @@
 
             <div class="formulario-grupo">
                 <label for="password" class="formulario-label">Contraseña</label>
-                <input type="password" name="password" class="formulario-input" required>
+                <input type="password" name="password" class="formulario-input" required minlength="8">
             </div>
 
             <button type="submit" class="boton-enviar">Registrarse</button>

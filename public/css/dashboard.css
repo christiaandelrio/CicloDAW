@@ -179,8 +179,54 @@
     height: 100% !important; /* Asegura que el canvas ocupe todo el alto del contenedor gráfico */
 }
 
+.paginacion {
+  text-align: center;
+  margin-top: 20px;
+}
 
+.paginacion .pagination {
+  display: flex;
+  justify-content: center;
+  gap: 8px; 
+}
 
+.paginacion .page-item {
+  list-style: none;
+}
 
+.paginacion .page-item .page-link {
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  color: #333;
+  padding: 8px 12px;
+  text-decoration: none;
+  font-size: 0.875rem;
+}
 
+.paginacion .page-item .page-link:hover {
+  background-color: #ddd;
+  color: #000;
+}
 
+.paginacion .page-item.active .page-link {
+  background-color: #586F8C;
+  border-color: #F0F2F2;
+  color: #fff;
+}
+
+.paginacion .page-link:hover {
+  background-color: rgba(109, 139, 166, 0.7);
+  transition: background-color 0.3s;
+}
+
+@media (max-width: 600px) {
+  .paginacion .pagination {
+    gap: 4px; 
+  }
+
+  .paginacion .page-item .page-link {
+    padding: 6px 10px;
+    font-size: 0.75rem;
+  }
+}

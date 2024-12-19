@@ -21,6 +21,7 @@
 
         <!-- Encabezado de la "tabla" -->
         <div class="gasto-row header">
+            <div class="gasto-cell" title="Categoría">Categoría</div>
             <div class="gasto-cell">Nombre del Gasto</div>
             <div class="gasto-cell">Tipo</div>
             <div class="gasto-cell">Valor</div>
@@ -33,12 +34,20 @@
 
         <!-- Filas de gastos -->
         @php
+        $totalPagadoPorUsuarioActual = 0;
         $totalPagadoPorOtro = 0;
         $totalDeudaUsuario = 0;
+        $totalDeudaOtroUsuario = 0;
         @endphp
 
         @foreach($gastos as $gastoCompartido)
         <div class="gasto-row">
+            <div class="gasto-cell categoria">
+                @php
+                $icono = $categorias[$gastoCompartido->categoria] ?? 'fas fa-question-circle';
+                @endphp
+                <i class="{{ $icono }}" aria-hidden="true"></i>
+            </div>
             <div class="gasto-cell">{{ $gastoCompartido->gasto->nombre_gasto }}</div>
             <div class="gasto-cell">{{ $gastoCompartido->gasto->tipo }}</div>
             <div class="gasto-cell">{{ $gastoCompartido->gasto->valor }} €</div>
@@ -48,19 +57,15 @@
             <div class="gasto-cell">{{ $gastoCompartido->porcentaje }}%</div>
             <!-- Menú de opciones -->
             <div class="btn-container">
-                <!-- Botón para mostrar/ocultar el menú -->
                 <button class="btn btn-light options-icon" title="Opciones">
                     <i class="fa-solid fa-ellipsis-v"></i>
                 </button>
-
-                <!-- Menú de opciones -->
                 <div class="options-menu" style="display: none;">
                     <!-- Formulario para editar -->
                     <form action="{{ route('gastos.compartidos.edit', $gastoCompartido->id) }}" method="GET" class="edit-form" data-id="{{ $gastoCompartido->id }}">
                         @csrf
                         <button type="submit" class="boton-enviar">Editar</button>
                     </form>
-
                     <!-- Formulario para eliminar -->
                     <form action="{{ route('gastos.destroy', $gastoCompartido->id) }}" method="POST" class="delete-form" data-id="{{ $gastoCompartido->id }}">
                         @csrf
@@ -74,23 +79,29 @@
             @php
             $valorPorcentaje = $gastoCompartido->gasto->valor * ($gastoCompartido->porcentaje / 100);
 
-            if ($gastoCompartido->gasto->user->name === $nombreUsuario) {
-            $totalPagadoPorOtro += $valorPorcentaje;
-            } elseif ($gastoCompartido->gasto->user->name === auth()->user()->name) {
-            $totalDeudaUsuario += $valorPorcentaje;
+            if ($gastoCompartido->gasto->user->id === auth()->user()->id) {
+                // Si el gasto fue pagado por el usuario actual
+                $totalDeudaOtroUsuario += $valorPorcentaje;
+                $totalPagadoPorUsuarioActual += $gastoCompartido->gasto->valor;
+            } else {
+                // Si el gasto fue pagado por la otra persona
+                $totalDeudaUsuario += $valorPorcentaje;
+                $totalPagadoPorOtro += $gastoCompartido->gasto->valor;
             }
             @endphp
-        </div> <!-- Fin de gasto-row -->
+        </div>
         @endforeach
 
         <!-- Mostrar saldo debajo de cada tabla -->
         <div class="saldo-mensaje">
-            @if($totalPagadoPorOtro > 0)
+            @if($totalDeudaUsuario > $totalDeudaOtroUsuario)
             <p>{{ $nombreUsuario }} ha pagado un total de {{ number_format($totalPagadoPorOtro, 2) }} €.</p>
-            <p>Tú le debes {{ number_format($totalPagadoPorOtro, 2) }} €.</p>
-            @elseif($totalDeudaUsuario > 0)
-            <p>Tú has pagado un total de {{ number_format($totalDeudaUsuario, 2) }} €.</p>
-            <p>{{ $nombreUsuario }} te debe {{ number_format($totalDeudaUsuario, 2) }} €.</p>
+            <p>Le debes {{ number_format($totalDeudaUsuario, 2) }} €.</p>
+            @elseif($totalDeudaOtroUsuario > $totalDeudaUsuario)
+            <p>Has pagado un total de {{ number_format($totalPagadoPorUsuarioActual, 2) }} €.</p>
+            <p>{{ $nombreUsuario }} te debe {{ number_format($totalDeudaOtroUsuario, 2) }} €.</p>
+            @else
+            <p>Todos los pagos están equilibrados con {{ $nombreUsuario }}.</p>
             @endif
         </div>
     </div> <!-- Fin de tarjeta-gastos -->
@@ -98,3 +109,4 @@
     @endif
 </div>
 @endsection
+

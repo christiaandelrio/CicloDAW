@@ -17,7 +17,7 @@
                 <input type="text" id="tipo" name="tipo" required class="formulario-input">
             </div>
             <div class="formulario-grupo">
-                <label for="valor"class="formulario-label">Valor (€)</label>
+                <label for="valor" class="formulario-label">Valor (€)</label>
                 <input type="number" step="0.01" id="valor" name="valor" required class="formulario-input">
             </div>
             <div class="formulario-grupo">
@@ -48,11 +48,17 @@
             <!-- Selección de usuarios con los que se comparte el gasto -->
             <div class="formulario-grupo" id="usuarios_compartidos" style="display:none;">
                 <label for="shared_with">Compartido con:</label>
-                <select id="shared_with" name="shared_with[]" multiple class="formulario-select">
+                <div id="usuarios_porcentajes">
                     @foreach ($usuarios as $usuario)
-                        <option value="{{ $usuario->id }}">{{ $usuario->name }}</option>
+                        <div class="usuario-porcentaje">
+                            <label>
+                                <input type="checkbox" name="shared_with[]" value="{{ $usuario->id }}">
+                                {{ $usuario->name }}
+                            </label>
+                            <input type="number" name="porcentajes[{{ $usuario->id }}]" placeholder="%" min="0" max="100" class="input-porcentaje">
+                        </div>
                     @endforeach
-                </select>
+                </div>
             </div>
 
             <button type="submit" class="boton-enviar">Guardar Gasto</button>

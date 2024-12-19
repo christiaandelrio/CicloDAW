@@ -21,14 +21,17 @@ class UserFactory extends Factory
      *
      * @return array<string, mixed>
      */
-    public function definition(): array
-    {
+    public function definition(): array  //Aquí puedo definir el modelo de usuario
+    {                                    //Después en consola ejecuto php artisan tinker
+                                         //Y dentro esto > User::factory()->count(20)->create(); (genera 20 usuarios)
         return [
-            'name' => fake()->name(),
-            'email' => fake()->unique()->safeEmail(),
-            'email_verified_at' => now(),
-            'password' => static::$password ??= Hash::make('password'),
+            'name' => $this->faker->name,
+            'email' => $this->faker->unique()->safeEmail,
+            'password' => Hash::make('abc123.456'), 
             'remember_token' => Str::random(10),
+            'notifications' => true,
+            'dark_mode' => false,
+            'tutorial_visto' => false,
         ];
     }
 

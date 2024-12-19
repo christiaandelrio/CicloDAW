@@ -60,6 +60,7 @@
 
         <!-- Encabezado de la "tabla" -->
         <div class="gasto-row header">
+            <div class="gasto-cell" title="Categoría">Categoría</div>
             <div class="gasto-cell" title="Nombre">Nombre del Gasto</div>
             <div class="gasto-cell" title="Tipo">Tipo</div>
             <div class="gasto-cell" title="Valor">Valor</div>
@@ -105,6 +106,9 @@
                 </div>
             </div>
             @endforeach
+        </div>
+        <div class="paginacion">
+            {{ $gastos->links('pagination::bootstrap-5') }}
         </div>
 
 
