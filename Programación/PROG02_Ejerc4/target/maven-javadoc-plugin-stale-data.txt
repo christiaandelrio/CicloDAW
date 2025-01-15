@@ -1,0 +1,42 @@
+@options
+@packages
+-encoding
+'UTF-8'
+-protected
+-source
+'17'
+-sourcepath
+'C:/NetBeansProjects/PROG02_Ejerc4/src/main/java'
+-author
+-bottom
+'Copyright &#169; 2023. All rights reserved.'
+-charset
+'UTF-8'
+-d
+'C:/NetBeansProjects/PROG02_Ejerc4/target/site/apidocs'
+-docencoding
+'UTF-8'
+-doctitle
+'PROG02_Ejerc4 1.0-SNAPSHOT API'
+-use
+-version
+-windowtitle
+'PROG02_Ejerc4 1.0-SNAPSHOT API'
+com.mycompany.prog02_ejerc4
+C:\NetBeansProjects\PROG02_Ejerc4\src\main\java = 1697724037871
+C:\NetBeansProjects\PROG02_Ejerc4\target\site\apidocs\allclasses-index.html = 1697728118695
+C:\NetBeansProjects\PROG02_Ejerc4\target\site\apidocs\allpackages-index.html = 1697728118701
+C:\NetBeansProjects\PROG02_Ejerc4\target\site\apidocs\element-list = 1697728118612
+C:\NetBeansProjects\PROG02_Ejerc4\target\site\apidocs\help-doc.html = 1697728118741
+C:\NetBeansProjects\PROG02_Ejerc4\target\site\apidocs\index-all.html = 1697728118727
+C:\NetBeansProjects\PROG02_Ejerc4\target\site\apidocs\index.html = 1697728118729
+C:\NetBeansProjects\PROG02_Ejerc4\target\site\apidocs\jquery-ui.overrides.css = 1697728118763
+C:\NetBeansProjects\PROG02_Ejerc4\target\site\apidocs\member-search-index.js = 1697728118708
+C:\NetBeansProjects\PROG02_Ejerc4\target\site\apidocs\module-search-index.js = 1697728118702
+C:\NetBeansProjects\PROG02_Ejerc4\target\site\apidocs\overview-tree.html = 1697728118676
+C:\NetBeansProjects\PROG02_Ejerc4\target\site\apidocs\package-search-index.js = 1697728118703
+C:\NetBeansProjects\PROG02_Ejerc4\target\site\apidocs\script.js = 1697728118750
+C:\NetBeansProjects\PROG02_Ejerc4\target\site\apidocs\search.js = 1697728118753
+C:\NetBeansProjects\PROG02_Ejerc4\target\site\apidocs\stylesheet.css = 1697728118748
+C:\NetBeansProjects\PROG02_Ejerc4\target\site\apidocs\tag-search-index.js = 1697728118709
+C:\NetBeansProjects\PROG02_Ejerc4\target\site\apidocs\type-search-index.js = 1697728118704
