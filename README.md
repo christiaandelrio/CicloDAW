@@ -1,8 +1,8 @@
-# CicloDAW
+# DAW
 
 ¡Bienvenidos a mi repositorio de **Ciclo de Desarrollo de Aplicaciones Web**! 🚀
 
-Este repositorio contiene las tareas y proyectos desarrollados durante mi formación en el Ciclo Superior de Desarrollo de Aplicaciones Web. Aquí podrás encontrar una variedad de ejercicios y prácticas que muestran mis habilidades y conocimientos en el desarrollo web.
+Este repositorio contiene las tareas y proyectos desarrollados durante mi formación en el Ciclo Superior de Desarrollo de Aplicaciones Web, así como los hechos por cuenta propia. Aquí podrás encontrar una variedad de ejercicios y prácticas que muestran mis habilidades y conocimientos en el desarrollo web.
 
 ## Contenidos
 
